@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HoaDonModel> 
+@{
+    ViewData["Title"] = "DanhSachHoaDonNguoiMua";
+    Layout = "~/Views/Shared/_ThirdLayout.cshtml";
+}
+
+<div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Hóa đơn đã đặt</span></h2>
+</div>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="hoadontieude bg-secondary text-dark">
+            <div style="width: 30%">
+                <strong>Mã hóa đơn</strong>
+            </div>
+            <div style="width: 20%">
+                <strong>Tình trạng</strong>
+            </div>
+            <div style="width: 25%">
+                <strong>Ngày lập</strong>
+            </div>
+            <div style="width: 25%">
+                <strong>Tổng giá</strong>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+    <div class="hoadonthe" onclick="window.location.href = '@Url.Action("ChiTietHoaDonMua","HoaDon", new { mahd = item.MaHoaDon})'">
+        @if (item.MaTinhTrang == 0)
+        {
+            <div style="width: 30%;border-left: 35px solid black;">
+                <strong>@item.MaHoaDon</strong>
+            </div>
+        }
+        else if (item.MaTinhTrang == 1)
+        {
+            <div style="width: 30%;border-left: 35px solid #006a4e;">
+                <strong>@item.MaHoaDon</strong>
+            </div>
+        }
+        else if (item.MaTinhTrang == 2)
+        {
+            <div style="width: 30%; border-left: 35px solid #2e856e;">
+                <strong>@item.MaHoaDon</strong>
+            </div>
+        }
+        else if (item.MaTinhTrang == 3)
+        {
+            <div style="width: 30%;border-left: 35px solid #5ca08e;">
+                <strong>@item.MaHoaDon</strong>
+            </div>
+        }
+        else if (item.MaTinhTrang == 4)
+        {
+            <div style="width: 30%;border-left: 35px solid #8abaae;">
+                <strong>@item.MaHoaDon</strong>
+            </div>
+        }
+        else
+        {
+            <div style="width: 30%;border-left: 35px solid #9cb19c;">
+                <strong>@item.MaHoaDon</strong>
+            </div>
+        }
+        <div style="width: 20%;">
+            <strong style="display: inline-block; line-height: normal; vertical-align: middle;">@item.TinhTrang</strong>
+        </div>
+        <div style="width: 25%">
+            @{
+                string date = item.NgayMua.ToString("dd/MM/yyyy hh:mm:ss tt");
+            }
+            <strong>@date</strong>
+        </div>
+        <div style="width: 25%">
+            @{
+                string dongia = string.Format("{0:#,##0.########}", item.TongGia);
+            }
+            <strong>@dongia Đ</strong>
+        </div>
+    </div>
+        }
+    </div>
+</div>
+
+<script>
+
+</script>

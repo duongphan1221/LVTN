@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SanPhamModel>
+@{
+    ViewData["Title"] = "DSSP";
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+
+}
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5 tuade"><span class="px-2">Gian hàng của bạn</span></h2>
+    </div>    
+    @foreach (var item in Model)
+    {
+        <div class="cuahangitem">
+            <div class="cuahangimg">
+                <img src="@item.anhsp[0]" class="hinhsanphamcuahang" />
+            </div>
+            <div class="cuahanginfo">
+                <div class="cuahangten">
+                    <p><strong>@item.tensp</strong></p>
+                </div>
+                <div class="cuahanginfo2">
+                    <div class="cuahanggia">
+                        <div class="cuahangdecor">
+                            <div class="cuahangtuade">Ngày đăng</div>
+                            <div class="cuahangso">@item.ngaydangsp</div>
+                        </div>
+                    </div>
+                    <div class="cuahanggia">
+                        <div class="cuahangdecor">
+                            <div class="cuahangtuade">Giá</div>
+                            @{ string giagoc = string.Format("{0:#,##0.########}", item.giagocsp);}
+                            <div class="cuahangso">@giagoc Đ</div>
+                        </div>
+                    </div>
+                    <div class="cuahanggia">
+                        <div class="cuahangdecor">
+                            <div class="cuahangtuade">Số lượng</div>
+                            <div class="cuahangso">@item.soluongsp</div>
+                        </div>
+                    </div>
+                    <div class="cuahanggia">
+                        <div class="cuahangdecor">
+                            <div class="cuahangtuade">Lượt xem</div>
+                            <div class="cuahangso">@item.luotxemsp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cuahangtuychon">
+                <div class="cuahangdecor" style="margin-top:5%;margin-left:1%">
+                    <i class="fa fa-pencil" onclick="CuaHangSuaSanPham('@item.masp')"></i>
+                    <i class="fa fa-times" onclick="CuaHangXoaSanPham('@item.masp')"></i>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    // Sua san pham
+    function CuaHangSuaSanPham(id) {
+        window.location.href = '/CuaHang/SuaSanPham/' + id;
+    }
+
+    // Xoa san pham - con lai = 0
+    function CuaHangAnSanPham(id) {
+        
+    }
+</script>

@@ -1,0 +1,194 @@
+﻿@model GioHangModel
+@{
+    ViewData["Title"] = "GioHang";
+    Layout = "~/Views/Shared/_ThirdLayout.cshtml";
+}
+
+
+<!-- Cart Start -->
+<div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Giỏ hàng</span></h2>
+</div>
+@if (Model.SanPham.Count() != 0)
+{
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th colspan="2">Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        @{ int id = 0;}
+                        @foreach (var i in Model.SanPham)
+                        {
+                            string dongia = string.Format("{0:#,##0.########}", i.gia);
+                            string tonggia = string.Format("{0:#,##0.########}", i.tonggia);
+                            id++;
+                            string inputid = "soluongsp" + id.ToString();
+                            string tonggiaid = "tonggia" + id.ToString();
+                            <tr>
+                                <td class=""><img src="@i.img" alt="" style="width: 50px;height: 50px;"> </td>
+                                <td>@i.tensp</td>
+                                <td class="align-middle">@dongia</td>
+                                <td class="align-middle">
+                                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-primary btn-minus" onclick="Giam1('@id', @i.gia, '@i.masp')">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" id="@inputid" class="form-control form-control-sm bg-secondary text-center" value="@i.soluong" oninput="ChiNhapSo(this); KiemTraSoLuongSanPham(@i.conlai, '@id');">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-primary btn-plus" onclick="Tang1(@i.conlai, '@id', @i.gia, '@i.masp')">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle"><div id="@tonggiaid">@tonggia</div></td>
+                                <td class="align-middle"><button class="btn btn-sm btn-primary" onclick="XoaKhoiGioHang('@i.masp')"><i class="fa fa-times"></i></button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <form class="mb-5" action="">
+                    <div class="input-group" style="z-index: 0">
+                        <input type="text" class="form-control p-4" placeholder="Mã khuyến mãi">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary">Áp dụng</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Tổng</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Tổng thanh toán</h6>
+                            @{ string GHTongGia = string.Format("{0:#,##0.########}", Model.TongGia); }
+                            <h6 class="font-weight-medium" id="tongthanhtoan">@GHTongGia</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        @if (Model.TongGia > 0)
+                        {
+                            <button class="btn btn-block btn-primary my-3 py-3" onclick="window.location.href= '/HoaDon/HoaDon'">Đi đến trang thanh toán</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+<div class="text-center">
+    <h2 class="section-title px-5"><span class="px-2" style="color: #0f893b">Giỏ hàng của bạn hiện tại đang trống</span></h2>
+</div>
+}
+
+<!-- Cart End -->
+
+<script>
+
+    // Xoa khoi gio hang
+    function XoaKhoiGioHang(id) {
+        if (window.confirm("Xóa sản phẩm này khỏi giỏ hàng?")) {
+            $.ajax({
+                url: '/GioHang/XoaKhoiGioHang',
+                type: 'post',
+                data: {
+                    masp: id
+                },
+                success: function (data) {
+                    window.location.href = '/GioHang/GioHang'
+                }
+            })
+        }
+    }
+
+    function SuaDB(sl, masp) {
+        $.ajax({
+            url: '/GioHang/CapNhatGioHang',
+            type: 'post',
+            data: {
+                sl: sl,
+                masp: masp
+            },
+            success: function (data) {
+
+            }
+        })
+    }
+    function TinhTongGia() {
+        var gia = 0;
+        for (var i = 1; i < @Model.SoLoai + 1 ; i++) {
+            gia += parseFloat(document.getElementById('tonggia' + i).innerHTML.replaceAll(',', ''))
+        }
+        document.getElementById('tongthanhtoan').innerHTML = gia.format();
+    }
+    function ChiNhapSo(e) {
+        e.value = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    }
+    function KiemTraSoLuongSanPham(x, id) {
+        var str = 'soluongsp' + id;
+        var sl = document.getElementById(str).value;
+        if (sl > x) {
+            document.getElementById(str).value = x;
+        }
+        if (sl < 1) {
+            document.getElementById(str).value = 1;
+        }
+    }
+    function Tang1(x, id, gia, masp) {
+        var str = 'soluongsp' + id;
+        var sl = document.getElementById(str).value;
+        if (parseInt(sl) + 1 > x) {
+            document.getElementById(str).value = x;
+        }
+        else {
+            document.getElementById(str).value = parseInt(sl) + 1;
+        }
+        var soluong = document.getElementById(str).value;
+        var tg = parseFloat(parseInt(soluong) * parseFloat(gia));
+        document.getElementById('tonggia' + id).innerHTML = tg.format();
+        TinhTongGia();
+        SuaDB(soluong, masp)
+    }
+    Number.prototype.format = function (n, x) {
+        var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+        return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+    };
+    function Giam1(id, gia, masp) {
+        var str = 'soluongsp' + id;
+        var sl = document.getElementById(str).value;
+        if (parseInt(sl) == 1) {
+            document.getElementById(str).value = 1;
+        }
+        else {
+            document.getElementById(str).value = parseInt(sl) - 1;
+        }
+        var tg = parseFloat(parseInt(document.getElementById(str).value) * parseFloat(gia));
+        document.getElementById('tonggia' + id).innerHTML = tg.format();
+        TinhTongGia();
+        var soluong = document.getElementById(str).value;
+        SuaDB(soluong, masp)
+    }
+    function TinhTongGiaTien() {
+
+    }
+
+    $(document).ready(function () {
+
+    })
+</script>

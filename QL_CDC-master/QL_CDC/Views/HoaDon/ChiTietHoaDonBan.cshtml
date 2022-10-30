@@ -1,0 +1,199 @@
+﻿@model TongThanhToan
+@{
+    ViewData["Title"] = "ChiTietHoaDonBan";
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+}
+
+
+@{ 
+    var TT = 0;
+    var MSHD = "";
+}
+<div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Chi tiết hóa đơn</span></h2>
+</div>
+<!-- Checkout Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-6">
+            <div class="mb-4">
+                <h4 class="font-weight-semi-bold mb-4">Thông tin người đặt</h4>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Tên người nhận</label>
+                        <input class="form-control" type="text" value="@Model.NguoiMua.HoTen" disabled style="border: 2px solid #0f893b; color: #0f893b">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Số điện thoại</label>
+                        <input class="form-control" type="text" placeholder="+84 12 3465 678" value="@Model.NguoiMua.SDT" disabled style="border: 2px solid #0f893b; color: #0f893b">
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label>Địa chỉ giao hàng</label>
+                        <textarea class="form-control" placeholder="Nhập địa chỉ giao hàng của bạn" style="min-height: 20vh; border: 2px solid #0f893b; color: #0f893b" disabled>@Model.NguoiMua.DiaChi</textarea>
+                    </div>
+                    <div class="col-md-12 form-group" style="margin-top: 10px">
+                        <div class="table-themsanpham" style="margin-top:0vh;">
+                            <div class="btnaddfile" style="width:30%" onclick="MoChatMoi('', '@Model.NguoiMua.MSSV')" id="mochat">
+                                <i class="fa fa-comments mr-1"></i> Chat
+                            </div>
+                            <div style="width:60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card border-secondary mb-5" style="border: 2px solid #0f893b !important">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Hóa đơn </h4>
+                </div>
+
+                @foreach (var HD in Model.HD)
+                {
+                    TT = HD.MaTinhTrang;
+                    MSHD = HD.MaHoaDon;
+                    <div class="card-body">
+                        <table class="table  mb-0">
+                            <tr>
+                                <td><h6 class="font-weight-medium mb-3">Mã: </h6></td>
+                                <td><h6 class="font-weight-medium mb-3">@HD.MaHoaDon</h6></td>
+                            </tr>
+                            <tr>
+                                <td><h6 class="font-weight-medium mb-3">Tình trạng: </h6></td>
+                                <td><h6 class="font-weight-medium mb-3">@HD.TinhTrang</h6></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div style="overflow: auto;">
+                            <table class="table table-bordered text-center mb-0" style="font-size: 13px;">
+                                <thead class="bg-secondary text-dark">
+                                    <tr>
+                                        <th colspan="2">Sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle">
+                                    @foreach (var item in HD.SanPham)
+                                    {
+                                        string dongia = string.Format("{0:#,##0.########}", item.dongiasp);
+                                        string tonggia = string.Format("{0:#,##0.########}", (item.dongiasp * item.soluongsp));
+                                        <tr>
+                                            <td class="align-middle"><img src="@item.anhdaidien" alt="" style="width: 40px; height: 40px;"> </td>
+                                            <td class="align-middle">@item.tensp </td>
+                                            <td class="align-middle">@dongia</td>
+                                            <td class="align-middle">
+                                                <div class="mx-auto align-middle">
+                                                    @item.soluongsp
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">@tonggia</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <hr class="mt-0">
+                        @{
+                            string HDTien = string.Format("{0:#,##0.########}", HD.TongGia);
+                        }
+                        <div class="card-footer border-secondary bg-transparent">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5 class="font-weight-bold">Số tiền thu:</h5>
+                                <h5 class="font-weight-bold">@HDTien</h5>
+                            </div>
+                        </div>
+                        <hr style="border-top: 5px solid #0f893b">
+                    </div>
+                }
+            </div>
+            @if (TT == 1)
+            {
+        <div class="table-themsanpham" style="margin-top:-2vh;">
+            <div class="btnaddfile" style="width:40%" onclick="XacNhan('@MSHD')">Xác nhận đơn hàng</div>
+            <div style="width:20%"></div>
+            <div class="btnHuy" style="width:40%" onclick="Huy('@MSHD')">Hủy đơn hàng</div>
+        </div>
+            }
+            else if (TT == 2)
+            {
+                <div class="table-themsanpham" style="margin-top:-2vh;">
+                    <div style="width:20%"></div>
+                    <div class="btnaddfile" style="width:60%" onclick="XacNhan('@MSHD')">Xác nhận đã đóng gói</div>
+                    <div style="width:20%"></div>
+                </div>
+            }
+            else if (TT == 3)
+            {
+                <div class="table-themsanpham" style="margin-top:-2vh;">
+                    <div style="width:20%"></div>
+                    <div class="btnaddfile" style="width:60%" onclick="XacNhan('@MSHD')">Xác nhận đang giao hàng</div>
+                    <div style="width:20%"></div>
+                </div>
+            }
+            else if (TT == 4)
+            {
+                <div class="table-themsanpham" style="margin-top:-2vh;">
+                    <div style="width:70%"></div>
+                    <div class="btnHuy" style="width:30%" onclick="Huy('@MSHD')">Hủy hóa đơn</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Checkout End -->
+
+<script>
+    // Mo chat
+    function MoChatMoi(id, tenshop) {
+        document.getElementById('chat_chat').click();
+        id = GetNameID();
+        //console.log(id + ',' + tenshop);
+        BatDauChatMoi(id, tenshop)
+    }
+
+    // Xac nhan hoa don
+    function XacNhan(ms) {
+        console.log(ms);
+        if (window.confirm("Xác nhận thao tác?")) {
+            $.ajax({
+                url: '/HoaDon/XacNhanHoaDon',
+                type: 'post',
+                data: {
+                    mshd: ms,
+                },
+                success: function (data) {
+                    window.location.reload();
+                    console.log(ms);
+                }
+            })
+        }
+    }
+
+    // Huy hoa don
+    function Huy(ms) {
+        if (window.confirm("Xác nhận thao tác?")) {
+            $.ajax({
+                url: '/HoaDon/HuyHoaDon',
+                type: 'post',
+                data: {
+                    mshd: ms,
+                },
+                success: function (data) {
+                    window.location.reload();
+                    console.log(ms);
+                }
+            })
+        }
+    }
+
+    //ready
+    $(document).ready(function () {
+
+    })
+</script>

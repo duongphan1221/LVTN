@@ -1,0 +1,148 @@
+﻿@model SinhVienModel
+@{
+    ViewData["Title"] = "DangKy";
+    Layout = null;
+}
+
+<link href="/template/css/style.css" rel="stylesheet">
+<div class="container-fluid mb-5">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="@Url.Action("Index","SanPham")" class="text-decoration-none">
+                            <h2 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold "><img src="~/template/img/LogoSV2.png" height="80px" /></span></h2>
+                        </a>
+                    </div>
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="@Url.Action("DangNhap","TaiKhoan")" class="nav-item nav-link dndk">Đăng nhập</a>
+                        <a href="@Url.Action("DangKy","TaiKhoan")" class="nav-item nav-link dndk" style="color: #0f893b">Đăng ký</a>
+                    </div>
+                </div>
+            </nav>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="DangKy" method="post">
+                <div id="dndkdiv">
+                    <table class="dndktable" style="margin-top:0vh">
+                        <tr>
+                            <td>
+                                <label asp-for="MSSV" class="labeldn" style="color: #0f893b;"></label>
+                            </td>
+                            <td>
+                                <input asp-for="MSSV" type="text" class="form-control" id="mssv" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="MSSV" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b;">Họ và Tên: </label>
+                            </td>
+                            <td>
+                                <input asp-for="HoTen" type="text" class="form-control" id="hoten" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="HoTen" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b;">Mật khẩu: </label>
+                            </td>
+                            <td>
+                                <input asp-for="MatKhau" type="password" class="form-control" id="mk" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="MatKhau" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b;">Xác nhận mật khẩu: </label>
+                            </td>
+                            <td>
+                                <input asp-for="XacNhanMatKhau" type="password" class="form-control" id="xnmk" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="XacNhanMatKhau" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b;">SĐT: </label>
+                            </td>
+                            <td>
+                                <input asp-for="SDT" type="text" class="form-control" id="sdt" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="SDT" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b;">Email: </label>
+                            </td>
+                            <td>
+                                <input asp-for="Email" type="text" class="form-control" id="email" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="Email" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b;">Địa chỉ: </label>
+                            </td>
+                            <td>
+                                <textarea asp-for="DiaChi" class="form-control" id="dc"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary btn-plus" style="margin-top: 20px; float: right">Đăng ký</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>

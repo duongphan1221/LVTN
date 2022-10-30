@@ -1,0 +1,61 @@
+﻿@model SanPhamModel
+
+<div class="row">
+    <div class="col-md-6">
+        <h4 class="mb-4">@Model.nhanxetsp.Count() Đánh giá cho @Model.nguoidangsp</h4>
+        @if (Model.nhanxetsp.Count() != 0)
+        {
+            foreach (var item in Model.nhanxetsp)
+            {
+                <div class="media mb-4">
+                    <img src="@item.img" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                    <div class="media-body">
+                        <h6>@item.mssv_m<small> - <i>@item.ngay</i></small></h6>
+                        <div class="text-primary mb-2">
+                            @{ int c = 0; }
+                            @for (int a = 0; a < item.danhgia; a++)
+                            {
+                                <i class="fas fa-star"></i>
+                                c++;
+                            }
+                            @for (int a = 0; a < 5 - c; a++)
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        </div>
+                        <p style="color: black;">@item.noidung</p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-md-6">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h4 class="mb-4">Thêm bình luận về người bán này</h4>
+            <div class="d-flex my-3">
+                <p class="mb-0 mr-2">Đánh giá của bạn * :</p>
+                <div class="text-primary danhgiasao">
+                    <i class="far fa-star" id="sao1" onclick="doisao(1)"></i>
+                    <i class="far fa-star" id="sao2" onclick="doisao(2)"></i>
+                    <i class="far fa-star" id="sao3" onclick="doisao(3)"></i>
+                    <i class="far fa-star" id="sao4" onclick="doisao(4)"></i>
+                    <i class="far fa-star" id="sao5" onclick="doisao(5)"></i>
+                </div>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="message">Bình luận * :</label>
+                    <textarea id="message" cols="30" rows="5" class="form-control" style="border: 1px solid black;border-radius: 5px"></textarea>
+                </div>
+                <div class="form-group mb-0">
+                    <input type="button" value="Bình luận" class="btn btn-primary px-3" onclick="NhanXetSanPham('@Model.msnguoidang', '@Model.masp')">
+                </div>
+            </form>
+        }
+        else
+        {
+            <h4 class="mb-4">Đăng nhập để bình luận</h4>
+        }
+    </div>
+</div>

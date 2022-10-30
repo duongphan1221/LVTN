@@ -1,0 +1,94 @@
+﻿@model SinhVienModel 
+@{
+    ViewData["Title"] = "ThongTinTaiKhoan";
+    Layout = "~/Views/Shared/_ThirdLayout.cshtml";
+}
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Thông tin cá nhân</span></h2>
+    </div>
+    <div class="row px-xl-5 pb-3 thongtincanhan">
+        <div class="col-lg-12">
+            <div class="mb-4">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>MSSV</label>
+                        <input class="form-control" type="text" placeholder="" value="@Model.MSSV" id="input1" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Tên hiển thị</label>
+                        <input asp-for="TenHienThi" class="form-control" type="text" placeholder="" value="@Model.TenHienThi" id="input2" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>E-mail</label>
+                        <input asp-for="Email" class="form-control" type="text" placeholder="" value="@Model.Email" id="input3" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Số điện thoại</label>
+                        <input asp-for="SDT" class="form-control" type="text" placeholder="" value="@Model.SDT" id="input4" disabled oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Họ và tên</label>
+                        <input asp-for="HoTen" class="form-control" type="text" placeholder="" value="@Model.HoTen" id="input5" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label>Địa chỉ giao hàng</label>
+                        <textarea asp-for="DiaChi" class="form-control" placeholder="Nhập địa chỉ giao hàng của bạn" id="input6" style="min-height: 20vh;" disabled>@Model.DiaChi</textarea>
+                    </div>
+
+                    <div class="col-md-12 form-group" style="text-align: right" id="bar-button">
+                        <button class="btn btn-primary" onclick="ChinhSua()">Chỉnh sửa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Products End -->
+
+<script>
+
+
+    // Luu
+    function Luu() {
+        var values = [];
+        for (var i = 1; i < 7; i++) {
+            values[i] = document.getElementById('input' + i).value;
+        }
+        $.ajax({
+            url: '/TaiKhoan/SuaThongTin',
+            type: 'post',
+            data: {
+                tenhienthi: values[2],
+                email: values[3],
+                sdt: values[4],
+                hoten: values[5],
+                dc: values[6],
+            },
+            success: function () {
+                window.location.reload();
+            }
+        })
+    }
+
+    // Huy
+    function Huy() {
+        window.location.reload();
+    }
+
+    // Chinh sua
+    function ChinhSua() {
+        for (var i = 2; i < 7; i++) {
+            document.getElementById('input' + i).disabled = false;
+        }
+        document.getElementById('input2').focus();
+
+        str = '<button class="btn btn-primary" onclick="Luu()" style="margin-right: 30px">Lưu</button>'
+        str += '<button class="btn btn-primary" onclick="Huy()">Hủy</button>'
+        document.getElementById('bar-button').innerHTML = str
+    }
+</script>

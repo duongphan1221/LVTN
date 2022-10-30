@@ -1,0 +1,75 @@
+﻿@model DangNhapModel
+@{
+    ViewData["Title"] = "DangNhap";
+    Layout = null;
+}
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<link href="/template/css/style.css" rel="stylesheet">
+<div class="container-fluid mb-5">
+    <div class="row border-top px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="@Url.Action("Index","SanPham")" class="text-decoration-none">
+                    <h2 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold "><img src="~/template/img/LogoSV2.png" height="100px" /></span></h2>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="@Url.Action("DangNhap","TaiKhoan")" class="nav-item nav-link dndk" style="color: #0f893b">Đăng nhập</a>
+                        <a href="@Url.Action("DangKy","TaiKhoan")" class="nav-item nav-link dndk">Đăng ký</a>
+                    </div>
+                </div>
+            </nav>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="DangNhap" method="post">
+                <div id="dndkdiv">
+                    <table class="dndktable">
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b; font-size: 24px">Tài khoản: </label>
+                            </td>
+                            <td>
+                                <input asp-for="MSSV" type="text" class="form-control" id="tk" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="MSSV" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="labeldn" style="color: #0f893b; font-size: 24px">Mật khẩu: </label>
+                            </td>
+                            <td>
+                                <input asp-for="MatKhau" type="password" class="form-control" id="mk" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: left">
+                                <span asp-validation-for="MatKhau" class="text-danger" style="margin-left: 10vw;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="text-align: center">
+                                <button type="submit" class="btn btn-primary" style="margin-left: 10vw;margin-top: 20px">Đăng nhập</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>

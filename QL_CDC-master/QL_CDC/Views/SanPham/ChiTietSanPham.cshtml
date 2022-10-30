@@ -1,0 +1,272 @@
+﻿@model SanPhamModel
+@{
+    ViewData["Title"] = "ChiTietSanPham_A";
+    Layout = "~/Views/Shared/_ThirdLayout.cshtml";
+}
+
+@{ 
+    string dongia = string.Format("{0:#,##0.########}", Model.dongiasp);
+    string giagoc = string.Format("{0:#,##0.########}", Model.giagocsp);
+}
+<!-- Shop Detail Start -->
+<div class="container-fluid py-5">
+    <div id="alertdiv"></div>
+    <div class="row px-xl-5">
+        <div class="col-lg-5 pb-5">
+            <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner border">
+                    <div class="carousel-item active">
+                        <img class="w-100 h-100" src="@Model.anhsp[0]" alt="Image">
+                    </div>
+                    @for (var i = 1; i < Model.anhsp.Count(); i++)
+                    {
+                        <div class="carousel-item">
+                            <img class="w-100 h-100" src="@Model.anhsp[i]" alt="Image">
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                    <i class="fa fa-2x fa-angle-left muiten"></i>
+                </a>
+                <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                    <i class="fa fa-2x fa-angle-right muiten"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-7 pb-5 thongtin">
+            <h3 class="font-weight-semi-bold">@Model.tensp</h3>
+            @{
+                var sosao = Math.Round(Model.danhgiasp, 0, MidpointRounding.AwayFromZero);
+            }
+            <div class="d-flex mb-3">
+                <div class="text-primary mr-2" id="saotong">
+                    <!-- Hien thi so sao -->
+                </div>
+                <small class="pt-1"> @sosao </small>
+            </div>
+            <div class="" style="display: flex;">
+                <h3 class="font-weight-semi-bold mb-4" style="width: 28%"> @dongia Đ</h3>
+                @if (dongia != giagoc)
+                {
+                    <h3 class="font-weight-semi-bold mb-4" style="width: 28%"><del>@giagoc Đ</del></h3>
+                }
+            </div>
+            <div class="d-flex mb-3" style="width: 100%;display: flex;">
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Đăng bởi:</strong></p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">
+                    @Model.nguoidangsp
+                    <small id="mochat">
+
+                    </small>
+                </p>
+            </div>
+            <div class="d-flex mb-3" style="width: 100%;display: flex;">
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Ngày đăng:</strong></p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.ngaydangsp</p>
+            </div>
+            <div class="d-flex mb-3" style="width: 100%;display: flex;">
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Loại sản phẩm:</strong></p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.loai</p>
+            </div>
+            <div class="d-flex mb-3" style="width: 100%;display: flex;">
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Hãng sản xuất:</strong></p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.nsx</p>
+            </div>
+            <div class="d-flex mb-3" style="width: 100%;display: flex;">
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Thời gian sử dụng:</strong></p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.thoigiansp tháng</p>
+            </div>
+            <div class="d-flex mb-3" style="width: 100%;display: flex;">
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Số lượng còn lại:</strong></p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.soluongsp sản phẩm</p>
+            </div>
+            <div class="d-flex align-items-center mb-4 pt-2 dieukhiendathang">
+                <div class="input-group quantity mr-3" style="width: 130px;">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-minus" onclick="Giam1()">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="soluongsp" class="form-control bg-secondary text-center" value="1" oninput="ChiNhapSo(this); KiemTraSoLuongSanPham(@Model.soluongsp);">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-plus" onclick="Tang1(@Model.soluongsp)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary px-3" onclick="ThemNhieuVaoGio('@Model.masp');"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ </button>
+            </div>
+        </div>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+                <a class="nav-item nav-link dndk active" style="color: black" data-toggle="tab" href="#tab-pane-1" id="tabmota">Mô tả</a>
+                <a class="nav-item nav-link dndk" style="color: black" data-toggle="tab" href="#tab-pane-3" id="tabdanhgia">Đánh giá người bán (@Model.nhanxetsp.Count())</a>
+               
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab-pane-1">
+                    <h4 class="mb-3">Mô tả sản phẩm</h4>
+                    <p style="color: black;">@Model.motasp</p>
+                </div>
+                <div class="tab-pane fade" id="tab-pane-3">
+                    @await Html.PartialAsync("../SanPham/_NhanXetPartial.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Detail End -->
+<script>
+    // Mo chat
+    function MoChatMoi(id, tenshop) {
+        document.getElementById('chat_chat').click();
+        BatDauChatMoi(id, tenshop)
+    }
+
+    // input chi nhap so
+    function ChiNhapSo(e) {
+        e.value = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    }
+
+    // kiem tra so luong san pham
+    function KiemTraSoLuongSanPham(x) {
+        var sl = $('#soluongsp').val();
+        if (sl > x) {
+            document.getElementById('soluongsp').value = x;
+        }
+        if (sl < 1) {
+            document.getElementById('soluongsp').value = 1;
+        }
+    }
+
+    // them 1 sp 
+    function Tang1(x) {
+        var sl = $('#soluongsp').val();
+        if (parseInt(sl) + 1 > x) {
+            document.getElementById('soluongsp').value = x;
+        }
+        else {
+            document.getElementById('soluongsp').value = parseInt(sl) + 1;
+        }
+    }
+
+    // giam 1 san pham
+    function Giam1() {
+        var sl = $('#soluongsp').val();
+        if (parseInt(sl) == 1) {
+            document.getElementById('soluongsp').value = 1;
+        }
+        else {
+            document.getElementById('soluongsp').value = parseInt(sl) - 1;
+        }
+    }
+
+    // doi sao
+    function doisao(id) {
+        for (var i = 1; i <= 5; i++) {
+            document.getElementById('sao' + i).className = "far fa-star";
+
+        }
+        for (var i = 1; i <= id; i++) {
+            document.getElementById('sao' + i).className = "fas fa-star";
+        }
+    }
+
+    // them san pham vao gio
+    function ThemNhieuVaoGio(ma) {
+        var sl = parseInt($('#soluongsp').val());
+        if (sl < 1) sl = 1;
+        $.ajax({
+            url: '/GioHang/ThemNhieuSanPhamVaoGio',
+            type: 'post',
+            data: {
+                mssp: ma,
+                sl: sl
+            },
+            success: function (data) {
+                hiensanphamtronggio();
+                tempAlert("Close", 3000);
+            },
+            error: function () {
+                window.location.href = '/TaiKhoan/DangNhap';
+            }
+        })
+    }
+
+    // thong bao da them vao gio
+    function tempAlert(msg, duration) {
+        var el = document.getElementById('alertdiv');
+
+        var str = '';
+        str += '<div><i class="fa fa-check-circle-o "></i></div>';
+        str += '<div><p><strong>Đã thêm vào giỏ</strong></p></div>';
+
+        el.innerHTML = str;
+        el.style.display = "unset";
+        setTimeout(function () {
+            el.innerHTML = "";
+            el.style.display = "none";
+        }, duration);
+        document.body.appendChild(el);
+    }
+
+    // tinh tong so sao danh gia
+    function tinhsaotong(x) {
+        var div = document.getElementById('saotong');
+        var str = '';
+        var count = 0;
+        for (var a = 0; a < x; a++) {
+            str += '<small class="fas fa-star"></small>&nbsp';
+            count++;
+        }
+        for (var a = 0; a < 5 - count; a++) {
+            str += '<small class="far fa-star"></small>&nbsp';
+        }
+        div.innerHTML = str;
+    }
+
+    // Hien danh gia sn pham
+    function HienDanhGiaSanPham() {
+        $("#tab-pane-3").load('/SanPham/NhanXetPartialView');
+    }
+
+    // Binh luan san pham
+    function NhanXetSanPham(svb, mssp) {
+        var sao = 0;
+        var bl = $('#message').val();
+        for (var a = 1; a <= 5; a++) {
+            if ($('#sao' + a).hasClass("fas fa-star")) {
+                sao += 1;
+            }
+        }
+        $.ajax({
+            url: '/SanPham/NhanXetSanPham',
+            type: 'post',
+            async: true,
+            data: {
+                sao: sao,
+                bl: bl,
+                svb: svb,
+                mssp: mssp
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById('tab-pane-3').innerHTML = data;
+            },
+            error: function () {
+
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        tinhsaotong(@sosao);
+        if ('@Model.msnguoidang' != GetNameID()) {
+            document.getElementById('mochat').innerHTML = '<button class="btn btn-primary px-3" onclick="MoChatMoi(\'@Model.msnguoidang\',\'@Model.nguoidangsp\')"><i class="fa fa-comments mr-1"></i> Chat </button>';
+        }
+    })
+
+</script>

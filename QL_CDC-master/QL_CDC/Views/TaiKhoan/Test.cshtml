@@ -1,0 +1,89 @@
+﻿@model QL_CDC.Models.SINHVIEN
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+</head>
+<body>
+
+<h4>SINHVIEN</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Test">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SV_MSSV" class="control-label"></label>
+                <input asp-for="SV_MSSV" class="form-control" />
+                <span asp-validation-for="SV_MSSV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_MATKHAU" class="control-label"></label>
+                <input asp-for="SV_MATKHAU" class="form-control" />
+                <span asp-validation-for="SV_MATKHAU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_HOTEN" class="control-label"></label>
+                <input asp-for="SV_HOTEN" class="form-control" />
+                <span asp-validation-for="SV_HOTEN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_TENHIENTHI" class="control-label"></label>
+                <input asp-for="SV_TENHIENTHI" class="form-control" />
+                <span asp-validation-for="SV_TENHIENTHI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_NGAYTAOTK" class="control-label"></label>
+                <input asp-for="SV_NGAYTAOTK" class="form-control" />
+                <span asp-validation-for="SV_NGAYTAOTK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_LANHDCUOI" class="control-label"></label>
+                <input asp-for="SV_LANHDCUOI" class="form-control" />
+                <span asp-validation-for="SV_LANHDCUOI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_DIACHIGIAOHANG" class="control-label"></label>
+                <input asp-for="SV_DIACHIGIAOHANG" class="form-control" />
+                <span asp-validation-for="SV_DIACHIGIAOHANG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_SDT" class="control-label"></label>
+                <input asp-for="SV_SDT" class="form-control" />
+                <span asp-validation-for="SV_SDT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_EMAIL" class="control-label"></label>
+                <input asp-for="SV_EMAIL" class="form-control" />
+                <span asp-validation-for="SV_EMAIL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_TINHTRANG" class="control-label"></label>
+                <input asp-for="SV_TINHTRANG" class="form-control" />
+                <span asp-validation-for="SV_TINHTRANG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SV_ADMIN" class="control-label"></label>
+                <input asp-for="SV_ADMIN" class="form-control" />
+                <span asp-validation-for="SV_ADMIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

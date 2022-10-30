@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SinhVienModel>
+
+@{ ViewData["Title"] = "ListSV";
+    Layout = "AdminLayout"; }
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quán lý người dùng</h4>
+    <div class="card">
+        <h5 class="card-header">Danh sách người dùng</h5>
+        <div class="table-responsive text-nowrap">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Họ & tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Lần cuối hoạt động</th>
+                            <th>  </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenHienThi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SDT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LanHDCuoi)
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="menu-icon tf-icons bx bx-lock"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <!--    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>-->
+                                        <a id="tt1" class="dropdown-item" href="javascript:void(0);" onclick="KhoaTaiKhoan('@item.MSSV')">@*<i class="bx bx-lock me-1"></i>*@@item.Khoa</a>                                      
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script> 
+    function KhoaTaiKhoan(msv) {
+        console.log(msv);
+        var khoa = document.getElementById("tt1").innerHTML;
+        console.log(khoa);
+        var txt = "";
+        if (khoa == "Khóa người dùng này") {
+            txt = "Bạn muốn khóa người dùng này ?"
+        }
+        else
+            txt = "Bạn muốn mở khóa người dùng này ?"
+        if (window.confirm(txt)) {
+            $.ajax({
+              url: '/Admin/KhoaTaiKhoan',
+              type: 'post',
+               data: {
+                    masv: msv
+                },
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = '/Admin/Index'
+                }
+            })
+        }
+    }
+</script>

@@ -1,0 +1,247 @@
+﻿
+
+<div class="chat_chat" onclick="AnHienKhungChat()" id="chat_chat"><strong id="sotn">0</strong><i class="fa fa-comments"></i></div>
+<div id="ChatChinh">
+    <div id="chat_danhsach">
+        
+    </div>
+    <div id="chat_tenshop">
+        <strong id="strongtenshop"></strong><strong id="mashop" style="display: none"></strong>
+    </div>
+    <div class="chat_khungchat" id="chat_khungchat">
+       
+    </div>
+</div>
+
+<script>
+    // live chat
+    var intervalId;
+    function LiveChat() {
+        if (document.getElementById("ChatChinh").style.display == "unset") {
+            ResetChat();
+            console.log("A")
+            var id = document.getElementById('mashop').innerHTML;
+            if (id != null && id != "") {
+                $.ajax({
+                    url: '/Chat/ChiTietTinNhan',
+                    type: 'post',
+                    data: {
+                        msv: id
+                    },
+                    success: function (data) {
+                        var str = '';
+                        for (var i in data) {
+                            if (data[i].latinguidi == true) {
+                                str += '<div class="chat_gui chat_tinnhan"><div class="chat_tn">' + data[i].noidung + '</div><small class="chat_tn">' + data[i].thoigian + '</small></div>';
+                            }
+                            else {
+                                str += '<div class="chat_nhan chat_tinnhan"><div class="chat_tn">' + data[i].noidung + '</div><small class="chat_tn">' + data[i].thoigian + '</small></div>';
+                            }
+                        }
+                        document.getElementById('chat_noidung').innerHTML = str;
+                        if (data.length == 0) {
+                            var i = '';
+                            i += '<div style="padding: 20% 0; text-align: center;">';
+                            i += '<i class="fa fa-comments" style="font-size: 5em;color:#0f893b"></i>';
+                            i += '<p style="font-size: 18px;color:#0f893b">Bắt đầu trò chuyện</p>'
+                            i += '</div>'
+                            document.getElementById("chat_noidung").innerHTML = i;
+                        }
+                    }
+                })
+            }
+        }
+        else {
+            var interval_id = window.setInterval(function () { }, Number.MAX_SAFE_INTEGER);
+
+            // Clear any timeout/interval up to that id
+            for (var i = 1; i < interval_id; i++) {
+                window.clearInterval(i);
+            }
+        }
+    }
+
+    // chat moi
+    function BatDauChatMoi(id, tenshop) {
+        // console.log(id);
+        document.getElementById('strongtenshop').innerHTML = tenshop;
+        ChiTietChat(id, tenshop);
+    }
+
+    // chi tiet chat
+    function ChiTietChat(id, tenshop) {
+        // console.log(id);
+        $.ajax({
+            url: '/Chat/ChiTietTinNhan',
+            type: 'post',
+            data: {
+                msv: id
+            },
+            success: function (data) {
+                var str = '';
+                str += '<div class="chat_noidung" id="chat_noidung">';
+                for (var i in data) {
+                    if (data[i].latinguidi == true) {
+                        str += '<div class="chat_gui chat_tinnhan"><div class="chat_tn">' + data[i].noidung + '</div><small class="chat_tn">' + data[i].thoigian + '</small></div>';
+                    }
+                    else {
+                        str += '<div class="chat_nhan chat_tinnhan"><div class="chat_tn">' + data[i].noidung + '</div><small class="chat_tn">' + data[i].thoigian + '</small></div>';
+                    }
+
+                }
+                str += '</div>';
+                str += '<div class="chat_soantin"><input class="form-control" type="text" id="chat_msg" /><button class="form-control btn-primary fa fa-paper-plane-o" onclick="GuiTinNhan(\'' + id + '\',\'' + tenshop + '\')"></button></div>';
+                document.getElementById('chat_khungchat').innerHTML = str;
+                document.getElementById('strongtenshop').innerHTML = tenshop;
+                document.getElementById('mashop').innerHTML = id;
+                $("#chat_noidung").scrollTop($("#chat_noidung")[0].scrollHeight);
+                $("#chat_msg").focus();
+                ResetChat();
+                if (data.length == 0) {
+                    var i = '';
+                    i += '<div style="padding: 20% 0; text-align: center;">';
+                    i += '<i class="fa fa-comments" style="font-size: 5em;color:#0f893b"></i>';
+                    i += '<p style="font-size: 18px;color:#0f893b">Bắt đầu trò chuyện</p>'
+                    i += '</div>'
+                    document.getElementById("chat_noidung").innerHTML = i;
+                }
+                intervalId = window.setInterval(function () {
+                    LiveChat();
+                }, 3000);
+            }
+        })
+    }
+
+    // gui tin nhan 
+    function GuiTinNhan(id, tenshop) {
+        document.getElementById('chat_msg').focus();
+        var msg = document.getElementById('chat_msg').value;
+        // console.log(id + ", " + msg);
+        if (msg == "" || msg == null || !/\S/.test(msg)) {
+
+        }
+        else {
+            $.ajax({
+                url: '/Chat/GuiTinNhan',
+                type: 'post',
+                data: {
+                    msg: msg,
+                    id: id
+                },
+                success: function (data) {
+                    ChiTietChat(id, tenshop);
+                }
+            })
+        }
+    }
+
+    // an hien khung chat
+    function AnHienKhungChat() {
+        var d = document.getElementById("ChatChinh").style.display;
+        if (d == "none") {
+            document.getElementById("ChatChinh").style.display = "unset";
+            ResetChat();
+        }
+        else {
+            document.getElementById("ChatChinh").style.display = "none";
+        }
+        HienTN();
+    }
+
+    // reset chat
+    function ResetChat() {
+        $.ajax({
+            url: '/Chat/HienDanhSach',
+            type: 'get',
+            success: function (data) {
+                //console.log(data[0])
+                var str = ''
+                for (var i in data) {
+                    if (data[i].tinCuoi.dadoc == false) {
+                        if (data[i].tinCuoi.latinguidi == true) {
+                            str += '<div class="chat_doanchat" style="border-radius:15px" onclick="ChiTietChat(\'' + data[i].maNguoiNhan + '\',\'' + data[i].tenShop + '\')">'
+                        }
+                        else {
+                            str += '<div class="chat_doanchat" style="background: #0f893b;border-bottom: 1px solid #ffffff;border-top: 1px solid #ffffff;border-radius:15px" onclick="ChiTietChat(\'' + data[i].maNguoiNhan + '\',\'' + data[i].tenShop + '\')">'
+                        }
+                    }
+                    else {
+                        str += '<div class="chat_doanchat" style="border-radius:15px" onclick="ChiTietChat(\'' + data[i].maNguoiNhan + '\',\'' + data[i].tenShop + '\')">'
+                    }
+                    str += '<div style="width: 20%;">'
+                    if (data[i].tinCuoi.dadoc == false) {
+                        if (data[i].tinCuoi.latinguidi == true) {
+                            str += '<img src="' + data[i].img + '" style="width: 40px;height:40px;border-radius: 50%;margin-left: 5px;margin-top:5px;border: 0.5px solid green" />'
+                        }
+                        else {
+                            str += '<img src="' + data[i].img + '" style="width: 40px;height:40px;border-radius: 50%;margin-left: 5px;margin-top:5px;border: 1px solid white" />'
+                        }
+                    }
+                    else {
+                        str += '<img src="' + data[i].img + '" style="width: 40px;height:40px;border-radius: 50%;margin-left: 5px;margin-top:5px;border: 0.5px solid green" />'
+                    }
+                    str += '</div>'
+                    str += '<div style="width: 80%;margin-left:5px;" id="chat_ten">'
+                    if (data[i].tinCuoi.dadoc == false) {
+                        if (data[i].tinCuoi.latinguidi == true) {
+                            str += '<table class="chat_table">'
+                        }
+                        else {
+                            str += '<table class="chat_table" style="color:#ffffff">'
+                        }
+                    }
+                    else {
+                        str += '<table class="chat_table">'
+                    }
+                    
+                    str += '<tr><td colspan="3"><strong>' + data[i].tenShop + '</strong></td></tr>'
+                    var b = "";
+                    if (data[i].tinCuoi.latinguidi == true) b = "Bạn: ";
+                    str += '<tr><td colspan="2">' + b + data[i].tinCuoi.noidung + '</td><td style="text-align:center !important" colspan="1"><small>' + data[i].tinCuoi.thoigian + '</small></td></tr>'
+                    str += '</table>'
+                    str += '</div>'
+                    str += '</div>'
+                }
+                document.getElementById('chat_danhsach').innerHTML = str;
+                HienTN();
+            }
+        })
+    }
+
+    // hien so tn
+    function HienTN() {
+        $.ajax({
+            url: '/Chat/SoTinNhanChuaDoc',
+            type: 'get',
+            success: function (data) {
+                document.getElementById('sotn').innerHTML = data;
+            }
+        })
+    }
+
+    // lay id
+    function GetNameID() {
+        var id = "";
+        $.ajax({
+            url: '/TaiKhoan/LayIDUser',
+            type: 'get',
+            async: false,
+            success: function (data) {
+                id = data;
+            }
+        })
+        return id;
+    }
+
+    // ready
+    $(document).ready(function () {
+        var i = '';
+        i += '<div style="padding: 20% 0; text-align: center;">';
+        i += '<i class="fa fa-comments" style="font-size: 5em;color:#0f893b"></i>';
+        i += '<p style="font-size: 18px;color:#0f893b">Bắt đầu trò chuyện</p>'
+        i += '</div>'
+        document.getElementById("chat_khungchat").innerHTML = i;
+        document.getElementById("ChatChinh").style.display = "none";
+        HienTN();
+    })
+</script>

@@ -1,0 +1,272 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "SuaSanPham";
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+}
+
+<div class="container-fluid pt-5">
+    <!--Ten-->
+    <div class="text-center mb-4">
+        <h4 class="section-title px-5 tuade"><span class="px-2">Chỉnh sửa sản phẩm</span></h4>
+    </div>
+    <div class="table-themsanpham">
+        <div class="add_label">
+            <label>Tên sản phẩm: </label>
+        </div>
+        <div class="add_input">
+            <input type="text" id="add_ten" class="form-control" placeholder="Nhập tên của sản phẩm" value="@Model.sp.tensp"/>
+        </div>
+    </div>
+    <!--Loai-->
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Loại: </label>
+
+        </div>
+        <div class="add_input_2">
+            <select class="form-control" id="add_mh">
+                <option value="0" style="text-align:center" disabled>--- Loại mặt hàng ---</option>
+                @foreach (var item in Model.mh)
+                {
+                    if (Model.sp.mamh == item.id)
+                    {
+                        <option value="@item.id" selected>@item.name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="add_label">
+
+        </div>
+        <div class="add_input_2">
+            <select class="form-control" id="add_l">
+                <option value="0" style="text-align:center" disabled>--- Loại sản phẩm ---</option>
+                @foreach (var item in Model.ml)
+                {
+                    if (Model.sp.maloai == item.id)
+                    {
+                        <option value="@item.id" selected>@item.name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <!--Thoi gian, gia-->
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Giá: </label>
+
+        </div>
+        <div class="add_input_number">
+            <input type="text" id="add_gia" value="@Model.sp.giagocsp" class="form-control" placeholder="VND" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+        </div>
+        <div style="width: 20%">
+
+        </div>
+        <div class="add_label">
+            <label>Đã dùng trong: </label>
+
+        </div>
+        <div class="add_input_number">
+            <input type="number" id="add_thoigian" value="@Model.sp.thoigiansp" min="0" class="form-control" placeholder="Tháng" />
+        </div>
+    </div>
+    <!--So luong, nsx-->
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Số lượng: </label>
+
+        </div>
+        <div class="add_input_number">
+            <input type="number" id="add_sl" min="0" class="form-control" value="@Model.sp.soluongsp" />
+        </div>
+        <div style="width: 20%">
+
+        </div>
+        <div class="add_label">
+            <label>Nhà sản xuất: </label>
+
+        </div>
+        <div class="add_input_number">
+            <input type="text" id="add_nsx" class="form-control" value="@Model.sp.nsx" />
+        </div>
+    </div>
+    <!--Hinh anh-->
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Hình ảnh: </label>
+
+        </div>
+        <div class="add_input_file">
+            <div class="btnaddfile" onclick="document.getElementById('add_file').click()">Tải ảnh lên</div>
+            <input type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
+        </div>
+    </div>
+    <div class="table-themsanpham2" id="add_preview">
+        @foreach(var img in Model.sp.anhsp)
+            {
+            <img src="@img" />
+            }
+    </div>
+    <!--Mota-->
+    <div class="table-themsanpham" style="margin-top:2vh">
+        <div class="add_label" style="width:50%">
+            <label>Mô tả sản phẩm: </label>
+        </div>
+    </div>
+    <div class="table-themsanpham" style="margin-top:0vh">
+        <textarea class="form-control" id="add_mota">@Model.sp.motasp</textarea>
+    </div>
+    <!--Nut-->
+    <div class="table-themsanpham" style="margin-top:2vh;">
+        <div style="width:40%"></div>
+        <div class="btnaddfile" style="width:20%" onclick="LuuSuaSanPham()">Chỉnh sửa</div>
+        <div style="width:40%"></div>
+    </div>
+
+</div>
+
+<script>
+    function commaSeparateNumber(val) {
+        while (/(\d+)(\d{3})/.test(val.toString())) {
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+        }
+        return val;
+    }
+    $('#add_gia').focusout(function () {
+        document.getElementById('add_gia').value = commaSeparateNumber($(this).val());
+        if (parseInt(document.getElementById('add_gia').value) < 0) document.getElementById('add_gia').value = 0;
+    });
+    $('#add_sl').focusout(function () {
+        var x = parseInt(document.getElementById('add_sl').value);
+        if (x < 0) document.getElementById('add_sl').value = 0;
+    });
+    $('#add_thoigian').focusout(function () {
+        var x = parseInt(document.getElementById('add_thoigian').value);
+        if (x < 0) document.getElementById('add_thoigian').value = 0;
+    });
+    $('#add_mh').change(function () {
+        CapNhatLoai($(this).val());
+    })
+    function CapNhatLoai(id) {
+        document.getElementById('add_l').innerHTML = '<option value="0" style="text-align:center" selected disabled>--- Loại sản phẩm ---</option>';
+        $.ajax({
+            url: '/SanPham/CapNhatLoai',
+            type: 'post',
+            data: {
+                id: id
+            },
+            async: false,
+            success: function (data) {
+                for (var i in data) {
+                    var str = new Option(data[i].name, data[i].id);;
+                    $('#add_l').append(str);
+                }
+            }
+        })
+    }
+    $("#add_file").change(function () {
+        document.getElementById('add_preview').innerHTML = "";
+        readURL(this, $('#add_preview'));
+        if (this.files.length > 5) {
+            document.getElementById("add_preview").style.height = "23vh";
+        }
+        else {
+            document.getElementById("add_preview").style.height = "20vh";
+        }
+    });
+    function readURL(input, div) {
+        if (input.files) {
+            var filesAmount = input.files.length;
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(div);
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+    }
+    function KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img, mota) {
+        var check = false;
+        if (tensp == null || tensp == "") {
+            alert("Vui lòng nhập tên sản phẩm")
+        }
+        else if (mahang == 0 || mahang == '0' || maloai == 0 || maloai == '0') {
+            alert("Vui lòng chọn loại sản phẩm")
+        }
+        else if (gia == null || gia == 0 || gia == 0) {
+            alert("Vui lòng nhập giá cho sản phẩm")
+        }
+        else if (tg == null) {
+            alert("Vui lòng chọn thời gian đã sử dụng")
+        }
+        else if (sl == 0 || sl == '0' || sl == null) {
+            alert("Vui lòng nhâp số lượng sản phẩm")
+        }
+        else if (document.getElementById('add_preview').innerHTML == "" ) {
+            alert("Vui lòng thêm ít nhất một tấm ảnh cho sản phẩm");
+        }
+        else if (img > 10) {
+            alert("Vui lòng chọn tối đa 10 tấm ảnh cho sản phẩm")
+        }
+        else {
+            check = true;
+        }
+        return check;
+    }
+    function LuuSuaSanPham() {
+        if (confirm("Sửa thông tin sản phẩm?")) {
+            var tensp = document.getElementById('add_ten').value;
+        var mahang = document.getElementById('add_mh').value;
+        var maloai = document.getElementById('add_l').value;
+        var gia = $('#add_gia').val();
+        var tg = $('#add_thoigian').val();
+        var sl = $('#add_sl').val();
+        var nsx = $('#add_nsx').val();
+        var img = document.getElementById('add_file').files;
+        var mota = $('#add_mota').val();
+        var masp = '@Model.sp.masp';
+
+        if (KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img.length, mota)) {
+            var formData = new FormData();
+            formData.append("tensp", tensp);
+            for (var i = 0; i < img.length; i++) {
+                formData.append("img", img[i]);
+            }
+            formData.append("mahang", mahang);
+            formData.append("maloai", maloai);
+            formData.append("gia", gia);
+            formData.append("tg", tg);
+            formData.append("sl", sl);
+            formData.append("nsx", nsx);
+            formData.append("mota", mota);
+            formData.append("masp", masp);
+
+            $.ajax({
+                url: '/CuaHang/LuuSuaSanPham',
+                type: 'post',
+                async: true,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (data) {
+                    window.location.href = '/CuaHang/SuaSanPham/' + masp;
+                },
+                error: function () {
+                    // window.location.href = '/CuaHang/SuaSanPham/' + masp;
+                }
+            })
+        }
+        }
+    }
+</script>

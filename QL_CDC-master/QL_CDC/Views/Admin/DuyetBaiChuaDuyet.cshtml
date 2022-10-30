@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SanPhamModel>
+
+@{ Layout = "AdminLayout"; }
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quán lý bài đăng sản phẩm</h4>
+    <div class="card">
+        <h5 class="card-header">Danh sách người dùng</h5>
+        <div class="table-responsive text-nowrap">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Gian hàng</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Trạng thái</th>
+                            <th>  </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nguoidangsp)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tensp)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.giagocsp)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tt)
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="javascript:void(0);" onclick="DuyetBai('@item.masp')"> Duyệt</a>
+                                            <a class="dropdown-item" href="javascript:void(0);" onclick="KhongDuyet('@item.masp')">Không duyệt</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function DuyetBai(msp) {
+        console.log("duyet");
+        $.ajax({
+            url: '/Admin/DuyetBai',
+            type: 'post',
+            data: {
+                masp: msp
+            },
+            success: function (data) {
+                console.log(data);
+                window.location.href = '/Admin/DuyetBaiChuaDuyet';
+                alert("Bài đăng đã được phê duyệt!");
+            }
+        })
+    }
+
+    function KhongDuyet(msp) {
+        console.log("khongduyet");
+        $.ajax({
+            url: '/Admin/KhongDuyet',
+            type: 'post',
+            data: {
+                masp: msp
+            },
+            success: function (data) {
+                console.log(data);
+                window.location.href = '/Admin/DuyetBaiChuaDuyet';
+                alert("Bài đăng đã bị hủy!");
+            }
+        })
+    }
+
+
+</script>
