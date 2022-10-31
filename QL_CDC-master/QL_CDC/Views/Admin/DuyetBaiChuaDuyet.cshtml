@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quán lý bài đăng sản phẩm</h4>
     <div class="card">
-        <h5 class="card-header">Danh sách người dùng</h5>
+        <h5 class="card-header">Danh sách bài đăng chưa duyệt</h5>
         <div class="table-responsive text-nowrap">
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover">
@@ -34,15 +34,21 @@
                                     @Html.DisplayFor(modelItem => item.tt)
                                 </td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="DuyetBai('@item.masp')"> Duyệt</a>
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="KhongDuyet('@item.masp')">Không duyệt</a>
+                                    <div class="mt-3">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-outline-secondary" onclick="DuyetBai('@item.masp')">Duyệt</button>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="KhongDuyet('@item.masp')">Không duyệt</button>
                                         </div>
                                     </div>
+                                    @*<div class="dropdown">
+            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                <i class="bx bx-dots-vertical-rounded"></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="javascript:void(0);" onclick="DuyetBai('@item.masp')"> Duyệt</a>
+                <a class="dropdown-item" href="javascript:void(0);" onclick="KhongDuyet('@item.masp')">Không duyệt</a>
+            </div>
+        </div>*@
                                 </td>
                             </tr>
                         }
