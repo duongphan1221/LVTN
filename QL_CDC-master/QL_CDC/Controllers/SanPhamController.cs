@@ -26,7 +26,7 @@ namespace QL_CDC.Controllers
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if(x.SV_MSSV != mssv && x.SP_TINHTRANG == true)
+                if(x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0)
                 {
                     SanPhamModel s = new SanPhamModel();
                     s.masp = x.SP_MSSP;

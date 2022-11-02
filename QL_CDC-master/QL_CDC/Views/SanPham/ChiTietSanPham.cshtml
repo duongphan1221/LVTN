@@ -39,17 +39,17 @@
             @{
                 var sosao = Math.Round(Model.danhgiasp, 0, MidpointRounding.AwayFromZero);
             }
-            <div class="d-flex mb-3">
+            <div class="d-flex mb-2">
                 <div class="text-primary mr-2" id="saotong">
                     <!-- Hien thi so sao -->
                 </div>
                 <small class="pt-1"> @sosao </small>
             </div>
             <div class="" style="display: flex;">
-                <h3 class="font-weight-semi-bold mb-4" style="width: 28%"> @dongia Đ</h3>
+                <h3 class="font-weight-semi-bold mb-2" style="width: 28%"> @dongia </h3>
                 @if (dongia != giagoc)
                 {
-                    <h3 class="font-weight-semi-bold mb-4" style="width: 28%"><del>@giagoc Đ</del></h3>
+                    <h3 class="font-weight-semi-bold mb-3" style="width: 28%"><del>@giagoc </del></h3>
                 }
             </div>
             <div class="d-flex mb-3" style="width: 100%;display: flex;">
@@ -101,7 +101,7 @@
     </div>
     <div class="row px-xl-5">
         <div class="col">
-            <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+            <div class="nav nav-tabs justify-content-center border-secondary mb-4" style="margin-left: -450px">
                 <a class="nav-item nav-link dndk active" style="color: black" data-toggle="tab" href="#tab-pane-1" id="tabmota">Mô tả</a>
                 <a class="nav-item nav-link dndk" style="color: black" data-toggle="tab" href="#tab-pane-3" id="tabdanhgia">Đánh giá người bán (@Model.nhanxetsp.Count())</a>
                

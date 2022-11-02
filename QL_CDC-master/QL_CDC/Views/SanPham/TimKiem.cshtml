@@ -6,7 +6,7 @@
 
 <div id="alertdiv"></div>
 <!-- Products Start -->
-<div class="container-fluid pt-5">
+<div class="container-fluid pt-5" style=" margin-top: -50px; margin-left: 0px">
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Sản phẩm</span></h2>
     </div>
@@ -18,8 +18,8 @@
                 string dongia = string.Format("{0:#,##0.########}", item.dongiasp);
                 string giagoc = string.Format("{0:#,##0.########}", item.giagocsp);
                 var sosao = Math.Round(item.danhgiasp, 0, MidpointRounding.AwayFromZero);
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item mb-4 sanpham">
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1" style="margin: 0px">
+                    <div class="card product-item mb-4 sanpham" style="width: 105%">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                             <div style="width: 100%; display: flex;">
                                 <div class="tagthoigian">@item.thoigiansp tháng</div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a asp-action="ChiTietSanPham" asp-controller="SanPham" asp-route-id="@item.masp" class="btn btn-sm text-dark p-0 tuychon"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a onclick="Them1VaoGio('@item.masp')" class="btn btn-sm text-dark p-0 tuychon"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
+                            <a onclick="Them1VaoGio('@item.masp')" class="btn btn-sm text-dark p-0 tuychon"><i class="fas fa-shopping-cart text-primary mr-1"></i></a>
                         </div>
                     </div>
                 </div>

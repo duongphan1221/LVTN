@@ -24,7 +24,7 @@ namespace QL_CDC.Controllers
             List<SanPhamModel> SP = new List<SanPhamModel>();
             foreach(var item in db.SANPHAMs.Where(a => a.SV_MSSV == User.FindFirstValue(ClaimTypes.NameIdentifier)))
             {
-                if (item.SP_TINHTRANG == true)
+                if (item.SP_TINHTRANG == true && item.SP_CONLAI > 0)
                 {
                     SanPhamModel sp = new SanPhamModel()
                     {
@@ -61,6 +61,30 @@ namespace QL_CDC.Controllers
                     SP.Add(sp);
                 }
                 
+            }
+            return View(SP);
+        }
+
+        public IActionResult DaAn()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            foreach (var item in db.SANPHAMs.Where(a => a.SV_MSSV == User.FindFirstValue(ClaimTypes.NameIdentifier)))
+            {
+                if (item.SP_TINHTRANG == true && item.SP_CONLAI == 0)
+                {
+                    SanPhamModel sp = new SanPhamModel()
+                    {
+                        masp = item.SP_MSSP,
+                        tensp = item.SP_TENSP,
+                        anhsp = db.HINHANHs.Where(a => a.SP_MSSP == item.SP_MSSP).Select(a => a.HA_LINK).ToList(),
+                        giagocsp = (double)item.SP_GIA,
+                        ngaydangsp = ((DateTime)item.SP_NGAYDANG).ToString("dd/MM/yyyy"),
+                        soluongsp = (int)item.SP_CONLAI,
+                        luotxemsp = (int)item.SP_LUOTXEM,
+                    };
+                    SP.Add(sp);
+                }
+
             }
             return View(SP);
         }
@@ -160,6 +184,17 @@ namespace QL_CDC.Controllers
             image.Save(filepath);
             var report = "\\sanpham\\" + filename;
             return report;
+        }
+
+        public IActionResult AnTin(string masp)
+        {
+            SANPHAM sp = db.SANPHAMs.Where(s => s.SP_MSSP == masp).FirstOrDefault();
+            if (sp.SP_CONLAI > 0)
+            {
+                sp.SP_CONLAI = 0;
+            }
+            db.SaveChanges();
+            return Json(sp.SP_CONLAI);
         }
     }
 }

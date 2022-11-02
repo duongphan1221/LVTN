@@ -34,7 +34,7 @@
                                     @Html.DisplayFor(modelItem => item.tt)
                                 </td>
                                 <td>
-                                    <div class="mt-3">
+                                    <div>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-outline-secondary" onclick="DuyetBai('@item.masp')">Duyệt</button>
                                             <button type="button" class="btn btn-outline-secondary" onclick="KhongDuyet('@item.masp')">Không duyệt</button>
@@ -60,7 +60,6 @@
 </div>
 
 <script>
-
     function DuyetBai(msp) {
         console.log("duyet");
         $.ajax({

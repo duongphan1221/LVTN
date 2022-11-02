@@ -60,8 +60,8 @@
     <!-- Topbar End -->
     <!-- Navbar Start -->
     <div class="container-fluid">
-        <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
+        <div class="row border-top px-xl-5" style="margin-left: -70px">
+            <div class="col-lg-3 d-none d-lg-block" >
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
                     <h6 class="m-0" style="color: white">Danh mục sản phẩm</h6>
                     <i class="fa fa-angle-down text-dark"></i>
@@ -97,35 +97,15 @@
                         @await Html.PartialAsync("../Shared/_LoginPartial.cshtml")
                     </div>
                 </nav>
-            </div>
+                <div>
+                    @RenderBody()
 
-            <div class="bar-timkiem" style="display: none">
-                <select class="form-control" id="locgia">
-                    <option value="all"> -- Giá -- </option>
-                    <option value="thapcao"> Từ thấp đến cao </option>
-                    <option value="caothap"> Từ cao đến thấp </option>
-                </select>
-
-                <select class="form-control" id="locdanhgia">
-                    <option value="all"> -- Đánh giá -- </option>
-                    <option value="thapcao"> Từ thấp đến cao </option>
-                    <option value="caothap"> Từ cao đến thấp </option>
-                </select>
-
-                <select class="form-control" id="locthoigian">
-                    <option value="all"> -- Thời gian sử dụng -- </option>
-                    <option value="thapcao"> Mới nhất </option>
-                    <option value="caothap"> Cũ nhất </option>
-                </select>
-
-                <button class="btn btn-primary" onclick="">Lọc</button>
-            </div>
+                </div>
+            </div>           
         </div>
     </div>
     
     <!-- Navbar End -->
-
-    @RenderBody();
 
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">

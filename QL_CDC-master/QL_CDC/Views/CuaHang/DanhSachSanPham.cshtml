@@ -50,7 +50,7 @@
             <div class="cuahangtuychon">
                 <div class="cuahangdecor" style="margin-top:5%;margin-left:1%">
                     <i class="fa fa-pencil" onclick="CuaHangSuaSanPham('@item.masp')"></i>
-                    <i class="fa fa-times" onclick="CuaHangXoaSanPham('@item.masp')"></i>
+                    <i class="fa fa-times" onclick="CuaHangAnSanPham('@item.masp')"></i>
                 </div>
             </div>
         </div>
@@ -65,6 +65,18 @@
 
     // Xoa san pham - con lai = 0
     function CuaHangAnSanPham(id) {
-        
+        if (window.confirm("bạn muốn ẩn sản phẩm này!")) {
+            $.ajax({
+                url: '/CuaHang/AnTin',
+                type: 'post',
+                data: {
+                    masp: id
+                },
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = '/CuaHang/DanhSachSanPham'
+                }
+            })
+        }
     }
 </script>
