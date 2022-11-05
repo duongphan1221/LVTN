@@ -215,7 +215,6 @@ namespace QL_CDC.Controllers
                 DiaChi = HDM.HD_DIACHI,
                 SDT = HDM.HD_SDT,
             };
-
             return View(T);
         }
 
