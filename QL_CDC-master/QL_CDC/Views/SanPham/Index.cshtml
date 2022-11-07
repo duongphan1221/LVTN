@@ -28,21 +28,21 @@
                             <img class="img-fluid w-100" src="@item.anhsp[0]" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-2 pb-1">
-                            <h6 class="text-truncate mb-3">@item.tensp </h6>
+                            <h6 class="text-truncate mb-3"> <b>@item.tensp</b> </h6>
                             <div class="d-flex justify-content-center">
                                 @if (item.giagocsp == item.dongiasp)
                                 {
-                                    <h6>@dongia Đ</h6>
+                                    <h6><b>@dongia</b> </h6>
                                 }
                                 else
                                 {
-                                    <h6>@dongia Đ</h6><h6 class="text-muted ml-2"><del>@giagoc Đ</del></h6>
+                                    <h6><b>@dongia</b> </h6><h6 class="text-muted ml-2"><del>@giagoc </del></h6>
                                 }
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a asp-action="ChiTietSanPham" asp-controller="SanPham" asp-route-id="@item.masp" class="btn btn-sm text-dark p-0 tuychon"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a onclick="Them1VaoGio('@item.masp')" class="btn btn-sm text-dark p-0 tuychon"><i class="fas fa-shopping-cart text-primary mr-1"></i></a>
+                            <a onclick="Them1VaoGio('@item.masp')" class="btn btn-sm text-dark p-0 tuychon"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
             },
             success: function (data) {
                 hiensanphamtronggio();
-                tempAlert(3000);
+                tempAlert(2000);
             },
             error: function () {
                 window.location.href = '/TaiKhoan/DangNhap';

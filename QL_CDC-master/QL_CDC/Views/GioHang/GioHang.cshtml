@@ -6,12 +6,12 @@
 
 
 <!-- Cart Start -->
-<div class="text-center mb-4">
+<div class="text-center mb-4" >
     <h2 class="section-title px-5"><span class="px-2">Giỏ hàng</span></h2>
 </div>
 @if (Model.SanPham.Count() != 0)
 {
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5" style=" margin-top: -50px; margin-left: 0px">
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-bordered text-center mb-0">
@@ -44,7 +44,7 @@
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" id="@inputid" class="form-control form-control-sm bg-secondary text-center" value="@i.soluong" oninput="ChiNhapSo(this); KiemTraSoLuongSanPham(@i.conlai, '@id');">
+                                        <input type="text" id="@inputid" class="form-control form-control-sm bg-secondary text-center" value="@i.soluong" oninput="ChiNhapSo(this); KiemTraSoLuongSanPham(@i.conlai, '@id');" style="height:31px">
                                         <div class="input-group-btn">
                                             <button class="btn btn-sm btn-primary btn-plus" onclick="Tang1(@i.conlai, '@id', @i.gia, '@i.masp')">
                                                 <i class="fa fa-plus"></i>
@@ -74,9 +74,9 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Tổng thanh toán</h6>
+                            <h6 class="font-weight-medium"><b>Tổng thanh toán</b></h6>
                             @{ string GHTongGia = string.Format("{0:#,##0.########}", Model.TongGia); }
-                            <h6 class="font-weight-medium" id="tongthanhtoan">@GHTongGia</h6>
+                            <h6 class="font-weight-medium" id="tongthanhtoan"><b>@GHTongGia</b></h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
