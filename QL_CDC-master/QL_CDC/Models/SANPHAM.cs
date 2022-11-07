@@ -35,5 +35,8 @@ namespace QL_CDC.Models
         public virtual ICollection<GIOHANG> GIOHANGs { get; set; }
         public virtual ICollection<HINHANH> HINHANHs { get; set; }
         public virtual ICollection<KHUYENMAI> KHUYENMAIs { get; set; }
+
+        
+
     }
 }

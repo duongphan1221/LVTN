@@ -42,5 +42,11 @@ namespace QL_CDC.Models
         public bool tinhtrang { get; set; }
 
         public string tt { get; set; }
+
+        public int mh1 { get; set; }
+        public int mh2 { get; set; }
+        public int mh3 { get; set; }
+        public int mh4 { get; set; }
+        public int mh5 { get; set; }
     }
 }

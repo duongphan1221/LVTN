@@ -37,15 +37,15 @@ namespace QL_CDC.Controllers
                     SV.Add(s);
                 }
             }
-            return View(SV);       
+            return View(SV);
         }
 
         public IActionResult KhoaTaiKhoan(string masv)
         {
-            SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == masv).FirstOrDefault();          
+            SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == masv).FirstOrDefault();
             if (sv.SV_TINHTRANG == true)
             {
-                sv.SV_TINHTRANG = false;               
+                sv.SV_TINHTRANG = false;
             }
             else
                 sv.SV_TINHTRANG = true;
@@ -53,14 +53,13 @@ namespace QL_CDC.Controllers
             db.SaveChanges();
             return Json(sv.SV_TINHTRANG);
 
-        }  
-        
+        }
+
         public IActionResult TinhTrang(string masv)
         {
             SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == masv).FirstOrDefault();
             return Json(sv.SV_TINHTRANG);
         }
-
 
         // Danh sach bai chua duyet
         public IActionResult DuyetBaiChuaDuyet()
@@ -81,7 +80,7 @@ namespace QL_CDC.Controllers
                     if (x.SP_TINHTRANG == false)
                     {
                         s.tt = "Sản phẩm đang đợi duyệt";
-                    }                  
+                    }
                     // s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();                    
 
                     SP.Add(s);
@@ -110,12 +109,13 @@ namespace QL_CDC.Controllers
         }
 
         // Hanh dong duyet bai
-        public IActionResult DuyetBai(string masp) {
+        public IActionResult DuyetBai(string masp)
+        {
             SANPHAM sp = db.SANPHAMs.Where(s => s.SP_MSSP == masp).FirstOrDefault();
             if (sp.SP_TINHTRANG == false)
             {
                 sp.SP_TINHTRANG = true;
-            }            
+            }
             db.SaveChanges();
             return Json(sp.SP_TINHTRANG);
         }
@@ -180,12 +180,55 @@ namespace QL_CDC.Controllers
                     {
                         s.tt = "Không được duyệt";
                     }
-                    // s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();                    
-
                     SP.Add(s);
                 }
             }
             return View(SP);
+        }
+
+        //Thong ke SP them Loai (Chart)
+        public IActionResult ChartTheoLoai()
+        {
+            return View();
+        }
+
+        public IActionResult GetDataChart()
+        {
+            int loai_1 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 1).Count();
+            int loai_2 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 2).Count();
+            int loai_3 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 3).Count();
+            int loai_4 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 4).Count();
+            int loai_5 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 5).Count();
+            int loai_6 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 6).Count();
+            int loai_7 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 7).Count();
+            int loai_8 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 8).Count();
+            int loai_9 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 9).Count();
+            int loai_10 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 10).Count();
+            int loai_11 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 11).Count();
+            int loai_12 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 12).Count();
+            int loai_13 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 13).Count();
+            int loai_14 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 14).Count();
+            int loai_15 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 15).Count();
+            int loai_16 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 16).Count();
+            int loai_17 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 17).Count();
+            int loai_18 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 18).Count();
+            int loai_19 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 19).Count();
+            int loai_20 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 21).Count();
+            int loai_21 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 20).Count();
+
+            int mh1 = loai_1 + loai_2 + loai_3 + loai_4 + loai_5 + loai_6 + loai_7 + loai_21;
+            int mh2 = loai_8 + loai_9 + loai_10 + loai_11 + loai_12;
+            int mh3 = loai_13 + loai_14 + loai_15 + loai_16 + loai_17;
+            int mh4 = loai_18 + loai_19;
+            int mh5 = loai_20;
+            SanPhamModel objSP = new SanPhamModel();
+            objSP.mh1 = mh1;
+            objSP.mh2 = mh2;
+            objSP.mh3 = mh3;
+            objSP.mh4 = mh4;
+            objSP.mh5 = mh5;
+
+            return Json(objSP);
         }
     }
 }
