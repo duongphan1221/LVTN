@@ -222,23 +222,30 @@ namespace QL_CDC.Controllers
             return Json("");
         }
 
-        public string CreateLostPassword(int PasswordLength)
+        public IActionResult DoiMatKhau()
         {
-            string _allowedChars = "abcdefghijk0123456789mnopqrstuvwxyz";
-            Random randNum = new Random(); char[] chars = new char[PasswordLength];
-            int allowedCharCount = _allowedChars.Length;
-            for (int i = 0; i < PasswordLength; i++)
-            {
-                chars[i] = _allowedChars[(int)((_allowedChars.Length) * randNum.NextDouble())];
-            }
-            return new string(chars);
+            //var sv = db.SINHVIENs.Where(s => s.SV_MSSV == a.MSSV).FirstOrDefault();
+            //if (a.MatKhau != sv.SV_MATKHAU)
+            //{
+
+            //}
+
+            return View();
         }
-        //public string MaHoaMatKhau(string password)
-        //{
-        //    UnicodeEncoding encoding = new UnicodeEncoding();
-        //    Byte[] hashBytes = encoding.GetBytes(password); // Compute the SHA-1 hash SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider(); 
-        //    Byte[] cryptPassword = sha1.ComputeHash(hashBytes);
-        //    return BitConverter.ToString(cryptPassword);
-        //}
-    }       
+
+        public IActionResult DoiMK(string tenhienthi, string email, string sdt, string hoten, string dc)
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == id).FirstOrDefault();
+            db.Entry(sv).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            sv.SV_TENHIENTHI = tenhienthi;
+            sv.SV_EMAIL = email;
+            sv.SV_SDT = sdt;
+            sv.SV_HOTEN = hoten;
+            sv.SV_DIACHIGIAOHANG = dc;
+            db.Entry(sv).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return Json("");
+        }
+    }
 }

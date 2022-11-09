@@ -1,23 +1,66 @@
 ﻿
 @if (!User.Identity.IsAuthenticated)
 {
-    <div class="navbar-nav mr-auto py-0">
-        <a href="@Url.Action("Index","SanPham")" class="nav-item nav-link dndk">Trang chủ &nbsp<i class="fa fa-home"></i></a>
-    </div>
-    <div class="navbar-nav ml-auto py-0">
-        <a href="@Url.Action("DangNhap","TaiKhoan")" class="nav-item nav-link dndk">Đăng nhập &nbsp<i class="fa fa-sign-in mr-1"></i></a>
-        <a href="@Url.Action("DangKy","TaiKhoan")" class="nav-item nav-link dndk">Đăng ký &nbsp<i class="fa fa-user-plus"></i></a>
-    </div>
-}
-else
-{
+<div class="navbar-nav mr-auto py-0">
+    <a href="@Url.Action("Index","SanPham")" class="nav-item nav-link dndk">Trang chủ &nbsp<i class="fa fa-home"></i></a>
+</div>
+                <div class="navbar-nav ml-auto py-0">
+                    <a href="@Url.Action("DangNhap","TaiKhoan")" class="nav-item nav-link dndk">Đăng nhập &nbsp<i class="fa fa-sign-in mr-1"></i></a>
+                    <a href="@Url.Action("DangKy","TaiKhoan")" class="nav-item nav-link dndk">Đăng ký &nbsp<i class="fa fa-user-plus"></i></a>
+                </div> }
+            else
+            {
 <div class="navbar-nav mr-auto py-0">
     <a href="@Url.Action("Index","SanPham")" class="nav-item nav-link dndk">Trang chủ &nbsp<i class="fa fa-home"></i></a>
     <a href="@Url.Action("DanhSachSanPham","CuaHang")" class="nav-item nav-link dndk">Gian hàng của tôi <i class="fa fa-dollar"></i></a>
 </div>
-    <div class="navbar-nav ml-auto py-0">
-        <a href="@Url.Action("ThongTinTaiKhoan","TaiKhoan")" class="nav-item nav-link dndk">Xin chào @User.Identity.Name <i class="fa fa-user"></i></a>
-        <a href="@Url.Action("DanhSachHoaDonNguoiMua","HoaDon")" class="nav-item nav-link dndk">Hóa đơn mua <i class="fa fa-file-text"></i></a>
-        <a href="@Url.Action("DangXuat","TaiKhoan")" class="nav-item nav-link dndk">Đăng xuất <i class="fa fa-sign-out"></i></a>
-    </div>
-}
+<div class="navbar-nav ml-auto py-0">
+    <ul>
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+            <a class="nav-item nav-link dndk dropdown-toggle hide-arrow" data-bs-toggle="dropdown" onmouseover="" style="cursor: pointer">
+                @User.Identity.Name
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" style="margin-top:-15px">
+                <li>
+                    <a class="dropdown-item nav-item nav-link dndk" href="@Url.Action("ThongTinTaiKhoan","TaiKhoan")" style="padding:10px">
+                        <i class="fa fa-user"></i>
+                        Thông tin cá nhân
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item nav-item nav-link dndk" href="@Url.Action("DoiMatKhau","TaiKhoan")" style="padding:10px">
+                        <i class="fa fa-pencil-square-o"></i>
+                        Đổi mật khẩu
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a class="dropdown-item nav-item nav-link dndk" href="@Url.Action("DangXuat","TaiKhoan")" style="padding:10px">
+                        <i class="fa fa-sign-out"></i>
+                        Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <a href="@Url.Action("DanhSachHoaDonNguoiMua","HoaDon")" class="nav-item nav-link dndk">Đơn hàng <i class="fa fa-file-text"></i></a>
+    
+
+
+
+</div>}
+<script src="/template/sneat/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="/template/sneat/assets/vendor/libs/popper/popper.js"></script>
+<script src="/template/sneat//assets/vendor/js/bootstrap.js"></script>
+<script src="/template/sneat//assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+<script src="/template/sneat/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<!-- Main JS -->
+<script src="/template/sneat/assets/js/main.js"></script>
+<link rel="stylesheet" href="/template/sneat/assets/vendor/fonts/boxicons.css" />
+
+

@@ -1,0 +1,39 @@
+﻿@model SinhVienModel
+@{ ViewData["Title"] = "DoiMatKhau";
+    Layout = "~/Views/Shared/_ThirdLayout.cshtml"; }
+<div class="container-fluid pt-5" style="margin-top:-50px">
+    <div class="text-center mb-4">
+        <h3 class="section-title px-5"><span class="px-2">Đổi mật khẩu</span></h3>
+    </div>
+    <div class="row px-xl-5 pb-3">
+        <div class="col-lg-12">
+            <div class="mb-4">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Mật khẩu hiện tại</label>
+                        <input class="form-control" type="text" placeholder="" id="input1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Mật khẩu mới</label>
+                        <input class="form-control" type="text" placeholder="" id="input1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Xác nhận mật khẩu mới</label>
+                        <input class="form-control" type="text" placeholder="" id="input1">
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 form-group" style="text-align: left" id="bar-button">
+                    <button class="btn btn-primary" onclick="ChinhSua()">Đổi mật khẩu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
