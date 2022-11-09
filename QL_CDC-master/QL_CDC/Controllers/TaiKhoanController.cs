@@ -233,19 +233,17 @@ namespace QL_CDC.Controllers
             return View();
         }
 
-        public IActionResult DoiMK(string tenhienthi, string email, string sdt, string hoten, string dc)
+        public IActionResult DoiMK(string mkcu, string mkmoi1, string mkmoi2)
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == id).FirstOrDefault();
-            db.Entry(sv).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
-            sv.SV_TENHIENTHI = tenhienthi;
-            sv.SV_EMAIL = email;
-            sv.SV_SDT = sdt;
-            sv.SV_HOTEN = hoten;
-            sv.SV_DIACHIGIAOHANG = dc;
-            db.Entry(sv).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            SINHVIEN sv = db.SINHVIENs.Where(s => s.SV_MSSV == id).FirstOrDefault();
+            if (MaHoaMatKhau(sv.SV_MATKHAU) == mkcu && mkmoi1 == mkmoi2)
+            {
+                sv.SV_MATKHAU = MaHoaMatKhau(mkmoi1);
+            }
             db.SaveChanges();
-            return Json("");
+
+            return Json(sv.SV_MATKHAU);
         }
     }
 }

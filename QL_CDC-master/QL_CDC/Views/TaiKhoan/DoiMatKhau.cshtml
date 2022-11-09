@@ -17,23 +17,45 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>Mật khẩu mới</label>
-                        <input class="form-control" type="text" placeholder="" id="input1">
+                        <input class="form-control" type="text" placeholder="" id="input2">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>Xác nhận mật khẩu mới</label>
-                        <input class="form-control" type="text" placeholder="" id="input1">
+                        <input class="form-control" type="text" placeholder="" id="input3">
                     </div>
                 </div>
 
-
                 <div class="col-md-12 form-group" style="text-align: left" id="bar-button">
-                    <button class="btn btn-primary" onclick="ChinhSua()">Đổi mật khẩu</button>
+                    <button class="btn btn-primary" onclick="DoiMK()">Đổi mật khẩu</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-</div>
+<script>
+    function DoiMK() {
+        var values = [];
+        for (var i = 1; i < 4; i++) {
+            values[i] = document.getElementById('input' + i).value;
+            
+        }
+        console.log(values[1]);
+        console.log(values[2]);
+        $.ajax({
+            url: '/TaiKhoan/DoiMK',
+            type: 'post',
+            data: {
+                mkcu: values[1],
+                mkmoi: values[2],
+            },
+            success: function () {
+                console.log(result);
+                window.location.reload();
+            }
+        })
+    }
+</script>
+
