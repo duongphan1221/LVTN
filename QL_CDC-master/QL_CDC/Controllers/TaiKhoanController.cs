@@ -64,7 +64,7 @@ namespace QL_CDC.Controllers
                         string role = "";
                         if (sv.SV_ADMIN == true)
                         {
-                            role = "ad";                           
+                            role = "ad";
                             var claims = new[] {
                     new Claim(ClaimTypes.Name, sv.SV_TENHIENTHI),
                     new Claim(ClaimTypes.NameIdentifier, sv.SV_MSSV),
@@ -100,7 +100,7 @@ namespace QL_CDC.Controllers
 
                             return RedirectToAction("Index", "SanPham");
                         }
-                        
+
                     }
                 }
             }
@@ -122,9 +122,9 @@ namespace QL_CDC.Controllers
 
         [Authorize]
         public async Task<IActionResult> DangXuat()
-        {  
+        {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index","SanPham");
+            return RedirectToAction("Index", "SanPham");
         }
 
         public IActionResult LayIDUser()
@@ -147,7 +147,7 @@ namespace QL_CDC.Controllers
         public IActionResult KiemTraTonTaiMSSV(string mssv)
         {
             SINHVIEN S = db.SINHVIENs.Where(a => a.SV_MSSV == mssv).FirstOrDefault();
-            if(S == null)
+            if (S == null)
             {
                 return Json(false);
             }
@@ -163,7 +163,7 @@ namespace QL_CDC.Controllers
         public IActionResult TaskDangKy(SinhVienModel model)
         {
             SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == model.MSSV).FirstOrDefault();
-            if(sv != null)
+            if (sv != null)
             {
                 ModelState.AddModelError(nameof(SinhVienModel.MSSV), "*MSSV này đã được đăng ký");
                 return View(model);
@@ -224,26 +224,22 @@ namespace QL_CDC.Controllers
 
         public IActionResult DoiMatKhau()
         {
-            //var sv = db.SINHVIENs.Where(s => s.SV_MSSV == a.MSSV).FirstOrDefault();
-            //if (a.MatKhau != sv.SV_MATKHAU)
-            //{
-
-            //}
 
             return View();
         }
 
-        public IActionResult DoiMK(string mkcu, string mkmoi1, string mkmoi2)
+        public IActionResult DoiMK(string mkcu, string mkmoi1)
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
             SINHVIEN sv = db.SINHVIENs.Where(s => s.SV_MSSV == id).FirstOrDefault();
-            if (MaHoaMatKhau(sv.SV_MATKHAU) == mkcu && mkmoi1 == mkmoi2)
-            {
+            if (sv.SV_MATKHAU != MaHoaMatKhau(mkcu))
+            {                
+                return Json("Mật khẩu hiện tại không đúng");
+            }    
+            else            
                 sv.SV_MATKHAU = MaHoaMatKhau(mkmoi1);
-            }
-            db.SaveChanges();
-
-            return Json(sv.SV_MATKHAU);
+                db.SaveChanges();           
+            return Json("Đổi mật khẩu thành công");
         }
     }
 }

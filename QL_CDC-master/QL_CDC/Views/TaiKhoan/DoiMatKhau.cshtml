@@ -12,18 +12,21 @@
                     <div class="col-md-6 form-group">
                         <label>Mật khẩu hiện tại</label>
                         <input class="form-control" type="text" placeholder="" id="input1">
+                        <a id="tb1"></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>Mật khẩu mới</label>
                         <input class="form-control" type="text" placeholder="" id="input2">
+                        <a id="tb2"></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>Xác nhận mật khẩu mới</label>
                         <input class="form-control" type="text" placeholder="" id="input3">
+                        <a id="tb3"></a>
                     </div>
                 </div>
 
@@ -37,25 +40,34 @@
 
 <script>
     function DoiMK() {
-        var values = [];
-        for (var i = 1; i < 4; i++) {
-            values[i] = document.getElementById('input' + i).value;
-            
+        var passcu = document.getElementById("input1").value;
+        var passmoi1 = document.getElementById("input2").value;
+        var passmoi2 = document.getElementById("input3").value;
+        var txt = "";
+        if (passcu == txt || passmoi1 == txt || passmoi2 == txt) {
+            alert("Bạn chưa nhập đủ thông tin");
         }
-        console.log(values[1]);
-        console.log(values[2]);
-        $.ajax({
-            url: '/TaiKhoan/DoiMK',
-            type: 'post',
-            data: {
-                mkcu: values[1],
-                mkmoi: values[2],
-            },
-            success: function () {
-                console.log(result);
-                window.location.reload();
-            }
-        })
+        else if (passcu == passmoi1) {
+            alert("Mật khẩu mới phải khác mật khẩu cũ");
+        }
+        else if (passmoi1 != passmoi2) {
+            alert("Xác nhận mật khẩu mới không đúng");
+        }
+        else {
+            $.ajax({
+                url: '/TaiKhoan/DoiMK',
+                type: 'post',
+                data: {
+                    mkcu: passcu,
+                    mkmoi1: passmoi1,
+                },
+                success: function (data) {
+                    alert(data);
+                    window.location.reload();
+                }
+            })
+        }
+
     }
 </script>
 
