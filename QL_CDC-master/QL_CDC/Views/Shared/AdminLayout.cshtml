@@ -123,10 +123,16 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="@Url.Action("ChartTheoLoai","Admin")" class="menu-link">
-                            <i class="menu-icon bx bx-user"></i>
-                            <div data-i18n="Analytics">Thống kê bài đăng</div>
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class='menu-icon tf-icons bx bxs-pie-chart-alt-2'></i>
+                            <div data-i18n="Analytics">Thống kê</div>
                         </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="@Url.Action("ChartTheoLoai","Admin")" class="menu-link">
+                                    <div data-i18n="Account">Thống kê bài đăng</div>
+                                </a>                   
+                        </ul>
                     </li>
 
 

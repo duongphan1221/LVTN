@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_SecondLayout.cshtml";
 }
 
-<div class="container-fluid pt-5">
+<div class="container-fluid pt-5" style=" margin-top: -50px; margin-left: 0px">
     <!--Ten-->
     <div class="text-center mb-4">
-        <h4 class="section-title px-5 tuade"><span class="px-2">Chỉnh sửa sản phẩm</span></h4>
+        <h2 class="section-title px-5 "><span class="px-2">Chỉnh sửa sản phẩm</span></h2>
     </div>
     <div class="table-themsanpham">
         <div class="add_label">
@@ -107,7 +107,7 @@
         </div>
         <div class="add_input_file">
             <div class="btnaddfile" onclick="document.getElementById('add_file').click()">Tải ảnh lên</div>
-            <input type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
+            <input style="display: none" type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
         </div>
     </div>
     <div class="table-themsanpham2" id="add_preview">

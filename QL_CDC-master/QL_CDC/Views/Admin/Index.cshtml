@@ -22,91 +22,100 @@
                     <tbody class="table-border-bottom-0">
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td data-bs-toggle="modal"
-                                                data-bs-target="#modalCenter">
-                                @Html.DisplayFor(modelItem => item.TenHienThi)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SDT)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="mt-3">
-                                        <!-- Button trigger modal -->
-                                        @*<button type="button"
-                                                class="btn btn-primary"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modalCenter">
-                                            Chi tiết
-                                        </button>*@
+                            <tr>
+                                <td data-bs-toggle="modal" data-bs-target="#largeModal">
+                                    @Html.DisplayFor(modelItem => item.TenHienThi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SDT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="mt-3">
+                                            <!-- Button trigger modal -->
+                                            @*<button type="button"
+                                                        class="btn btn-primary"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modalCenter">
+                                                    Chi tiết
+                                                </button>*@
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalCenterTitle">Chi tiết người dùng</h5>
-                                                        <button type="button"
-                                                                class="btn-close"
-                                                                data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
+                                            <!-- Modal -->
+
+                                            <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel3">Chi tiết người dùng</h5>
+                                                            <button type="button"
+                                                                    class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <label for="nameLarge" class="form-label">Tài khoản</label>
+                                                                    <input type="text" id="nameLarge" class="form-control" value="@item.MSSV" />
+                                                                </div>
+                                                                <div class="col mb-3">
+                                                                    <label for="nameLarge" class="form-label">Tên người dùng</label>
+                                                                    <input type="text" id="nameLarge" class="form-control" value="@item.TenHienThi" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <label for="nameLarge" class="form-label">Số điện thoại</label>
+                                                                    <input type="text" id="nameLarge" class="form-control" value="@item.SDT" />
+                                                                </div>
+                                                                <div class="col mb-3">
+                                                                    <label for="nameLarge" class="form-label">Email</label>
+                                                                    <input type="text" id="nameLarge" class="form-control" value="@item.Email" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <label for="nameLarge" class="form-label">Địa chỉ</label>
+                                                                    <input type="text" id="nameLarge" class="form-control" value="@item.DiaChi" />
+                                                                </div>
+                                                                <div class="col mb-3">
+                                                                    <label for="nameLarge" class="form-label">Lần hoạt động cuối</label>
+                                                                    <input type="text" id="nameLarge" class="form-control" value="@item.LanHDCuoi" />
+                                                                </div>
+                                                            </div>
                                                             <div class="col mb-3">
-                                                                <label for="nameWithTitle" class="form-label">Name</label>
-                                                                <input type="text"
-                                                                       id="nameWithTitle"
-                                                                       class="form-control"
-                                                                       placeholder="Enter Name" />
+                                                                <label for="nameLarge" class="form-label">Tình trạng</label>
+                                                                <input type="text" id="nameLarge" class="form-control" value="@item.ttsv" />
                                                             </div>
                                                         </div>
-                                                        <div class="row g-2">
-                                                            <div class="col mb-0">
-                                                                <label for="emailWithTitle" class="form-label">Email</label>
-                                                                <input type="text"
-                                                                       id="emailWithTitle"
-                                                                       class="form-control"
-                                                                       placeholder="xxxx@xxx.xx" />
-                                                            </div>
-                                                            <div class="col mb-0">
-                                                                <label for="dobWithTitle" class="form-label">DOB</label>
-                                                                <input type="text"
-                                                                       id="dobWithTitle"
-                                                                       class="form-control"
-                                                                       placeholder="DD / MM / YY" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                                            Close
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                        @*<div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>*@
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </td>
-                            <td>
-                                <div class="dropdown text-center">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="menu-icon tf-icons bx bx-lock"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <!--    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>-->
-                                        <a id="tt1" class="dropdown-item" href="javascript:void(0);" onclick="KhoaTaiKhoan('@item.MSSV')">@*<i class="bx bx-lock me-1"></i>*@@item.Khoa</a>                                      
+                                </td>
+                                <td>
+                                    <div class="dropdown text-center">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                            <i class="menu-icon tf-icons bx bx-lock"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <!--    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>-->
+                                            <a id="tt1" class="dropdown-item" href="javascript:void(0);" onclick="KhoaTaiKhoan('@item.MSSV')">@*<i class="bx bx-lock me-1"></i>*@@item.Khoa</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -116,7 +125,7 @@
 </div>
 
 
-<script> 
+<script>
     function KhoaTaiKhoan(msv) {
         console.log(msv);
         var khoa = document.getElementById("tt1").innerHTML;
@@ -129,9 +138,9 @@
             txt = "Bạn muốn mở khóa người dùng này ?"
         if (window.confirm(txt)) {
             $.ajax({
-              url: '/Admin/KhoaTaiKhoan',
-              type: 'post',
-               data: {
+                url: '/Admin/KhoaTaiKhoan',
+                type: 'post',
+                data: {
                     masv: msv
                 },
                 success: function (data) {

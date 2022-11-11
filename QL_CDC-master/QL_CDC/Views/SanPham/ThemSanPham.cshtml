@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_SecondLayout.cshtml";
 }
 
-<div class="container-fluid pt-5">
+<div class="container-fluid pt-5" style=" margin-top: -50px; margin-left: 0px">
     <!--Ten-->
     <div class="text-center mb-4">
-        <h2 class="section-title px-5 tuade"><span class="px-2">Thêm sản phẩm mới</span></h2>
+        <h2 class="section-title px-5 "><span class="px-2">Thêm sản phẩm mới</span></h2>
     </div>
     <div class="table-themsanpham">
         <div class="add_label">
@@ -90,7 +90,7 @@
         </div>
         <div class="add_input_file">
             <div class="btnaddfile" onclick="document.getElementById('add_file').click()">Tải ảnh lên</div>
-            <input type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
+            <input style="display: none" type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
         </div>
     </div>
     <div class="table-themsanpham2" id="add_preview">
@@ -103,7 +103,7 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota"></textarea>
+        <textarea class="form-control" id="add_mota" placeholder="Tên sản phẩm, nhãn hiệu, chất liệu, màu sắc, ..."></textarea>
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -151,6 +151,7 @@
                 contentType: false,
                 data: formData,
                 success: function (data) {
+                    alert("CÙng nhau chờ bài đăng được duyệt nhé! Nhanh thôi!");
                     window.location.href = '/CuaHang/DanhSachSanPham'
                 }
             })

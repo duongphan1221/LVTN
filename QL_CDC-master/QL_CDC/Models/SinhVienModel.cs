@@ -44,5 +44,7 @@ namespace QL_CDC.Models
         public DateTime LanHDCuoi { get; set; }
         public bool TinhTrang { get; set; }
         public string Khoa { get; set; }
+
+        public string ttsv { get; set; }
     }
 }

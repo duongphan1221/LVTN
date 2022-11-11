@@ -25,6 +25,7 @@ namespace QL_CDC.Controllers
                     s.MSSV = x.SV_MSSV;
                     s.TenHienThi = x.SV_TENHIENTHI;
                     s.SDT = x.SV_SDT;
+                    s.NgayHDCuoi = (DateTime)x.SV_NGAYTAOTK;
                     s.Email = x.SV_EMAIL;
                     s.DiaChi = x.SV_DIACHIGIAOHANG;
                     s.LanHDCuoi = (DateTime)x.SV_LANHDCUOI;
@@ -34,6 +35,12 @@ namespace QL_CDC.Controllers
                     }
                     else
                         s.Khoa = "Mở khóa người dùng này";
+                    if (x.SV_TINHTRANG == true)
+                    {
+                        s.ttsv = "Bình thường";
+                    }
+                    else
+                        s.ttsv = "Đã bị khóa";
                     SV.Add(s);
                 }
             }
@@ -230,5 +237,7 @@ namespace QL_CDC.Controllers
 
             return Json(objSP);
         }
+
+        
     }
 }
