@@ -196,5 +196,6 @@ namespace QL_CDC.Controllers
             db.SaveChanges();
             return Json(sp.SP_CONLAI);
         }
+
     }
 }

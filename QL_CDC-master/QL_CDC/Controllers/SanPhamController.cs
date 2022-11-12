@@ -43,6 +43,75 @@ namespace QL_CDC.Controllers
             return View(SP);
         }
 
+        public IActionResult DoCaNhan()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 1 && x.LOAI_MALOAI <= 7)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        public IActionResult DoDienTu()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 8 && x.LOAI_MALOAI <= 12 && x.LOAI_MALOAI == 14 && x.LOAI_MALOAI == 15 && x.LOAI_MALOAI == 21)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        public IActionResult DoNoiThat()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 13 && x.LOAI_MALOAI <= 17)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
         public double TinhDonGiaSanPham(string mssp)
         {
             double dongia = 0;
