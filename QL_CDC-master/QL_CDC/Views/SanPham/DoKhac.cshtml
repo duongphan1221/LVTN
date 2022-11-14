@@ -102,7 +102,7 @@
     </div>
     <br />
     <div>
-        <h4 style="margin-left:12px"><label>Bài đăng dành cho đồ điện tử</label></h4>
+        <h4 style="margin-left:12px"><label>Bài đăng dành cho các mục khác</label></h4>
     </div>
     <div class="row px-xl-5 pb-3">
         @if (Model.Count() > 0)
@@ -162,8 +162,7 @@ else
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="js/jquery-1.11.1.min.js"></script>
 
-<script>
-    $('#myCarousel').carousel({
+<script>$('#myCarousel').carousel({
         interval: 2500
     });
 
@@ -220,5 +219,4 @@ else
 
     function DoKhac() {
         window.location.href = '/SanPham/DoKhac';
-    }
-</script>
+    }</script>

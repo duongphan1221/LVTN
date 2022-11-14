@@ -74,7 +74,7 @@
                              id="uploadedAvatar"
                              onclick="PhuongTien()" />
                     </div>
-                    <label>Phương tiện</label>
+                    <label style="margin-left:31px">Xe</label>
                 </th>
                 <th style="width:15%">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -107,13 +107,14 @@
     <div class="row px-xl-5 pb-3">
         @if (Model.Count() > 0)
         {
+
 @foreach (var item in Model)
 {
     string dongia = string.Format("{0:#,##0.########}", item.dongiasp);
     string giagoc = string.Format("{0:#,##0.########}", item.giagocsp);
     var sosao = Math.Round(item.danhgiasp, 0, MidpointRounding.AwayFromZero);
 <div class="col-lg-3 col-md-6 col-sm-12 pb-1" style="margin: 0px">
-    <div class="card product-item mb-4 sanpham" style="width: 105%">
+    <div class="card product-item mb-4 item" style="width: 105%">
         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
             <div style="width: 100%; display: flex;">
                 <div class="tagthoigian">@item.thoigiansp tháng</div>
@@ -140,6 +141,8 @@ else
 </div>}}
     </div>
 
+    <div id="load"> <b> Load More </b></div>
+
 </div>
 <!-- Products End -->
 <!-- build:js assets/vendor/js/core.js -->
@@ -158,11 +161,16 @@ else
 <script src="/template/lib/easing/easing.min.js"></script>
 <script src="/template/lib/owlcarousel/owl.carousel.min.js"></script>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>*@
+
 
 <script>
+    //$(document).ready(function () {
+    //    HienSP();
+    //})
+
     $('#myCarousel').carousel({
         interval: 2500
     });

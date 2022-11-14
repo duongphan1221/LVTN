@@ -52,7 +52,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right" id="divgiohang">
+            <div class="col-lg-1 col-6 text-right" id="divgiohang">
                 @await Html.PartialAsync("../GioHang/_GioHangPartial.cshtml")
             </div>
         </div>
@@ -64,16 +64,13 @@
         <div class="row border-top px-xl-5" style="margin-left: -70px">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h5 class="m-2" style="color: white"><b>Danh mục sản phẩm</b></h5>
-                    <i class="fa fa-angle-down text-dark"></i>
+                    <h5 class="m-2" style="color: white"><b>Danh mục sản phẩm</b></h5>                   
                 </a>
 
-                <ul class="accordion-menu" style="">
+                <ul class="accordion-menu" style="margin-top:0px">
                     <li>
                         <div class="dropdownlink">
-                            <i class="fa fa-road" aria-hidden="true"></i> History
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </div>
+                            <h5><i class="fa fa-road" aria-hidden="true"></i> History <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>                        </div>
                         <ul class="submenuItems">
                             <li><a href="#">History book 1</a></li>
                             <li><a href="#">History book 2</a></li>
@@ -82,8 +79,11 @@
                     </li>
                     <li>
                         <div class="dropdownlink">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i> Fiction
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            <h5>
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i> Fiction
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </h5>
+                            
                         </div>
                         <ul class="submenuItems">
                             <li><a href="#">Fiction book 1</a></li>
@@ -93,8 +93,10 @@
                     </li>
                     <li>
                         <div class="dropdownlink">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i> Fantasy
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            <h5>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i> Fantasy
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </h5>
                         </div>
                         <ul class="submenuItems">
                             <li><a href="#">Fantasy book 1</a></li>
@@ -104,8 +106,11 @@
                     </li>
                     <li>
                         <div class="dropdownlink">
-                            <i class="fa fa-motorcycle" aria-hidden="true"></i> Action
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            <h5>
+                                <i class="fa fa-motorcycle" aria-hidden="true"></i> Action
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </h5>
+                            
                         </div>
                         <ul class="submenuItems">
                             <li><a href="#">Action book 1</a></li>
@@ -224,39 +229,39 @@
     }
 
     // Hien danh muc
-    function HienDanhMuc(data) {
-        var str = "";
-        for (var i in data) {
-            if (data[i].danhmuccon.length > 1) {
-                str += '<div class="nav-item dropdown">'
-                str += '<a href="#" class="nav-link danhmuc" data-toggle="dropdown">' + data[i].ten + ' <i class="fa fa-angle-down float-right mt-1"></i></a>'
-                str += '<div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">'
-                for (var x in data[i].danhmuccon) {
-                    str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[x].id + '">' + data[i].danhmuccon[x].ten + '</a>'
-                }
-                str += '</div>'
-                str += '</div>'
-            }
-            else {
-                str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[0].id + '">' + data[i].danhmuccon[0].ten + '</a>'
-            }
-        }
-        document.getElementById('DMSP').innerHTML = str;
-    }
+    //function HienDanhMuc(data) {
+    //    var str = "";
+    //    for (var i in data) {
+    //        if (data[i].danhmuccon.length > 1) {
+    //            str += '<div class="nav-item dropdown">'
+    //            str += '<a href="#" class="nav-link danhmuc" data-toggle="dropdown">' + data[i].ten + ' <i class="fa fa-angle-down float-right mt-1"></i></a>'
+    //            str += '<div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">'
+    //            for (var x in data[i].danhmuccon) {
+    //                str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[x].id + '">' + data[i].danhmuccon[x].ten + '</a>'
+    //            }
+    //            str += '</div>'
+    //            str += '</div>'
+    //        }
+    //        else {
+    //            str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[0].id + '">' + data[i].danhmuccon[0].ten + '</a>'
+    //        }
+    //    }
+    //    document.getElementById('DMSP').innerHTML = str;
+    //}
 
     // load danh muc
-    function LoadDanhMuc() {
-        $.ajax({
-            url: '/SanPham/DanhMucSanPham',
-            type: 'get',
-            success: function (data) {
-                HienDanhMuc(data)
-            }
-        })
-    }
+    //function LoadDanhMuc() {
+    //    $.ajax({
+    //        url: '/SanPham/DanhMucSanPham',
+    //        type: 'get',
+    //        success: function (data) {
+    //            HienDanhMuc(data)
+    //        }
+    //    })
+    //}
 
     // ready
-    $(document).ready(function () {
-        LoadDanhMuc();
-    })
+    //$(document).ready(function () {
+    //    LoadDanhMuc();
+    //})
 </script>

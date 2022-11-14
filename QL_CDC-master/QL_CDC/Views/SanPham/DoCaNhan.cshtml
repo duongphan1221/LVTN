@@ -2,10 +2,39 @@
 @{ ViewData["Title"] = "Index";
     Layout = "_ThirdLayout"; }
 
+
 <div id="alertdiv"></div>
+
+
+
 <!-- Products Start -->
 <div class="container-fluid pt-5" style=" margin-top: -50px; margin-left: 0px">
+    <div class="container" style="width:100%">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/template/img/slide1.webp" alt="Thiết kế 1">
+                </div>
+                <div class="item">
+                    <img src="~/template/img/slide1.webp" alt="Thiết kế 2">
+                </div>
+                <div class="item">
+                    <img src="~/template/img/slide1.webp" alt="Thiết kế 3">
+                </div>
+                <div class="item">
+                    <img src="~/template/img/slide1.webp" alt="Thiết kế 4">
+                </div>
+            </div> <a class="left carousel-control" href="http://hocwebgiare.com/#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="http://hocwebgiare.com/#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+        </div>
+    </div>
     <div class="card-body">
+        <h4><label>Khám phá danh mục</label></h4>
         <table style="width:90%">
             <tr>
                 <th style="width:15%">
@@ -45,7 +74,7 @@
                              id="uploadedAvatar"
                              onclick="PhuongTien()" />
                     </div>
-                    <label>Phương tiện</label>
+                    <label style="margin-left:31px">Xe</label>
                 </th>
                 <th style="width:15%">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -71,8 +100,9 @@
         </table>
 
     </div>
-    <div class="text-center mb-4">
-        <h4 class=" px-5"><span class="px-2">Sản phẩm dành cho đồ dùng cá nhân</span></h4>
+    <br />
+    <div>
+        <h4 style="margin-left:12px"><label>Bài đăng dành cho đồ cá nhân</label></h4>
     </div>
     <div class="row px-xl-5 pb-3">
         @if (Model.Count() > 0)
@@ -123,7 +153,20 @@ else
 <!-- Vendors JS -->
 <!-- Main JS -->
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="/template/lib/easing/easing.min.js"></script>
+<script src="/template/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+
 <script>
+    $('#myCarousel').carousel({
+        interval: 2500
+    });
+
     function Them1VaoGio(ma) {
         $.ajax({
             url: '/GioHang/Them1SanPhamVaoGioHang',

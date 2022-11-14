@@ -10957,7 +10957,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 #chat_danhsach {
     position: fixed !important;
-    height: 50vh;
+    height: 30vh;
     width: 20vw;
     right: 32vw;
     top: 33%;
@@ -11289,4 +11289,4 @@ h2 {
     background-color: #CDDC39;
     color: #fff;
 }
-}
+
