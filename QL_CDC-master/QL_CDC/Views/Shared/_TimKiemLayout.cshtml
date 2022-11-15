@@ -33,7 +33,7 @@
 
     <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row align-items-center py-3 px-xl-5">
+        <div class="row align-items-center px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="@Url.Action("Index","SanPham")" class="text-decoration-none">
                     <h2 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold "><img src="~/template/img/LogoSV2.png" height="80px" /></span></h2>
@@ -42,8 +42,9 @@
             <div class="col-lg-6 col-6 text-left">
                 <form action="">
                     <div class="input-group">
-                        <div class="input-group-append btnSearch">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+
+                        <div class="input-group-append btnSearch" onclick="TimKiemTheoTen()">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" id="timkiem">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search" style="width: 30px"></i>
                             </span>
@@ -51,73 +52,82 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right" id="divgiohang">
+            <div class="col-lg-1 col-6 text-right" id="divgiohang">
                 @await Html.PartialAsync("../GioHang/_GioHangPartial.cshtml")
             </div>
         </div>
     </div>
+
     <!-- Topbar End -->
     <!-- Navbar Start -->
     <div class="container-fluid">
         <div class="row border-top px-xl-5" style="margin-left: -70px">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0" style="color: white">Danh mục sản phẩm</h6>
-                    <i class="fa fa-angle-down text-dark"></i>
+                    <h5 class="m-2" style="color: white"><b>Danh mục sản phẩm</b></h5>
                 </a>
-                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 270px" id="DMSP">
-                        <!--
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link danhmuc" data-toggle="dropdown">Đồ dùng cá nhân <i class="fa fa-angle-down float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Chăn, ra, gối, nệm</a>
-                                <a href="" class="dropdown-item">Giày dép</a>
-                                <a href="" class="dropdown-item">Nón bảo hiểm</a>
-                                <a href="" class="dropdown-item">Nón vải</a>
-                                <a href="" class="dropdown-item">Quần áo</a>
-                                <a href="" class="dropdown-item">Ô, dù</a>
-                            </div>
-                        </div>
-                        -->
 
-                    </div>
-                </nav>
-                <div class="container" style="width: 311px; margin-left: -5px">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="~/template/img/chuyen-muc-rao-vat-nhanh.png" alt="Thiết kế 1">
-                                <div class="carousel-caption">
-                                    @*<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>*@
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="~/template/img/chuyen-muc-rao-vat-nhanh.png" alt="Thiết kế 2">
-                                <div class="carousel-caption">
-                                    @*<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>*@
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="~/template/img/chuyen-muc-rao-vat-nhanh.png" alt="Thiết kế 3">
-                                <div class="carousel-caption">
-                                    @*<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>*@
-                                </div>
-                            </div>
-                        </div> <a class="left carousel-control" href="http://hocwebgiare.com/#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="http://hocwebgiare.com/#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
-                    </div>
-                </div>
+                <ul class="accordion-menu" style="margin-top:0px">
+                    <li>
+                        <div class="dropdownlink">
+                            <h5><i class="fa fa-male" aria-hidden="true"></i> Đồ cá nhân <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
+                        </div>
+                        <ul class="submenuItems">
+                            <li><a href="#">Chăn, ra, gối, nệm</a></li>
+                            <li><a href="#">Giày dép</a></li>
+                            <li><a href="#">Nón, mũ</a></li>
+                            <li><a href="#">Quần áo</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="dropdownlink">
+                            <h5>
+                                <i class="fa fa-mobile" aria-hidden="true"></i> Đồ điện tử
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </h5>
+
+                        </div>
+                        <ul class="submenuItems">
+                            <li><a href="#">Chuột, bàn phím, ...</a></li>
+                            <li><a href="#">Điện tử học tập</a></li>
+                            <li><a href="#">Điện tử gia dụng</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="dropdownlink">
+                            <h5>
+                                <i class="fa fa-bed" aria-hidden="true"></i> Nội thất
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </h5>
+                        </div>
+                        <ul class="submenuItems">
+                            <li><a href="#">Kệ, tủ</a></li>
+                            <li><a href="#">Bàn ghế</a></li>
+                            <li><a href="#">Đô gia dụng</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="dropdownlink">
+                            <h5>
+                                <i class="fa fa-motorcycle" aria-hidden="true"></i> Xe
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </h5>
+
+                        </div>
+                        <ul class="submenuItems">
+                            <li><a href="#">Xe máy</a></li>
+                            <li><a href="#">Xe đạp</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
             </div>
+
 
             <div class="col-lg-9" style="padding:3px">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="@Url.Action("Index","SanPham")" class="text-decoration-none d-block d-lg-none">
-                        <h2 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Chọ rao vặt sinh viên</span></h2>
+                        <h2 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Chợ rao vặt Sinh viên</span></h2>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -140,7 +150,8 @@
         <div class="row border-top border-light mx-xl-5 py-4">
             <div class="col-md-6 px-xl-0">
                 <p class="mb-md-0 text-center text-md-left text-dark">
-                    &copy; <a class="text-dark font-weight-semi-bold" href="#">CDC - Chợ rao vặt sinh viên</a>
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">Chợ Rao Vặt Sinh Viên</a>.
+                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com"></a>
                 </p>
             </div>
         </div>
@@ -171,27 +182,36 @@
 </html>
 
 <script>
-    $('#myCarousel').carousel({
-        interval: 3000
-    });
 
-    // Loc
-    function Loc() {
-        var lg = document.getElementById('locgia').value;
-        var ldg = document.getElementById('locdanhgia').value;
-        var ltg = document.getElementById('locthoigian').value;
+    $(function () {
+        var Accordion = function (el, multiple) {
+            this.el = el || {};
+            // more then one submenu open?
+            this.multiple = multiple || false;
 
-        console.log(lg + ', ' + ldg + ', ' + ltg)
-        $.ajax({
-            url: '/SanPham/LocSanPham',
-            type: 'post',
-            data: {
-                gia: lg,
-                danhgia: ldg,
-                thoigian: ltg,
+            var dropdownlink = this.el.find('.dropdownlink');
+            dropdownlink.on('click',
+                { el: this.el, multiple: this.multiple },
+                this.dropdown);
+        };
+
+        Accordion.prototype.dropdown = function (e) {
+            var $el = e.data.el,
+                $this = $(this),
+                //this is the ul.submenuItems
+                $next = $this.next();
+
+            $next.slideToggle();
+            $this.parent().toggleClass('open');
+
+            if (!e.data.multiple) {
+                //show only one menu at the same time
+                $el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
             }
-        })
-    }
+        }
+
+        var accordion = new Accordion($('.accordion-menu'), false);
+    })
 
     // Tim kiem theo ten
     function TimKiemTheoTen() {
@@ -209,40 +229,64 @@
         console.log(id)
     }
 
-    // Hien danh muc
-    function HienDanhMuc(data) {
-        var str = "";
-        for (var i in data) {
-            if (data[i].danhmuccon.length > 1) {
-                str += '<div class="nav-item dropdown">'
-                str += '<a href="#" class="nav-link danhmuc" data-toggle="dropdown">' + data[i].ten + ' <i class="fa fa-angle-down float-right mt-1"></i></a>'
-                str += '<div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">'
-                for (var x in data[i].danhmuccon) {
-                    str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[x].id + '">' + data[i].danhmuccon[x].ten + '</a>'
-                }
-                str += '</div>'
-                str += '</div>'
-            }
-            else {
-                str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[0].id + '">' + data[i].danhmuccon[0].ten + '</a>'
-            }
-        }
-        document.getElementById('DMSP').innerHTML = str;
+    function DoCaNhan() {
+        window.location.href = '/SanPham/DoCaNhan';
     }
+
+    function DoDienTu() {
+        window.location.href = '/SanPham/DoDienTu';
+    }
+
+    function DoNoiThat() {
+        window.location.href = '/SanPham/DoNoiThat';
+    }
+
+    function DoHocTap() {
+        window.location.href = '/SanPham/DoHocTap';
+    }
+
+    function PhuongTien() {
+        window.location.href = '/SanPham/PhuongTien';
+    }
+
+    function DoKhac() {
+        window.location.href = '/SanPham/DoKhac';
+    }
+
+    // Hien danh muc
+    //function HienDanhMuc(data) {
+    //    var str = "";
+    //    for (var i in data) {
+    //        if (data[i].danhmuccon.length > 1) {
+    //            str += '<div class="nav-item dropdown">'
+    //            str += '<a href="#" class="nav-link danhmuc" data-toggle="dropdown">' + data[i].ten + ' <i class="fa fa-angle-down float-right mt-1"></i></a>'
+    //            str += '<div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">'
+    //            for (var x in data[i].danhmuccon) {
+    //                str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[x].id + '">' + data[i].danhmuccon[x].ten + '</a>'
+    //            }
+    //            str += '</div>'
+    //            str += '</div>'
+    //        }
+    //        else {
+    //            str += '<a class="dropdown-item" href="/SanPham/TimKiemTheoLoai?maloai=' + data[i].danhmuccon[0].id + '">' + data[i].danhmuccon[0].ten + '</a>'
+    //        }
+    //    }
+    //    document.getElementById('DMSP').innerHTML = str;
+    //}
 
     // load danh muc
-    function LoadDanhMuc() {
-        $.ajax({
-            url: '/SanPham/DanhMucSanPham',
-            type: 'get',
-            success: function (data) {
-                HienDanhMuc(data)
-            }
-        })
-    }
+    //function LoadDanhMuc() {
+    //    $.ajax({
+    //        url: '/SanPham/DanhMucSanPham',
+    //        type: 'get',
+    //        success: function (data) {
+    //            HienDanhMuc(data)
+    //        }
+    //    })
+    //}
 
     // ready
-    $(document).ready(function () {
-        LoadDanhMuc();
-    })
+    //$(document).ready(function () {
+    //    LoadDanhMuc();
+    //})
 </script>

@@ -11290,3 +11290,98 @@ h2 {
     color: #fff;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+body {
+    font-family: 'Muli', sans-serif;
+    height: 100% !important;
+    background-color: #fff !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    color: #000 !
+}
+
+.row-1 p {
+    font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
+    text-align: center;
+    color: #2CB8FE
+}
+
+h5 {
+    font-size: calc(16px + (22 - 16) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    cursor: pointer
+}
+
+.carousel-indicators li {
+    cursor: pointer;
+    border-radius: 50% !important;
+    width: 10px;
+    height: 10px;
+    opacity: 0.5;
+    margin: -30px 15px 0px 15px !important;
+    color: #333;
+    background-color: #333 !important;
+    top: 50px !important;
+    position: relative
+}
+
+.carousel-inner {
+    border-radius: 15px !important
+}
+
+.card {
+    color: #383431 !important;
+    background-color: #FFFFFF !important
+}
+
+.bonify {
+    font-weight: 600;
+    letter-spacing: 2px !important;
+    cursor: pointer
+}
+
+.bottom-row {
+    color: #aaaaaa
+}
+
+i {
+    font-size: 25px !important;
+    margin-left: calc(15px + (24 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+    cursor: pointer
+}
+
+.fa-firefox {
+    font-size: 19px !important;
+    color: #000 !important;
+    margin: 0 !important;
+    cursor: pointer
+}
+
+.description-img {
+    color: #2CB8FE;
+    cursor: pointer
+}
+
+.logo {
+    height: calc(70px + (100 - 70) * ((100vw - 360px) / (1600 - 360))) !important;
+    width: calc(90px + (134 - 90) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.mobile-img {
+    width: calc(200px + (234 - 200) * ((100vw - 360px) / (1600 - 360))) !important;
+    height: calc(200px + (234 - 200) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+li {
+    font-size: calc(15px + (18 - 15) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.row-1 {
+    margin-bottom: calc(100px + (150 - 100) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
