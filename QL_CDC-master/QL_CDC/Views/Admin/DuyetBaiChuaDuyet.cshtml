@@ -12,6 +12,7 @@
                         <tr>
                             <th>Gian hàng</th>
                             <th>Tên sản phẩm</th>
+                            <th></th>
                             <th>Giá</th>
                             <th>Trạng thái</th>
                             <th>  </th>
@@ -20,40 +21,121 @@
                     <tbody class="table-border-bottom-0">
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.nguoidangsp)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.tensp)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.giagocsp)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.tt)
-                                </td>
-                                <td>
-                                    <div>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-outline-secondary" onclick="DuyetBai('@item.masp')">Duyệt</button>
-                                            <button type="button" class="btn btn-outline-secondary" onclick="KhongDuyet('@item.masp')">Không duyệt</button>
-                                        </div>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nguoidangsp)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tensp)
+                            </td>
+                            <td><a onclick="return modalChitietSP('@item.masp')" style="cursor: pointer">Chi tiết</a></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.giagocsp)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tt)
+                            </td>
+                            <td>
+                                <div>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="DuyetBai('@item.masp')">Duyệt</button>
+                                        <button type="button" class="btn btn-outline-secondary" onclick="KhongDuyet('@item.masp')">Không duyệt</button>
                                     </div>
-                                    @*<div class="dropdown">
-            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                <i class="bx bx-dots-vertical-rounded"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0);" onclick="DuyetBai('@item.masp')"> Duyệt</a>
-                <a class="dropdown-item" href="javascript:void(0);" onclick="KhongDuyet('@item.masp')">Không duyệt</a>
-            </div>
-        </div>*@
-                                </td>
-                            </tr>
+                                </div>
+                                @*<div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);" onclick="DuyetBai('@item.masp')"> Duyệt</a>
+                    <a class="dropdown-item" href="javascript:void(0);" onclick="KhongDuyet('@item.masp')">Không duyệt</a>
+                </div>
+            </div>*@
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">Modal title</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Tiêu đề bài đăng</label>
+                        <input type="text" id="tensp" class="form-control" value="" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Người đăng bài</label>
+                        <input type="text" id="nguoidang" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Giá bán sản phẩm</label>
+                        <input type="text" id="gia" class="form-control" value="" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Ngày thêm bài</label>
+                        <input type="text" id="ngaydang" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Nhà sản xuất</label>
+                        <input type="text" id="nsx" class="form-control" value="" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Loại mặt hàng</label>
+                        <input type="text" id="loai" class="form-control" value="" />
+                    </div>
+
+                </div>
+                <div class="col mb-3">
+                    <label for="nameLarge" class="form-label">Mô tả</label>
+                    <input id="mota" type="text" class="form-control" size="70"  value="" />
+                </div>
+                <div class="col mb-3">
+                    <label for="nameLarge" class="form-label">Hình ảnh</label>
+                    <div id="hinhanh">
+
+                    </div>
+
+                    @*<input type="image" id="anhsp" class="form-control" src="" style="width:300px" />*@
+                </div>
+
+                @*<div class="collapse" id="collapseExample">
+                    <div class="d-grid d-sm-flex p-3 border">
+                        <img alt="collapse-image"
+                             height="125"
+                             class="me-4 mb-sm-0 mb-2"
+                             id="anhsp" />
+                        <span id="mt"></span>
+                    </div>
+                </div>*@
+                @*<div class="col mb-3">
+            <label for="nameLarge" class="form-label">Tình trạng</label>
+            <input type="text" id="nameLarge" class="form-control" value="@item.ttsv" />
+        </div>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -90,6 +172,43 @@
                 alert("Bài đăng đã bị hủy!");
             }
         })
+    }
+
+    function modalChitietSP(ms) {
+        console.log("aaaaaa");
+        $.ajax({
+            url: '/Admin/CTSP?id=' + ms,
+            contentType: 'application/html; charset=utf-8',
+            type: 'get',
+            success: function (result) {
+                console.log(result);
+                $('#exLargeModal').modal('show');
+                $('#tensp').val(result.tensp)
+                $('#nguoidang').val(result.nguoidangsp)
+                $('#gia').val(result.dongiasp)
+                $('#ngaydang').val(result.ngaydangsp)
+                $('#nsx').val(result.nsx)
+                $('#loai').val(result.loai)
+                $('#mota').val(result.motasp)
+                $('#anhsp').val(result.anhsp)
+                $('#hinhanh').innerHTML = "helo";
+                var txt = "";
+                txt += '<input type="image" id="anhsp" class="form - control" src=" ' + result.anhsp[0] + ' " style="width: 300px; margin-left:20px" />';
+                txt += '<input type="image" id="anhsp" class="form - control" src=" ' + result.anhsp[1] + ' " style="width: 300px; margin-left:20px" />';
+                txt += '<input type="image" id="anhsp" class="form - control" src=" ' + result.anhsp[2] + ' " style="width: 300px; margin-left:20px" />';
+                document.getElementById("hinhanh").innerHTML = txt;
+                //var a = document.querySelector('#hinhanh');
+                //var x = result.anhsp.length();
+                //for (var i = 0; i <= x; i++)
+                //{
+                //    a.innerHTML = '<input type="image" id="anhsp" class="form - control" src=" ' + result.anhsp[i] + ' " style="width: 300px" />';
+                //}
+           
+            }                      
+        })
+        function getHinhAnh() {
+            
+        };
     }
 
 

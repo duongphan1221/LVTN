@@ -253,6 +253,37 @@ namespace QL_CDC.Controllers
             return Json(data);
         }
 
+        public IActionResult CTSP(string id)
+        {
+            var model = db.SANPHAMs.Where(a => a.SP_MSSP == id).FirstOrDefault();
+            DateTime d = (DateTime)model.SP_NGAYDANG;
+            var data = new SanPhamModel()
+            {
+                masp = model.SP_MSSP,
+                tensp = model.SP_TENSP,
+                msnguoidang = model.SV_MSSV,
+                giagocsp = (double)model.SP_GIA,
+                dongiasp = TinhDonGiaSanPham(id),
+                nguoidangsp = getNguoiDangSP(model.SV_MSSV),
+                ngaydangsp = d.ToString("dd/MM/yyyy"),
+                thoigiansp = (int)model.SP_THOIGIANSUDUNG,
+                soluongsp = (int)model.SP_CONLAI,
+                motasp = model.SP_MOTA,
+                nsx = model.SP_HANGSX,
+                loai = db.LOAISANPHAMs.Where(a => a.LOAI_MALOAI == model.LOAI_MALOAI).Select(a => a.LOAI_TENLOAI).First(),
+            };
+            List<string> tempstrlist = new List<string>();
+            foreach (var i in db.HINHANHs)
+            {
+                if (i.SP_MSSP == id)
+                {
+                    string name = i.HA_LINK;
+                    tempstrlist.Add(name);
+                }
+            }
+            data.anhsp = tempstrlist;
+            return Json(data);
+        }
 
     }
 }

@@ -64,7 +64,7 @@
         <div class="row border-top px-xl-5" style="margin-left: -70px">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h5 class="m-2" style="color: white"><b>Danh mục sản phẩm</b></h5>
+                    <h5 class="m-3" style="color: white"><b>Danh mục sản phẩm</b></h5>
                 </a>
 
                 <ul class="accordion-menu" style="margin-top:0px">
@@ -73,10 +73,10 @@
                             <h5><i class="fa fa-male" aria-hidden="true"></i> Đồ cá nhân <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Chăn, ra, gối, nệm</a></li>
-                            <li><a href="#">Giày dép</a></li>
-                            <li><a href="#">Nón, mũ</a></li>
-                            <li><a href="#">Quần áo</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Chăn, ra, gối, nệm</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Giày dép</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Nón, mũ</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Quần áo</a></li>
                         </ul>
                     </li>
                     <li>
@@ -88,9 +88,9 @@
 
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Chuột, bàn phím, ...</a></li>
-                            <li><a href="#">Điện tử học tập</a></li>
-                            <li><a href="#">Điện tử gia dụng</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Chuột, bàn phím, ...</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Điện tử học tập</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Điện tử gia dụng</a></li>
                         </ul>
                     </li>
                     <li>
@@ -101,9 +101,9 @@
                             </h5>
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Kệ, tủ</a></li>
-                            <li><a href="#">Bàn ghế</a></li>
-                            <li><a href="#">Đô gia dụng</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Kệ, tủ</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Bàn ghế</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Đô gia dụng</a></li>
                         </ul>
                     </li>
                     <li>
@@ -115,8 +115,8 @@
 
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Xe máy</a></li>
-                            <li><a href="#">Xe đạp</a></li>
+                            <li onclick="PhuongTien()"><a href="#">Xe máy</a></li>
+                            <li onclick="PhuongTien()"><a href="#">Xe đạp</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -136,7 +136,7 @@
                         @await Html.PartialAsync("../Shared/_LoginPartial.cshtml")
                     </div>
                 </nav>
-                <div>
+                <div style="background-color:gainsboro">
                     @RenderBody()
 
                 </div>
@@ -146,16 +146,7 @@
 
     <!-- Navbar End -->
     <!-- Footer Start -->
-    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
-        <div class="row border-top border-light mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-left text-dark">
-                    &copy; <a class="text-dark font-weight-semi-bold" href="#">Chợ Rao Vặt Sinh Viên</a>.
-                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com"></a>
-                </p>
-            </div>
-        </div>
-    </div>
+    
     <!-- Footer End -->
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
@@ -178,67 +169,65 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
 </body>
-
-<!-- Footer -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<div class="container-fluid mt-5 pt-5 ">
-    <div class="row justify-content-center row-1">
-        <div style="width:900px">
-            <h4><b>WEBSITE RAO VẶT TRỰC TUYẾN DÀNH CHO SINH VIÊN</b></h4>
-            <p>
-                Trong việc mua bán, đối với người kinh doanh có nguồn vốn ban đầu thấp, làm thế nào để vừa có được không gian bán hàng tốt vừa tiếp cận khách hàng dễ dàng mà không tốn quá nhiều chi phí cho việc chạy quảng cáo, thuê nhân viên, mặt bằng, trang trí cửa hàng, … còn đối với người tiêu dùng thì làm thế nào để dễ dàng tìm ra được một cửa hàng bán sản phẩm chất lượng, uy tín, tham khảo sản phẩm vào những thời gian rảnh rỗi mà không cần tốn quá nhiều công sức và thời gian di chuyển, chủ động trong việc thanh toán và vận chuyển.
-                Với tốc độ phát triển mạnh mẽ của công nghệ như hiện nay đã làm nâng cao chất lượng cuộc sống của con người, nhu cầu sử dụng các dịch vụ tiện ích ngày càng tăng cao. Việc mua bán truyền thống dần có những bất cập nhất định như tốn khá nhiều thời gian trong việc tìm kiếm và mua sản phẩm, giá của sản phẩm khá đắt do một số cửa hàng không sử dụng mã giảm giá, … trong khi đó mua bán online ngày càng thể hiện được những ưu điểm nổi bật như tìm kiếm thông tin sản phẩm dễ dàng, không tốn quá nhiều thời gian cho việc mua sản phẩm, có thể đặt mua sản phẩm vào bất kỳ thời gian nào và một ưu điểm nổi bật là giao hàng tận nơi, ...
+<div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+    <div class="row border-top border-light mx-xl-5 py-4">
+        <div class="col-md-6 px-xl-0">
+            <p class="mb-md-0 text-center text-md-left text-dark">
             </p>
         </div>
     </div>
-    <footer class="ml-xl-5 ml-md-4 ml-3 " style="margin-top:-40px">
+</div>
+<!-- Footer -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid">
+    <div class="row justify-content-center row-1">
+        <div style="width:900px">
+            <h4><b>WEBSITE RAO VẶT TRỰC TUYẾN DÀNH CHO SINH VIÊN</b></h4>
+            <h5>
+                Trong việc mua bán, đối với người kinh doanh có nguồn vốn ban đầu thấp, làm thế nào để vừa có được không gian bán hàng tốt vừa tiếp cận khách hàng dễ dàng mà không tốn quá nhiều chi phí cho việc chạy quảng cáo, thuê nhân viên, mặt bằng, trang trí cửa hàng, … còn đối với người tiêu dùng thì làm thế nào để dễ dàng tìm ra được một cửa hàng bán sản phẩm chất lượng, uy tín, tham khảo sản phẩm vào những thời gian rảnh rỗi mà không cần tốn quá nhiều công sức và thời gian di chuyển, chủ động trong việc thanh toán và vận chuyển.
+                Với tốc độ phát triển mạnh mẽ của công nghệ như hiện nay đã làm nâng cao chất lượng cuộc sống của con người, nhu cầu sử dụng các dịch vụ tiện ích ngày càng tăng cao. Việc mua bán truyền thống dần có những bất cập nhất định như tốn khá nhiều thời gian trong việc tìm kiếm và mua sản phẩm, giá của sản phẩm khá đắt do một số cửa hàng không sử dụng mã giảm giá, … trong khi đó mua bán online ngày càng thể hiện được những ưu điểm nổi bật như tìm kiếm thông tin sản phẩm dễ dàng, không tốn quá nhiều thời gian cho việc mua sản phẩm, có thể đặt mua sản phẩm vào bất kỳ thời gian nào và một ưu điểm nổi bật là giao hàng tận nơi, ...
+            </h5>
+        </div>
+    </div>
+    <footer class="ml-xl-5 ml-md-4 ml-3 " style="margin-top:-40px; width:90%">
         <div class="row justify-content-end">
             <div class=" col-12">
                 <div class="row pt-5">
                     <div class="col-xl-4 col-12 mr-auto">
                         <div class="media flex-sm-row flex-column ">
-                            <img class="align-self-center img-fluid mobile-img " src="~/template/img/LogoSV.png">
+                            <img class="align-self-center img-fluid mobile-img " src="~/template/img/LogoSV2.png">
                             
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 my-auto ">
                         <div class="row justify-content-around">
-                            <div class="col-md-3 col-12 mt-md-0 mt-3">
-                                <ul class="list-unstyled text-muted">
-                                    <li>Conditions</li>
-                                    <li>Privacy</li>
-                                    <li>Imprint</li>
-                                    <li>Press</li>
-                                    <li>COntact</li>
-                                    <li>Jobs</li>
+                            <div class="col-md-3 col-6 mt-md-0 mt-3">
+                                <ul>
+                                    <li><b>Hỗ trợ khách hàng</b></li>
+                                    <li>Trung tâm trợ giúp</li>
+                                    <li>An toàn mua bán</li>
+                                    <li>Quy định cần biết</li>
+                                    <li>Quy chế quyền riêng tư</li>
+                                    <li>Liên hệ hỗ trợ</li>
                                 </ul>
                             </div>
                             <div class="col-md-3 col-12 mt-md-0 mt-3">
-                                <ul class="list-unstyled text-muted">
-                                    <li>Conditions</li>
-                                    <li>Privacy</li>
-                                    <li>Imprint</li>
-                                    <li>Press</li>
-                                    <li>COntact</li>
-                                    <li>Jobs</li>
+                                <ul >
+                                    <li><b>Về Website rao vặt</b></li>
+                                    <li>Giới thiệu</li>
+                                    <li>Tuyển dụng</li>
+                                    <li>Truyền thông</li>
+                                    <li>Blog</li>
                                 </ul>
                             </div>
-                            <div class="col-md-3 col-12 mt-md-0 mt-3">
-                                <ul class="list-unstyled text-muted">
-                                    <li>Credit</li>
-                                    <li>Bonitatsausktit</li>
-                                    <li>Experience</li>
-                                    <li>Tenet info</li>
-                                    <li>SCHUFA SCORE</li>
-                                </ul>
-                            </div>
+                            
                             <div class="col-md-auto col-12">
                                 <ul class="list-unstyled text-muted">
                                     <li>
                                     <li>Donwload App</li>
                                     <li><img src="https://i.imgur.com/iU0M5wp.png" class="img-fluid app-img" width="100"></li>
-                                    <li><img src="https://i.imgur.com/M6ccl7k.png" class="img-fluid app-img" width="100"></li>
+                                    <li><img src="https://i.imgur.com/M6ccl7k.png" class="img-fluid app-img" width="100"></li>                                                                     
                                 </ul>
                             </div>
                         </div>
@@ -248,8 +237,6 @@
         </div>
     </footer>
 </div>
-
-
 </html>
 
 <script>
