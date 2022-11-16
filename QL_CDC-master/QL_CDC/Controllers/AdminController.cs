@@ -238,6 +238,21 @@ namespace QL_CDC.Controllers
             return Json(objSP);
         }
 
-        
+        public IActionResult CTND(string id)
+        {         
+            var model = db.SINHVIENs.Where(a => a.SV_MSSV == id).FirstOrDefault();
+            var data = new SinhVienModel()
+            {
+                MSSV = model.SV_MSSV,
+                TenHienThi = model.SV_TENHIENTHI,
+                SDT = model.SV_SDT,
+                Email = model.SV_EMAIL,
+                DiaChi = model.SV_DIACHIGIAOHANG,
+                LanHDCuoi = (DateTime)model.SV_LANHDCUOI
+            };
+            return Json(data);
+        }
+
+
     }
 }

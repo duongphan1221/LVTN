@@ -1,0 +1,59 @@
+﻿@model SinhVienModel
+
+<div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel3">Chi tiết người dùng</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Tài khoản</label>
+                        <input type="text" id="nameLarge" class="form-control" value="@Model.MSSV" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Tên người dùng</label>
+                        <input type="text" id="nameLarge" class="form-control" value="@Model.TenHienThi" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Số điện thoại</label>
+                        <input type="text" id="nameLarge" class="form-control" value="@Model.SDT" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Email</label>
+                        <input type="text" id="nameLarge" class="form-control" value="@Model.Email" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Địa chỉ</label>
+                        <input type="text" id="nameLarge" class="form-control" value="@Model.DiaChi" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameLarge" class="form-label">Lần hoạt động cuối</label>
+                        <input type="text" id="nameLarge" class="form-control" value="@Model.LanHDCuoi" />
+                    </div>
+                </div>
+                @*<div class="col mb-3">
+                    <label for="nameLarge" class="form-label">Tình trạng</label>
+                    <input type="text" id="nameLarge" class="form-control" value="@item.ttsv" />
+                </div>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+
+        </div>
+
+    </div>
+</div>
