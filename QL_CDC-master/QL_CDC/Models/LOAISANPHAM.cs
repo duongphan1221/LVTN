@@ -17,6 +17,8 @@ namespace QL_CDC.Models
         public int SHIP_MA { get; set; }
         public string LOAI_TENLOAI { get; set; }
 
+        
+
         public virtual LOAIMATHANG MH_MAMHNavigation { get; set; }
         public virtual TIENSHIP SHIP_MANavigation { get; set; }
         public virtual ICollection<SANPHAM> SANPHAMs { get; set; }

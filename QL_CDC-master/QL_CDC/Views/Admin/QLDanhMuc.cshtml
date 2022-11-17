@@ -1,0 +1,37 @@
+﻿@model IEnumerable<LOAISANPHAM>
+@{ Layout = "AdminLayout"; }
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quán lý người dùng</h4>
+    <div class="card">
+        <h5 class="card-header">Danh sách người dùng</h5>
+        <div class="table-responsive text-nowrap">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã Loại</th>
+                            <th>Tên Loại</th>
+                            <th> Khóa/Mở khóa</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td @*data-bs-toggle="modal" data-bs-target="#largeModal"*@>
+                                    @Html.DisplayFor(modelItem => item.LOAI_MALOAI)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LOAI_TENLOAI)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.tenmh)
+                                </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

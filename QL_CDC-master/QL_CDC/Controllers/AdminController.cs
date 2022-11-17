@@ -239,7 +239,7 @@ namespace QL_CDC.Controllers
         }
 
         public IActionResult CTND(string id)
-        {         
+        {
             var model = db.SINHVIENs.Where(a => a.SV_MSSV == id).FirstOrDefault();
             var data = new SinhVienModel()
             {
@@ -251,6 +251,20 @@ namespace QL_CDC.Controllers
                 LanHDCuoi = (DateTime)model.SV_LANHDCUOI
             };
             return Json(data);
+        }
+
+        public IActionResult QLDM()
+        {
+            List<LOAISANPHAM> SP = new List<LOAISANPHAM>();
+            foreach (var x in db.LOAISANPHAMs)
+            {
+                    LOAISANPHAM s = new LOAISANPHAM();
+                    s.LOAI_MALOAI = x.LOAI_MALOAI;
+                    s.LOAI_TENLOAI = x.LOAI_TENLOAI;                   
+                    SP.Add(s);
+                
+            }
+            return View(SP);
         }
 
         public IActionResult CTSP(string id)
@@ -285,5 +299,40 @@ namespace QL_CDC.Controllers
             return Json(data);
         }
 
-    }
+        //public IActionResult QLDanhMuc()
+        //{
+        //    List<LOAISANPHAM> SP = new List<LOAISANPHAM>();
+        //    foreach (var x in db.LOAISANPHAMs)
+        //    {
+        //        LOAISANPHAM s = new LOAISANPHAM();
+        //        s.LOAI_MALOAI = x.LOAI_MALOAI;
+        //        s.LOAI_TENLOAI = x.LOAI_TENLOAI;
+        //        //if (x.LOAI_MALOAI >= 1 && x.LOAI_MALOAI <= 7)
+        //        //{
+        //        //    s.tenmh = "Đồ dùng cá nhân";
+        //        //}
+        //        //if (x.LOAI_MALOAI >= 8 && x.LOAI_MALOAI <= 12 || x.LOAI_MALOAI == 14 || x.LOAI_MALOAI == 15 || x.LOAI_MALOAI == 21)
+        //        //{
+        //        //    s.tenmh = "Đồ điện tử";
+        //        //}
+        //        //if (x.LOAI_MALOAI >= 13 && x.LOAI_MALOAI <= 17)
+        //        //{
+        //        //    s.tenmh = "Đồ nội thất";
+        //        //}
+        //        //if (x.LOAI_MALOAI >= 18 && x.LOAI_MALOAI <= 19)
+        //        //{
+        //        //    s.tenmh = "Xe";
+        //        //}
+        //        //else
+        //        //{
+        //        //    s.tenmh = "Khác";
+        //        //}
+
+        //        SP.Add(s);
+
+        //    }
+        //    return View(SP);
+        //}
+
+    }  
 }

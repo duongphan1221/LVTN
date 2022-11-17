@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<SanPhamModel>
-@{
-    ViewData["Title"] = "TimKiemTheoTen";
-    Layout = "~/Views/Shared/_TimKiemLayout.cshtml";
-}
+@{ ViewData["Title"] = "TimKiemTheoTen";
+                Layout = "~/Views/Shared/_TimKiemLayout.cshtml"; }
 
 <div id="alertdiv"></div>
 <!-- Products Start -->
@@ -20,33 +18,98 @@
                     <img src="~/template/img/slide1.webp" alt="Thiết kế 1">
                 </div>
                 <div class="item">
-                    <img src="~/template/img/slide1.webp" alt="Thiết kế 2">
+                    <img src="~/template/img/ban2.png" alt="Thiết kế 2">
                 </div>
                 <div class="item">
-                    <img src="~/template/img/slide1.webp" alt="Thiết kế 3">
+                    <img src="~/template/img/ban3.png" alt="Thiết kế 3">
                 </div>
                 <div class="item">
-                    <img src="~/template/img/slide1.webp" alt="Thiết kế 4">
+                    <img src="~/template/img/fhf (1).png" alt="Thiết kế 4">
                 </div>
             </div> <a class="left carousel-control" href="http://hocwebgiare.com/#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="http://hocwebgiare.com/#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
         </div>
     </div>
-    
+    <div class="card-body">
+        <h4><label>Khám phá danh mục</label></h4>
+        <table style="width:90%">
+            <tr>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/binh nuoc.jpg" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             onclick="DoCaNhan()" />
+                    </div>
+                    <label>Đồ dùng cá nhân</label>
+                </th>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/do dien tu.jpg" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             id="uploadedAvatar"
+                             onclick="DoDienTu()" />
+                    </div>
+                    <label>Đồ điện tử</label>
+                </th>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/ban sp.jpg" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             id="uploadedAvatar"
+                             onclick="DoNoiThat()" />
+                    </div>
+                    <label>Đồ nội thất</label>
+                </th>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/images.jpg" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             id="uploadedAvatar"
+                             onclick="PhuongTien()" />
+                    </div>
+                    <label style="margin-left:31px">Xe</label>
+                </th>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/den-ban-dq-dkl14-b-1.jpg" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             id="uploadedAvatar"
+                             onclick="DoHocTap()" />
+                    </div>
+                    <label>Đồ dùng học tập</label>
+                </th>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/khac.webp" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             id="uploadedAvatar"
+                             onclick="DoKhac()" />
+                    </div>
+                    <label>Nổi bật khác</label>
+                </th>
+            </tr>
+        </table>
+
+    </div>
     <br />
     <div>
-        <h4 style="margin-left:12px"><label>Bài đăng bạn tìm kiếm</label></h4>
+        <h4 style="margin-left:12px"><label>Khám phá sản phẩm </label></h4>
     </div>
     <div class="row px-xl-5 pb-3">
         @if (Model.Count() > 0)
         {
-
 @foreach (var item in Model)
 {
     string dongia = string.Format("{0:#,##0.########}", item.dongiasp);
     string giagoc = string.Format("{0:#,##0.########}", item.giagocsp);
     var sosao = Math.Round(item.danhgiasp, 0, MidpointRounding.AwayFromZero);
 <div class="col-lg-3 col-md-6 col-sm-12 pb-1" style="margin: 0px">
-    <div class="card product-item mb-4 item" style="width: 105%">
+    <div class="card product-item mb-4 sanpham" style="width: 105%">
         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
             <div style="width: 100%; display: flex;">
                 <div class="tagthoigian">@item.thoigiansp tháng</div>
@@ -73,12 +136,33 @@ else
 </div>}}
     </div>
 
-    <div id="load"> <b> Load More </b></div>
-
 </div>
 <!-- Products End -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="/template/sneat/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="/template/sneat/assets/vendor/libs/popper/popper.js"></script>
+<script src="/template/sneat//assets/vendor/js/bootstrap.js"></script>
+<script src="/template/sneat//assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+<script src="/template/sneat/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<!-- Main JS -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="/template/lib/easing/easing.min.js"></script>
+<script src="/template/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 
 <script>
+    $('#myCarousel').carousel({
+        interval: 2500
+    });
+
     function Them1VaoGio(ma) {
         $.ajax({
             url: '/GioHang/Them1SanPhamVaoGioHang',
@@ -88,7 +172,7 @@ else
             },
             success: function (data) {
                 hiensanphamtronggio();
-                tempAlert(3000);
+                tempAlert(2000);
             },
             error: function () {
                 window.location.href = '/TaiKhoan/DangNhap';
@@ -110,7 +194,29 @@ else
         }, duration);
         document.body.appendChild(el);
     }
-</script>
+    function DoCaNhan() {
+        window.location.href = '/SanPham/DoCaNhan';
+    }
 
+    function DoDienTu() {
+        window.location.href = '/SanPham/DoDienTu';
+    }
+
+    function DoNoiThat() {
+        window.location.href = '/SanPham/DoNoiThat';
+    }
+
+    function DoHocTap() {
+        window.location.href = '/SanPham/DoHocTap';
+    }
+
+    function PhuongTien() {
+        window.location.href = '/SanPham/PhuongTien';
+    }
+
+    function DoKhac() {
+        window.location.href = '/SanPham/DoKhac';
+    }
+</script>
 
 

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LOAISANPHAM>
+@{ Layout = "AdminLayout"; }
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quản lý danh mục sản phẩm</h4>
+    <div class="card">
+        <h5 class="card-header">Danh sách người dùng</h5>
+        <div class="table-responsive text-nowrap">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã Loại</th>
+                            <th>Tên Loại</th>
+                            <th>Loại mặt hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td @*data-bs-toggle="modal" data-bs-target="#largeModal"*@>
+                                @Html.DisplayFor(modelItem => item.LOAI_MALOAI)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LOAI_TENLOAI)
+                            </td>
+
+                            @if (item.LOAI_MALOAI >= 1 && item.LOAI_MALOAI <= 7)
+                            {
+                                <td>
+                                    Đồ dùng cá nhân
+                                </td>
+                            }
+                            @if (item.LOAI_MALOAI >= 8 && item.LOAI_MALOAI <= 12 || item.LOAI_MALOAI == 21)
+                            {
+                                <td>
+                                    Đồ điện tử
+                                </td>
+                            }
+                            @if (item.LOAI_MALOAI >= 13 && item.LOAI_MALOAI <= 17)
+                            {
+                                <td>
+                                    Đồ nội thất
+                                </td>   
+                            }
+                            @if (item.LOAI_MALOAI >= 18 && item.LOAI_MALOAI <= 19)
+                            {
+                                <td>
+                                    Xe
+                                </td>
+                            }
+                            @if (item.LOAI_MALOAI == 20)
+                            {
+                                <td>
+                                    Khác
+                                </td>
+                            }
+                                
+                        </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
