@@ -226,6 +226,49 @@ namespace QL_CDC.Controllers
             return View(L);
         }
 
+        //Them SP do noi that
+        public IActionResult ThemSPDoNoiThat()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them SP do dien tu
+        public IActionResult ThemSPDoDienTu()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them SP Xe
+        public IActionResult ThemSPXe()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+
         [HttpPost]
         public IActionResult CapNhatLoai(string id)
         {
@@ -496,5 +539,11 @@ namespace QL_CDC.Controllers
             return View(SP);
         }
         #endregion 
+
+        public IActionResult ChonLoaiSPThem()
+        {
+
+            return View();
+        }
     }
 }

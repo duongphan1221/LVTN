@@ -10456,10 +10456,10 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .add_label {
-    color: #0f893b;
-    font-size: 1.75vw;
+    color: black;
+    font-size: 1.4vw;
     width: 20%;
-    height: 5vh;
+    height: 4vh;
     line-height: 5vh;
     vertical-align: middle;
     text-align: left;
@@ -10472,8 +10472,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 @media (max-width: 600px) {
     .add_label {
-        color: #0f893b;
-        font-size: 2.5vw;
+        color: black;
+        font-size: 2vw;
         width: 20%;
         height: 3vh;
         line-height: 3vh;

@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<QL_CDC.Models.SelectListModel>
 
-@{
-    ViewData["Title"] = "ThemSanPham";
-    Layout = "~/Views/Shared/_SecondLayout.cshtml";
-}
+@{ ViewData["Title"] = "ThemSanPham";
+                Layout = "~/Views/Shared/_SecondLayout.cshtml"; }
 
 <div class="container-fluid pt-5" style=" margin-top: -40px; margin-left: 0px">
     <!--Ten-->
     <div class="text-left mb-4" style="margin-left:-33px">
-        <h3 class=" px-5 " style="font-weight:bold"><span class="px-2"><b>Danh mục/ </b>        Đồ dùng cá nhân</span></h3>
+        <h3 class=" px-5 " style="font-weight:bold"><span class="px-2"><b>Danh mục/ </b>        Xe</span></h3>
     </div>
     <br>
     <div class="table-themsanpham">
@@ -28,13 +26,11 @@
         <div class="add_input_2" style="width:40%">
             <select class="form-control" id="add_l">
                 <option value="" style="text-align:center" selected disabled>--- Loại ---</option>
-                <option value="1" style="text-align:center; font-weight:bold ">Chăn, ra, gối, nệm</option>
-                <option value="2" style="text-align:center; font-weight:bold ">Giày dép</option>
-                <option value="3" style="text-align:center; font-weight:bold ">Quần áo</option>
-                <option value="4" style="text-align:center;font-weight:bold ">Khác</option>
+                <option value="18" style="text-align:center; font-weight:bold ">Xe đạp, xe đạp điện</option>
+                <option value="19" style="text-align:center; font-weight:bold ">Xe máy, xe máy điện</option>
             </select>
-        </div>        
-        
+        </div>
+
     </div>
     <!--Thoi gian, gia-->
     <div class="table-themsanpham2">
@@ -44,7 +40,7 @@
         </div>
         <div class="add_input_number">
             <input type="text" id="add_gia" class="form-control" placeholder="VND" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-        </div> 
+        </div>
         <div style="width: 20%">
 
         </div>
@@ -58,14 +54,23 @@
         <div class="add_input_number">
             <input type="number" id="add_sl" min="0" class="form-control" placeholder="Đơn vị" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
         </div>
-        
-        @*<div class="add_label">
-            <label>Nhà sản xuất: </label>
 
+        @*<div class="add_label">
+                <label>Nhà sản xuất: </label>
+
+            </div>
+            <div class="add_input_number">
+                <input type="text" id="add_nsx" class="form-control" placeholder="Tên NSX" />
+            </div>*@
+    </div>
+    <div class="table-themsanpham2">
+        <div class="add_input_2" style="width:40%">
+            <select class="form-control" id="add_tinhtrang">
+                <option value="" style="text-align:center" selected disabled>--- Tình trạng ---</option>
+                <option value="0" style="text-align:center; font-weight:bold ">Mới</option>
+                <option value="1" style="text-align:center; font-weight:bold ">Đã sử dụng</option>
+            </select>
         </div>
-        <div class="add_input_number">
-            <input type="text" id="add_nsx" class="form-control" placeholder="Tên NSX" />
-        </div>*@
     </div>
     <!--Hinh anh-->
     <div class="table-themsanpham2">
@@ -100,14 +105,13 @@
 </div>
 
 
-<script>
-    // Dang san pham
+<script>// Dang san pham
     function DangSanPham() {
         var tensp = document.getElementById('add_ten').value;
-        var mahang = 1;
+        var mahang = 4;
         var maloai = document.getElementById('add_l').value;
         var gia = $('#add_gia').val();
-        var tg = $('#add_thoigian').val();
+        var tg = document.getElementById('add_').value;
         var sl = $('#add_sl').val();
         var nsx = $('#add_nsx').val();
         var img = document.getElementById('add_file').files;
@@ -146,7 +150,7 @@
         var check = false;
         if (tensp == null || tensp == "") {
             alert("Vui lòng nhập tên sản phẩm")
-        }       
+        }
         else if (gia == null || gia == 0 || gia == 0) {
             alert("Vui lòng nhập giá cho sản phẩm")
         }
@@ -238,5 +242,4 @@
                 reader.readAsDataURL(input.files[i]);
             }
         }
-    }
-</script>
+    }</script>

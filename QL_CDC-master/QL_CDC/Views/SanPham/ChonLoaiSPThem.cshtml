@@ -1,0 +1,51 @@
+﻿@model IEnumerable<QL_CDC.Models.SelectListModel>
+
+@{ ViewData["Title"] = "ThemSanPham";
+                Layout = "~/Views/Shared/_SecondLayout.cshtml"; }
+<div class="container-fluid pt-5" style=" margin-top: -20px; margin-left: 0px">
+    <!--Ten-->
+    <div class="text-left mb-4">
+        <h4><span> <b>Danh mục sản phẩm bạn muốn thêm</b></span></h4>
+    </div>    
+    <!--Loai-->
+    <div class="table-themsanpham2">
+        
+        <div class="add_input_2" style="width:50%">
+            <select class="form-control" onchange="ChonLoai(value);" id="add_mh" style="text-align: left; font-size: 17px; font-weight: bold">
+                <option value="0" style="text-align: left; font-size:17px; stop-color:gray" selected disabled >Chọn loại sản phẩm</option>
+                <option value="1" style="text-align: left; font-size:17px; font-weight:bold">Đồ dùng cá nhân (Quần áo, giáy dép,...)</option>
+                <option value="2" style="text-align: left; font-size: 17px; font-weight: bold">Đồ điện tử (Laptop, điện thoại,...)</option>
+                <option value="3" style="text-align: left; font-size: 17px; font-weight: bold">Đồ gia dụng, nội thất</option>
+                <option value="4" style="text-align: left; font-size: 17px; font-weight: bold">Xe (Xe máy, xe đạp, xe điện)</option>
+                <option value="5" style="text-align: left; font-size: 17px; font-weight: bold">Khác</option>
+            </select>
+        </div>
+        <div class="add_label">
+
+        </div>
+        
+    </div>
+
+</div>
+
+<script>
+    function ChonLoai(i) {
+        if (i == 1) {
+            window.location.href = '/SanPham/ThemSanPham';
+        }
+        else if (i == 2) {
+            window.location.href = '/SanPham/ThemSPDoDienTu';
+        }
+        else if (i == 3) {
+            
+            window.location.href = '/SanPham/ThemSPDoNoiThat';
+        }
+        else if (i == 4) {
+            window.location.href = '/SanPham/ThemSPXe';
+        }
+        else
+            window.location.href = '/SanPham/ThemSanPham';
+    }
+
+    
+</script>

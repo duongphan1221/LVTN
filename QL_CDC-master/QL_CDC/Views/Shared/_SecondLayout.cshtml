@@ -66,17 +66,17 @@
         <div class="row border-top px-xl-5" style= "margin-left: -60px">
             <div class="col-lg-2 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h5 class="m-0" style="color: white"><b>Danh sách sản phẩm</b></h5>
+                    <h5 class="m-0" style="color: white; font-weight: bold"><b>Danh sách sản phẩm</b></h5>
                 </a>
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        <a href="@Url.Action("DanhSachSanPham","CuaHang")" class="nav-item nav-link danhmuc">Đang bán</a>
-                        <a href="@Url.Action("ChoDuyet","CuaHang")" class="nav-item nav-link danhmuc">Đợi duyệt</a>
-                        <a href="@Url.Action("DaAn","CuaHang")" class="nav-item nav-link danhmuc">Đã ẩn</a>
+                        <a href="@Url.Action("DanhSachSanPham","CuaHang")" class="nav-item nav-link danhmuc" style="font-size:17px">Đang bán</a>
+                        <a href="@Url.Action("ChoDuyet","CuaHang")" class="nav-item nav-link danhmuc" style="font-size:17px">Đợi duyệt</a>
+                        <a href="@Url.Action("DaAn","CuaHang")" class="nav-item nav-link danhmuc" style="font-size:17px">Đã ẩn</a>
                         @*<a href="@Url.Action("ThemSanPham","SanPham")" class="nav-item nav-link danhmuc"><i class="icon-card" ></i>Thêm mới</a>*@
                         @*<a onclick="window.location.href = '/SanPham/ThemSanPham'" class="nav-item nav-link danhmuc">Thêm mới</a>*@
-                        <a href="@Url.Action("ThemSanPham","SanPham")" class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                            <h6 class="m-0" style="color: white">Thêm mới</h6>
+                        <a href="@Url.Action("ChonLoaiSPThem","SanPham")" class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                            <h5 class="m-0" style="color: white; font-weight:bold">Thêm mới</h5>
                         </a>
                     </div>
                 </nav>

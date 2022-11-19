@@ -1,14 +1,15 @@
-﻿@model IEnumerable<QL_CDC.Models.SelectListModel>
+﻿
 
-@{
-    ViewData["Title"] = "ThemSanPham";
-    Layout = "~/Views/Shared/_SecondLayout.cshtml";
-}
+
+@model IEnumerable<QL_CDC.Models.SelectListModel>
+
+@{ ViewData["Title"] = "ThemSanPham";
+    Layout = "~/Views/Shared/_SecondLayout.cshtml"; }
 
 <div class="container-fluid pt-5" style=" margin-top: -40px; margin-left: 0px">
     <!--Ten-->
     <div class="text-left mb-4" style="margin-left:-33px">
-        <h3 class=" px-5 " style="font-weight:bold"><span class="px-2"><b>Danh mục/ </b>        Đồ dùng cá nhân</span></h3>
+        <h3 class=" px-5 " style="font-weight:bold"><span class="px-2"><b>Danh mục/ </b>        Đồ điện tử</span></h3>
     </div>
     <br>
     <div class="table-themsanpham">
@@ -28,13 +29,15 @@
         <div class="add_input_2" style="width:40%">
             <select class="form-control" id="add_l">
                 <option value="" style="text-align:center" selected disabled>--- Loại ---</option>
-                <option value="1" style="text-align:center; font-weight:bold ">Chăn, ra, gối, nệm</option>
-                <option value="2" style="text-align:center; font-weight:bold ">Giày dép</option>
-                <option value="3" style="text-align:center; font-weight:bold ">Quần áo</option>
-                <option value="4" style="text-align:center;font-weight:bold ">Khác</option>
+                <option value="12" style="text-align:center; font-weight:bold ">Laptop</option>
+                <option value="21" style="text-align:center; font-weight:bold ">Điện thoại</option>
+                <option value="10" style="text-align:center; font-weight:bold ">Chuột máy tính</option>
+                <option value="8" style="text-align:center; font-weight:bold ">Bàn phím máy tính</option>
+                <option value="9" style="text-align:center;font-weight:bold ">Bút trình chiếu</option>
+                <option value="11" style="text-align:center;font-weight:bold ">Khác</option>
             </select>
-        </div>        
-        
+        </div>
+
     </div>
     <!--Thoi gian, gia-->
     <div class="table-themsanpham2">
@@ -44,10 +47,11 @@
         </div>
         <div class="add_input_number">
             <input type="text" id="add_gia" class="form-control" placeholder="VND" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-        </div> 
+        </div>
         <div style="width: 20%">
 
         </div>
+
     </div>
     <!--So luong, nsx-->
     <div class="table-themsanpham2">
@@ -56,16 +60,30 @@
 
         </div>
         <div class="add_input_number">
-            <input type="number" id="add_sl" min="0" class="form-control" placeholder="Đơn vị" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+            <input type="number" id="add_sl" min="0" class="form-control" placeholder="Đơn vị" oninput="this.value = this.value.replace(/[^1-9.]/g, '').replace(/(\..*)\./g, '$1');" />
         </div>
-        
-        @*<div class="add_label">
-            <label>Nhà sản xuất: </label>
+        <div style="width: 20%">
+
+        </div>
+
+    </div>
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Hãng sản xuất: </label>
 
         </div>
         <div class="add_input_number">
             <input type="text" id="add_nsx" class="form-control" placeholder="Tên NSX" />
-        </div>*@
+        </div>
+    </div>
+    <div class="table-themsanpham2">
+        <div class="add_input_2" style="width:40%">
+            <select class="form-control" id="add_tinhtrang">
+                <option value="" style="text-align:center" selected disabled>--- Tình trạng ---</option>
+                <option value="0" style="text-align:center; font-weight:bold ">Mới</option>
+                <option value="1" style="text-align:center; font-weight:bold ">Đã sử dụng</option>
+            </select>
+        </div>
     </div>
     <!--Hinh anh-->
     <div class="table-themsanpham2">
@@ -88,7 +106,8 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota" placeholder="Tên sản phẩm, nhãn hiệu, chất liệu, màu sắc, ..."></textarea>
+        <textarea class="form-control" id="add_mota" placeholder='CPU, RAM, Ổ cứng, Màn hình, Card đồ họa, Thiết kế, kích thươc, khối lượng ...'></textarea>
+
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -100,14 +119,13 @@
 </div>
 
 
-<script>
-    // Dang san pham
+<script>// Dang san pham
     function DangSanPham() {
         var tensp = document.getElementById('add_ten').value;
-        var mahang = 1;
+        var mahang = 2;
         var maloai = document.getElementById('add_l').value;
         var gia = $('#add_gia').val();
-        var tg = $('#add_thoigian').val();
+        var tg = document.getElementById('add_tinhtrang').value; 
         var sl = $('#add_sl').val();
         var nsx = $('#add_nsx').val();
         var img = document.getElementById('add_file').files;
@@ -122,7 +140,7 @@
             formData.append("mahang", mahang);
             formData.append("maloai", maloai);
             formData.append("gia", gia);
-            /*formData.append("tg", tg);*/
+            formData.append("tg", tg);
             formData.append("sl", sl);
             formData.append("nsx", nsx);
             formData.append("mota", mota);
@@ -140,13 +158,13 @@
                     window.location.href = '/CuaHang/DanhSachSanPham'
                 }
             })
-        }
+         }
     }
     function KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img, mota) {
         var check = false;
         if (tensp == null || tensp == "") {
             alert("Vui lòng nhập tên sản phẩm")
-        }       
+        }
         else if (gia == null || gia == 0 || gia == 0) {
             alert("Vui lòng nhập giá cho sản phẩm")
         }
@@ -238,5 +256,4 @@
                 reader.readAsDataURL(input.files[i]);
             }
         }
-    }
-</script>
+    }</script>
