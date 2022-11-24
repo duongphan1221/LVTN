@@ -1,14 +1,13 @@
-﻿
-<div class="chat_chat" onclick="AnHienKhungChat()" id="chat_chat" style="width:60px"><strong id="sotn">0</strong><i class="fa fa-comments"></i></div>
+﻿<div class="chat_chat" onclick="AnHienKhungChat()" id="chat_chat"><strong id="sotn">0</strong><i class="fa fa-comments"></i></div>
 <div id="ChatChinh">
     <div id="chat_danhsach">
-        
+
     </div>
     <div id="chat_tenshop">
         <strong id="strongtenshop"></strong><strong id="mashop" style="display: none"></strong>
     </div>
     <div class="chat_khungchat" id="chat_khungchat">
-       
+
     </div>
 </div>
 
@@ -52,21 +51,18 @@
         }
         else {
             var interval_id = window.setInterval(function () { }, Number.MAX_SAFE_INTEGER);
-
             // Clear any timeout/interval up to that id
             for (var i = 1; i < interval_id; i++) {
                 window.clearInterval(i);
             }
         }
     }
-
     // chat moi
     function BatDauChatMoi(id, tenshop) {
         // console.log(id);
         document.getElementById('strongtenshop').innerHTML = tenshop;
         ChiTietChat(id, tenshop);
     }
-
     // chi tiet chat
     function ChiTietChat(id, tenshop) {
         // console.log(id);
@@ -86,7 +82,6 @@
                     else {
                         str += '<div class="chat_nhan chat_tinnhan"><div class="chat_tn">' + data[i].noidung + '</div><small class="chat_tn">' + data[i].thoigian + '</small></div>';
                     }
-
                 }
                 str += '</div>';
                 str += '<div class="chat_soantin"><input class="form-control" type="text" id="chat_msg" /><button class="form-control btn-primary fa fa-paper-plane-o" onclick="GuiTinNhan(\'' + id + '\',\'' + tenshop + '\')"></button></div>';
@@ -110,14 +105,12 @@
             }
         })
     }
-
-    // gui tin nhan 
+    // gui tin nhan
     function GuiTinNhan(id, tenshop) {
         document.getElementById('chat_msg').focus();
         var msg = document.getElementById('chat_msg').value;
         // console.log(id + ", " + msg);
         if (msg == "" || msg == null || !/\S/.test(msg)) {
-
         }
         else {
             $.ajax({
@@ -133,7 +126,6 @@
             })
         }
     }
-
     // an hien khung chat
     function AnHienKhungChat() {
         var d = document.getElementById("ChatChinh").style.display;
@@ -146,7 +138,6 @@
         }
         HienTN();
     }
-
     // reset chat
     function ResetChat() {
         $.ajax({
@@ -192,7 +183,7 @@
                     else {
                         str += '<table class="chat_table">'
                     }
-                    
+
                     str += '<tr><td colspan="3"><strong>' + data[i].tenShop + '</strong></td></tr>'
                     var b = "";
                     if (data[i].tinCuoi.latinguidi == true) b = "Bạn: ";
@@ -206,7 +197,6 @@
             }
         })
     }
-
     // hien so tn
     function HienTN() {
         $.ajax({
@@ -217,7 +207,6 @@
             }
         })
     }
-
     // lay id
     function GetNameID() {
         var id = "";
@@ -231,7 +220,6 @@
         })
         return id;
     }
-
     // ready
     $(document).ready(function () {
         var i = '';

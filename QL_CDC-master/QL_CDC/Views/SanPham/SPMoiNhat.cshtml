@@ -38,7 +38,7 @@
         <table style="width:90%">
             <tr>
                 <th style="width:15%">
-                    <div class="d-flex align-items-start align-items-sm-center gap-4" >
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="~/template/img/binh nuoc.jpg" style="border-radius:30%"
                              height="80"
                              width="80"
@@ -116,9 +116,9 @@
     <div class="card product-item mb-4 sanpham" style="width: 105%">
         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
             @*<div style="width: 100%; display: flex;">
-                <div class="tagthoigian">@item.thoigiansp tháng</div>
-                <div class="tagthoigian">@sosao <i class="fa fa-star" style="color: white;"></i></div>
-            </div>*@
+                    <div class="tagthoigian">@item.thoigiansp tháng</div>
+                    <div class="tagthoigian">@sosao <i class="fa fa-star" style="color: white;"></i></div>
+                </div>*@
             <img class="img-fluid w-100" src="@item.anhsp[0]" alt="">
         </div>
         <div class="card-body border-left border-right text-center p-0 pt-2 pb-1">
@@ -162,8 +162,7 @@ else
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="js/jquery-1.11.1.min.js"></script>
 
-<script>
-    $('#myCarousel').carousel({
+<script>$('#myCarousel').carousel({
         interval: 2500
     });
 
@@ -219,6 +218,5 @@ else
     }
 
     function DoKhac() {
-        window.location.href = '/SanPham/SPMoiNhat';
-    }
-</script>
+        window.location.href = '/SanPham/DoKhac';
+    }</script>

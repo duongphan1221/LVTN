@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_ThirdLayout.cshtml";
 }
 
-
+<script src="/template/sneat//assets/vendor/js/bootstrap.js"></script>
 <!-- Cart Start -->
 <div class="text-center mb-4" style="margin-top:-20px;">
-    <h2 class="section-title px-5" ><span class="px-2" style="background-color:gainsboro" >Giỏ hàng của ban</span></h2>
+    <h2 class="section-title px-5" ><span class="px-2" style="background-color:gainsboro" >Giỏ hàng của bạn</span></h2>
 </div>
 @if (Model.SanPham.Count() != 0)
 {
@@ -35,7 +35,7 @@
                             string tonggiaid = "tonggia" + id.ToString();
                             <tr>
                                 <td class=""><img src="@i.img" alt="" style="width: 50px;height: 50px;"> </td>
-                                <td>@i.tensp</td>
+                                <td><b>@i.tensp<b></td>
                                 <td class="align-middle">@dongia</td>
                                 <td class="align-middle">
                                     <div class="input-group quantity mx-auto" style="width: 100px;">

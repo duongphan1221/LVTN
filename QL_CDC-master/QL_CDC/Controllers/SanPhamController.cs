@@ -43,6 +43,20 @@ namespace QL_CDC.Controllers
             return View(SP);
         }
 
+        // DS SP mới nhất
+        //public IActionResult SPMoiNhat()
+        //{
+        //    List<SanPhamModel> SP = new List<SanPhamModel>();
+        //    var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+        //        DateTime d1 = Convert.ToDateTime(x.SP_NGAYDANG);
+        //        DateTime d2 = Convert.ToDateTime(DateTime.Today);
+        //        TimeSpan Time = d2 - d1;
+        //        int d = Time.Days;
+                
+        //    return Json(d);
+        //}
+
         public IActionResult DoCaNhan()
         {
             List<SanPhamModel> SP = new List<SanPhamModel>();
@@ -226,8 +240,138 @@ namespace QL_CDC.Controllers
             return View(L);
         }
 
-        //Them SP do noi that
-        public IActionResult ThemSPDoNoiThat()
+        // Them giay dep
+        [Authorize(Roles = "sv")]
+        public IActionResult ThemGiayDep()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them phu kien
+        [Authorize(Roles = "sv")]
+        public IActionResult ThemPhuKien()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them Tui balo
+        [Authorize(Roles = "sv")]
+        public IActionResult ThemTuiBalo()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them ca nhan khac
+        [Authorize(Roles = "sv")]
+        public IActionResult ThemCaNhanKhac()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        //Them Kệ tủ
+        public IActionResult ThemKeTu()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        //Them bàn ghế
+        public IActionResult ThemBanGhe()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        //Them Giường, chăn ga 
+        public IActionResult ThemGiuong()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        //Them Dụng cụ nhà bếp 
+        public IActionResult ThemDungCuNhaBep()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        //Them Quạt điều hòa 
+        public IActionResult ThemQuatDieuHoa()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        //Them Đèn
+        public IActionResult ThemDen()
         {
             List<SelectListModel> L = new List<SelectListModel>();
             foreach (var x in db.LOAIMATHANGs)
@@ -241,7 +385,7 @@ namespace QL_CDC.Controllers
         }
 
         // Them SP do dien tu
-        public IActionResult ThemSPDoDienTu()
+        public IActionResult ThemDienThoai()
         {
             List<SelectListModel> L = new List<SelectListModel>();
             foreach (var x in db.LOAIMATHANGs)
@@ -542,7 +686,11 @@ namespace QL_CDC.Controllers
 
         public IActionResult ChonLoaiSPThem()
         {
+            return View();
+        }
 
+        public IActionResult ChonChiTietDoCaNhan()
+        {
             return View();
         }
     }

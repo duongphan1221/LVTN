@@ -16,7 +16,7 @@ namespace QL_CDC.Controllers
         {
             List<ChatModel> C = new List<ChatModel>();
             var name = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            foreach(var item in db.CHATs.Where(x => x.SV_MSSV_G == name).Select(x => x.SV_MSSV_N).Distinct())
+            foreach (var item in db.CHATs.Where(x => x.SV_MSSV_G == name).Select(x => x.SV_MSSV_N).Distinct())
             {
                 ChatModel c = new ChatModel();
                 c.MaNguoiGui = name;
@@ -26,7 +26,7 @@ namespace QL_CDC.Controllers
                 CHAT CH = new CHAT();
                 CHAT C1 = db.CHATs.OrderBy(a => a.CHAT_THOIGIAN).Where(a => a.SV_MSSV_G == name && a.SV_MSSV_N == item).LastOrDefault();
                 CHAT C2 = db.CHATs.OrderBy(a => a.CHAT_THOIGIAN).Where(a => a.SV_MSSV_N == name && a.SV_MSSV_G == item).LastOrDefault();
-                if((C2 != null) && (C2.CHAT_THOIGIAN > C1.CHAT_THOIGIAN))
+                if ((C2 != null) && (C2.CHAT_THOIGIAN > C1.CHAT_THOIGIAN))
                 {
                     CH = C2;
                 }
@@ -73,7 +73,7 @@ namespace QL_CDC.Controllers
                 };
 
                 c.img = db.HINHANHs.Where(a => a.SV_MSSV == name).Select(a => a.HA_LINK).FirstOrDefault();
-                if(C.Where(a => a.MaNguoiGui == name && a.MaNguoiNhan == item).FirstOrDefault() == null)
+                if (C.Where(a => a.MaNguoiGui == name && a.MaNguoiNhan == item).FirstOrDefault() == null)
                 {
                     C.Add(c);
                 }
@@ -87,7 +87,7 @@ namespace QL_CDC.Controllers
             List<TinNhan> TN = new List<TinNhan>();
             foreach (var i in db.CHATs.Where(a => a.SV_MSSV_G == name || a.SV_MSSV_N == name))
             {
-                if(i.SV_MSSV_N == msv || i.SV_MSSV_G == msv)
+                if (i.SV_MSSV_N == msv || i.SV_MSSV_G == msv)
                 {
                     TinNhan t = new TinNhan()
                     {
@@ -114,9 +114,9 @@ namespace QL_CDC.Controllers
         public IActionResult SoTinNhanChuaDoc()
         {
             int s = 0;
-            foreach(var i in db.CHATs.Where(a => a.SV_MSSV_N == User.FindFirstValue(ClaimTypes.NameIdentifier)))
+            foreach (var i in db.CHATs.Where(a => a.SV_MSSV_N == User.FindFirstValue(ClaimTypes.NameIdentifier)))
             {
-                if((bool)i.CHAT_DADOC == false)
+                if ((bool)i.CHAT_DADOC == false)
                 {
                     s++;
                 }
