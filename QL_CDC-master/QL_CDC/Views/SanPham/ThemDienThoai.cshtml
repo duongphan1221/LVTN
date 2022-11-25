@@ -11,26 +11,57 @@
     <div class="text-left mb-4" style="margin-left:-33px">
         <h4 class=" px-5 " style="font-weight:bold; text-decoration:underline"><span class="px-2"><b>Danh mục/ </b> Đồ điện tử - Điện thoại</span></h4>
     </div>
-    <br>
 
     <div class="table-themsanpham2">
         <div class="add_label">
-            <label>Hãng - Loại  </label>
+            <label>Hãng </label>
 
         </div>
-        <div >
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Launch demo modal
-            </button>
-            </div>
-        
+        <div class="add_input_2" style="width:20%">
+            <select class="form-control" id="add_hang" style="font-weight:bold" onchange="Hang()">
+                <option value="0" style="text-align:left; " selected disabled>Chọn hãng điện thoại</option>
+                <option value="Apple" style="text-align:left; font-weight:bold ">Apple</option>
+                <option value="Samsung" style="text-align:left; font-weight:bold ">Samsung</option>
+                <option value="Sony" style="text-align:left; font-weight:bold ">Sony</option>
+                <option value="Google" style="text-align:left; font-weight:bold ">Google</option>
+                <option value="Xiaomi" style="text-align:left; font-weight:bold ">Xiaomi</option>
+                <option value="LG" style="text-align:left; font-weight:bold ">LG</option>
+                <option value="Huawei" style="text-align:left; font-weight:bold ">Huawei</option>
+                <option value="Vivo" style="text-align:left; font-weight:bold ">Vivo</option>
+                <option value="Oppo" style="text-align:left; font-weight:bold ">Oppo</option>
+                <option value="Asus" style="text-align:left; font-weight:bold ">Asus</option>
+                <option value="Realmi" style="text-align:left; font-weight:bold ">Realmi</option>
+                <option value="Nokia" style="text-align:left; font-weight:bold ">Nokia</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Dòng máy </label>
+
+        </div>
+        <div class="add_input_2" style="width:20%">
+            <select class="form-control" id="add_dongmay" style="font-weight: bold;">
+            </select>
+        </div>
         <div style="width: 20%">
 
         </div>
     </div>
-    <br />
+    @*<div class="table-themsanpham2">
+            <div class="add_label">
+                <label>Màu sắc </label>
 
-    <div class="table-themsanpham">
+            </div>
+            <div class="add_input_number">
+                <input type="text" id="add_mau" class="form-control" placeholder="Đen/ Trắng/ Xanh/ ..." />
+            </div>
+            <div style="width: 20%">
+
+            </div>
+        </div>*@
+
+    <div class="table-themsanpham2">
         <div class="add_label">
             <label>Tiêu đề </label>
         </div>
@@ -103,7 +134,7 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota" placeholder="Loại ,chất liệu, xuất xứ,..."></textarea>
+        <textarea class="form-control" id="add_mota" placeholder="Chi tiết dòng máy, Tình trạng/ độ mới sản phẩm, Màu sắc, thời gian sử dụng, bảo hành/ sửa chữa/ phụ kiện đi kèm nếu có, ,..."></textarea>
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -113,39 +144,7 @@
     </div>
 
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Hãng - Loại</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="height:450px; ">
-                <select class="form-select" aria-label="Default select example">
-                    <option value="1" onclick="hienLoai()">SAMSUNG</option>
-                    <option value="2">SONY</option>
-                    <option value="3">GOOGLE</option>
-                    <option value="4">NOKIA</option>
-                    <option value="5">LG</option>
-                    <option value="6">XIAOMI</option>
-                    <option value="7">VIVO</option>
-                    <option value="8">OPPO</option>
-                    <option value="9">HUAWEI</option>
-                    <option value="10">Apple</option>
-                </select>
-                <select id="loaidt" class="form-select" aria-label="Default select example">
-                    
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <script>
@@ -157,7 +156,9 @@
         var gia = $('#add_gia').val();
         var tg = $('#add_thoigian').val();
         var sl = $('#add_sl').val();
-        var nsx = $('#add_nsx').val();
+        var hang = $('#add_hang').val();
+        var dongmay = $('#add_dongmay').val();
+        var nsx = hang + "(" + dongmay + ")";
         var img = document.getElementById('add_file').files;
         var mota = $('#add_mota').val();
 
@@ -190,13 +191,16 @@
             })
         }
     }
-    function KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img, mota) {
+    function KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, hang, img, mota) {
         var check = false;
         if (tensp == null || tensp == "") {
             alert("Vui lòng nhập tên sản phẩm")
         }
         else if (gia == null || gia == 0 || gia == 0) {
             alert("Vui lòng nhập giá cho sản phẩm")
+        }
+        else if (gia == "") {
+            alert("Vui lòng chọn hãng điện thoại")
         }
         //else if (tg == null) {
         //    alert("Vui lòng chọn thời gian đã sử dụng")
@@ -236,27 +240,7 @@
         if (x < 0) document.getElementById('add_thoigian').value = 0;
     });
 
-    // Doi select
-    $('#add_mh').change(function () {
-        CapNhatLoai($(this).val());
-    })
-    function CapNhatLoai(id) {
-        document.getElementById('add_l').innerHTML = '<option value="0" style="text-align:center" selected disabled>--- Loại sản phẩm ---</option>';
-        $.ajax({
-            url: '/SanPham/CapNhatLoai',
-            type: 'post',
-            data: {
-                id: id
-            },
-            async: false,
-            success: function (data) {
-                for (var i in data) {
-                    var str = new Option(data[i].name, data[i].id);;
-                    $('#add_l').append(str);
-                }
-            }
-        })
-    }
+
     function removeOptions(selectElement) {
         var i, L = selectElement.options.length - 1;
         for (i = L; i >= 0; i--) {
@@ -288,7 +272,176 @@
         }
     }
 
-    function hienLoai() {
-        $('#loai').innerHTML = ;
+    //function hienLoai() {
+    //    $('#loai').innerHTML = ;
+    //}
+    //function layHang() {
+    //    var a = $('#chonhang').val();
+    //    console.log(a);
+    //}
+
+
+    function Hang() {
+        var x = $('#add_hang').val();
+        console.log(x);
+        CapNhatDongMay(x);
     }
+
+    function CapNhatDongMay(hang) {
+        if (hang == "Apple") {
+            var str = "";
+            str += '<option value="iPhone 3G" style="text-align:left" >iPhone 3G</option>';
+            str += '<option value="iPhone 4" style="text-align:left" >iPhone 4</option>';
+            str += '<option value="iPhone 4S" style="text-align:left" >iPhone 4S</option>';
+            str += '<option value="iPhone 5" style="text-align:left" >iPhone 5</option>';
+            str += '<option value="iPhone 5S" style="text-align:left" >iPhone 5S</option>';
+            str += '<option value="iPhone 6/6 Plus" style="text-align:left" >iPhone 6/6 Plus</option>';
+            str += '<option value="iPhone 6S/6S Plus" style="text-align:left" >iPhone 6S/6S Plus</option>';
+            str += '<option value="iPhone SE" style="text-align:left" >iPhone SE</option>';
+            str += '<option value="iPhone 7/7 Plus" style="text-align:left" >iPhone 7/7 Plus</option>';
+            str += '<option value="iPhone 8/8 Plus" style="text-align:left" >iPhone 8/8 Plus</option>';
+            str += '<option value="iPhone X" style="text-align:left" >iPhone X</option>';
+            str += '<option value="iPhone Xs/ Xs Max/ Xr" style="text-align:left" >iPhone Xs/ Xs Max/ Xr</option>';
+            str += '<option value="iPhone 11 Series" style="text-align:left" >iPhone 11 Series</option>';
+            str += '<option value="iPhone 12 Series" style="text-align:left" >iPhone 12 Series</option>';
+            str += '<option value="iPhone 13 Series" style="text-align:left" >iPhone 13 Series</option>';
+            str += '<option value="iPhone 14 Series" style="text-align:left" >iPhone 14 Series</option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+
+        else if (hang == "Samsung") {
+            var str = "";
+            str += '<option value="Galaxy Note" style="text-align:left" >Galaxy Note</option>';
+            str += '<option value="Galaxy S" style="text-align:left" >Galaxy S</option>';
+            str += '<option value="Galaxy A" style="text-align:left" >Galaxy A</option>';
+            str += '<option value="Galaxy M" style="text-align:left" >Galaxy M</option>';
+            str += '<option value="Galaxy Z" style="text-align:left" >Galaxy Z</option>';
+            str += '<option value="Dòng khác" style="text-align:left" >Dòng khác</option>';
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+
+        else if (hang == "Sony") {
+            var str = "";
+            str += '<option value="Sony Xperia 1" style="text-align:left" >Sony Xperia 1</option>';
+            str += '<option value="Sony Xperia 3" style="text-align:left" >Sony Xperia 3</option>';
+            str += '<option value="Sony Xperia 5" style="text-align:left" >Sony Xperia 5</option>';
+            str += '<option value="Sony Xperia 10" style="text-align:left" >Sony Xperia 10</option>';
+            str += '<option value="Sony Xperia Z" style="text-align:left" >Sony Xperia Z</option>';
+            str += '<option value="Sony Xperia X" style="text-align:left" >Sony Xperia X</option>';
+            str += '<option value="Dòng khác" style="text-align:left" >Dòng khác</option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+
+        else if (hang == "Google") {
+            var str = "";
+            str += '<option value="Google Pixel/ Pixel XL" style="text-align:left" >Pixel/ Pixel XL</option>';
+            str += '<option value="Pixel 2/ Pixel 2 XL" style="text-align:left" >Pixel 2/ Pixel 2 XL</option>';
+            str += '<option value="Pixel 3/ Pixel 3 XL" style="text-align:left" >Pixel 3/ Pixel 3 XL</option>';
+            str += '<option value="Pixel 3a/ Pixel 3a XL" style="text-align:left" >Pixel 3a/ Pixel 3a XL</option>';
+            str += '<option value="Pixel 4/ Pixel 4 XL" style="text-align:left" >Pixel 4/ Pixel 4 XL</option>';
+            str += '<option value="Pixel 4a" style="text-align:left" >Pixel 4a</option>';
+            str += '<option value="Pixel 5" style="text-align:left" >Pixel 5</option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+
+        else if (hang == "Xiaomi") {
+            var str = "";
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+
+        else if (hang == "Xiaomi") {
+            var str = "";
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+        else if (hang == "Xiaomi") {
+            var str = "";
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+        else if (hang == "Xiaomi") {
+            var str = "";
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+        else if (hang == "Xiaomi") {
+            var str = "";
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+        else if (hang == "Xiaomi") {
+            var str = "";
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+            str += '<option value="" style="text-align:left" ></option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+    }
+
+    //// Doi select
+    //$('#add_mh').change(function () {
+    //    CapNhatLoai($(this).val());
+    //})
+    //function CapNhatLoai(id) {
+    //    document.getElementById('add_l').innerHTML = '<option value="0" style="text-align:center" selected disabled>--- Loại sản phẩm ---</option>';
+    //    $.ajax({
+    //        url: '/SanPham/LoaiDienThoai',
+    //        type: 'post',
+    //        data: {
+    //            id: id
+    //        },
+    //        async: false,
+    //        success: function (data) {
+    //            for (var i in data) {
+    //                var str = new Option(data[i].name, data[i].id);
+    //                $('#add_l').append(str);
+    //            }
+    //        }
+    //    })
+    //}
+
 </script>

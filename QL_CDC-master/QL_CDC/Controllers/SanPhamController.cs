@@ -416,7 +416,8 @@ namespace QL_CDC.Controllers
         [HttpPost]
         public IActionResult CapNhatLoai(string id)
         {
-            int n; int.TryParse(id, out n);
+            int n; 
+            int.TryParse(id, out n);
             List<SelectListModel> L = new List<SelectListModel>();
             foreach(var i in db.LOAISANPHAMs)
             {
@@ -428,6 +429,18 @@ namespace QL_CDC.Controllers
                     L.Add(s);
                 }
             }
+            return Json(L);
+        }
+
+        [HttpPost]
+        public IActionResult LoaiDienThoai(string id)
+        {
+            int n;
+            int.TryParse(id, out n);
+            List<string> L = new List<string>();
+            L.Add("SamsungA11");
+            L.Add("SamsungA12");
+            L.Add("SamsungA13");
             return Json(L);
         }
 
