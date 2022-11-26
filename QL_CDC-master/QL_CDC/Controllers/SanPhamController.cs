@@ -63,7 +63,7 @@ namespace QL_CDC.Controllers
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 1 && x.LOAI_MALOAI <= 7)
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 2 && x.LOAI_MALOAI <= 7)
                 {
                     SanPhamModel s = new SanPhamModel();
                     s.masp = x.SP_MSSP;
@@ -86,7 +86,7 @@ namespace QL_CDC.Controllers
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 8 && x.LOAI_MALOAI <= 12 || x.LOAI_MALOAI == 14 || x.LOAI_MALOAI == 15 || x.LOAI_MALOAI == 21)
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 8 && x.LOAI_MALOAI <= 12 || x.LOAI_MALOAI == 21)
                 {
                     SanPhamModel s = new SanPhamModel();
                     s.masp = x.SP_MSSP;
@@ -398,8 +398,66 @@ namespace QL_CDC.Controllers
             return View(L);
         }
 
+        // Them SP do dien tu
+        public IActionResult ThemLaptop()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+
+        // Them SP do dien tu
+        public IActionResult ThemPhuKienDT()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them SP do dien tu
+        public IActionResult ThemDoDienTuKhac()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+
         // Them SP Xe
         public IActionResult ThemSPXe()
+        {
+            List<SelectListModel> L = new List<SelectListModel>();
+            foreach (var x in db.LOAIMATHANGs)
+            {
+                SelectListModel s = new SelectListModel();
+                s.id = x.MH_MAMH;
+                s.name = x.MH_TENMH;
+                L.Add(s);
+            }
+            return View(L);
+        }
+
+        // Them SP Khac
+        public IActionResult ThemSPKhac()
         {
             List<SelectListModel> L = new List<SelectListModel>();
             foreach (var x in db.LOAIMATHANGs)
@@ -675,7 +733,6 @@ namespace QL_CDC.Controllers
                     var mh = db.LOAIMATHANGs.Where(a => a.MH_MAMH == mamh).Select(a => a.MH_TENMH).FirstOrDefault();
                     if(x.SP_TENSP.ToLower().Contains(str) ||  
                         x.SP_MOTA.ToLower().Contains(str) ||
-                        x.SP_HANGSX.ToLower().Contains(str) ||
                         loai.ToLower().Contains(str) ||
                         mh.ToLower().Contains(str)
                         )

@@ -69,13 +69,14 @@
                     </a>
                     <li>
                         <div class="dropdownlink">
-                            <h5><i class="fa fa-male" aria-hidden="true"></i> Đồ cá nhân <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
+                            <h5><i class="fa fa-male" aria-hidden="true"></i> Đồ cá nhân, Thời trang <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Chăn, ra, gối, nệm</a></li>
-                            <li><a href="#">Giày dép</a></li>
-                            <li><a href="#">Nón, mũ</a></li>
-                            <li><a href="#">Quần áo</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Quần áo</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Giày dép</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Phụ kiện thời trang</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Túi, balo</a></li>
+                            <li onclick="DoCaNhan()"><a href="#">Đồ dùng cá nhân khác</a></li>
                         </ul>
                     </li>
                     <li>
@@ -87,36 +88,49 @@
 
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Chuột, bàn phím, ...</a></li>
-                            <li><a href="#">Điện tử học tập</a></li>
-                            <li><a href="#">Điện tử gia dụng</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Điện thoại</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Laptop</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Phụ kiện điện tử</a></li>
+                            <li onclick="DoDienTu()"><a href="#">Đồ điện tử khác</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="dropdownlink">
                             <h5>
-                                <i class="fa fa-bed" aria-hidden="true"></i> Nội thất
+                                <i class="fa fa-bed" aria-hidden="true"></i> Nội thất, Gia dụng
                                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </h5>
                         </div>
                         <ul class="submenuItems">
-                            <li><a href="#">Kệ, tủ</a></li>
-                            <li><a href="#">Bàn ghế</a></li>
-                            <li><a href="#">Đô gia dụng</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Tủ, kệ</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Bàn ghế</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Giường, chăn ga gối nệm</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Dụng cụ nhà bếp</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Quạt, điều hòa</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Đèn</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="dropdownlink">
                             <h5>
-                                <i class="fa fa-motorcycle" aria-hidden="true"></i> Xe
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fa fa-motorcycle" aria-hidden="true"></i> Xe cộ
+                                @*<i class="fa fa-chevron-down" aria-hidden="true"></i>*@
                             </h5>
 
                         </div>
-                        <ul class="submenuItems">
-                            <li><a href="#">Xe máy</a></li>
-                            <li><a href="#">Xe đạp</a></li>
-                        </ul>
+                        @*<ul class="submenuItems">
+                <li onclick="PhuongTien()"><a href="#">Xe máy</a></li>
+                <li onclick="PhuongTien()"><a href="#">Xe đạp</a></li>
+            </ul>*@
+                    </li>
+                    <li>
+                        <div class="dropdownlink">
+                            <h5 onclick="DoKhac()">
+                                Khác
+                                @*<i class="fa fa-chevron-down" aria-hidden="true"></i>*@
+                            </h5>
+                        </div>
+
                     </li>
                 </ul>
 

@@ -82,7 +82,7 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota" placeholder="Tên, loại phụ kiện, kích cỡ, nhãn hiệu, chất liệu, màu sắc,..."></textarea>
+        <textarea class="form-control" id="add_mota" placeholder="Tên, loại , kích cỡ, nhãn hiệu, chất liệu, màu sắc,..."></textarea>
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -138,7 +138,7 @@
     function KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img, mota) {
         var check = false;
         if (tensp == null || tensp == "") {
-            alert("Vui lòng nhập tên sản phẩm")
+            alert("Vui lòng nhập tiêu đề bài đăng")
         }
         else if (gia == null || gia == 0 || gia == 0) {
             alert("Vui lòng nhập giá cho sản phẩm")

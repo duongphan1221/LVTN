@@ -11,7 +11,7 @@
     </div>
     <div class="table-themsanpham">
         <div class="add_label">
-            <label>Tên sản phẩm: </label>
+            <label>Tên sản phẩm </label>
         </div>
         <div class="add_input">
             <input type="text" id="add_ten" class="form-control" placeholder="Nhập tên của sản phẩm" value="@Model.sp.tensp"/>
@@ -20,7 +20,7 @@
     <!--Loai-->
     <div class="table-themsanpham2">
         <div class="add_label">
-            <label>Loại: </label>
+            <label>Loại </label>
 
         </div>
         <div class="add_input_2">
@@ -62,7 +62,7 @@
     <!--Thoi gian, gia-->
     <div class="table-themsanpham2">
         <div class="add_label">
-            <label>Giá: </label>
+            <label>Giá </label>
 
         </div>
         <div class="add_input_number">
@@ -71,18 +71,12 @@
         <div style="width: 20%">
 
         </div>
-        <div class="add_label">
-            <label>Đã dùng trong: </label>
-
-        </div>
-        <div class="add_input_number">
-            <input type="number" id="add_thoigian" value="@Model.sp.thoigiansp" min="0" class="form-control" placeholder="Tháng" />
-        </div>
+        
     </div>
     <!--So luong, nsx-->
     <div class="table-themsanpham2">
         <div class="add_label">
-            <label>Số lượng: </label>
+            <label>Số lượng </label>
 
         </div>
         <div class="add_input_number">
@@ -91,48 +85,49 @@
         <div style="width: 20%">
 
         </div>
-        <div class="add_label">
-            <label>Nhà sản xuất: </label>
+        </div>
+        <div class="table-themsanpham2">
+            <div class="add_label">
+                <label>Hãng  </label>
 
+            </div>
+            <div class="add_input_number">
+                <input type="text" id="add_nsx" class="form-control" value="@Model.sp.nsx" />
+            </div>
         </div>
-        <div class="add_input_number">
-            <input type="text" id="add_nsx" class="form-control" value="@Model.sp.nsx" />
-        </div>
-    </div>
-    <!--Hinh anh-->
-    <div class="table-themsanpham2">
-        <div class="add_label">
-            <label>Hình ảnh: </label>
+        <!--Hinh anh-->
+        <div class="table-themsanpham2">
+            <div class="add_label">
+                <label>Hình ảnh </label>
 
+            </div>
+            <div class="add_input_file">
+                <div class="btnaddfile" onclick="document.getElementById('add_file').click()">Tải ảnh lên</div>
+                <input style="display: none" type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
+            </div>
         </div>
-        <div class="add_input_file">
-            <div class="btnaddfile" onclick="document.getElementById('add_file').click()">Tải ảnh lên</div>
-            <input style="display: none" type="file" id="add_file" class="form-control add_file" multiple="multiple" accept=".png, .jpg, .jpeg" />
-        </div>
-    </div>
-    <div class="table-themsanpham2" id="add_preview">
-        @foreach(var img in Model.sp.anhsp)
+        <div class="table-themsanpham2" id="add_preview">
+            @foreach (var img in Model.sp.anhsp)
             {
-            <img src="@img" />
-            }
-    </div>
-    <!--Mota-->
-    <div class="table-themsanpham" style="margin-top:2vh">
-        <div class="add_label" style="width:50%">
-            <label>Mô tả sản phẩm: </label>
+    <img src="@img" />            }
         </div>
-    </div>
-    <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota">@Model.sp.motasp</textarea>
-    </div>
-    <!--Nut-->
-    <div class="table-themsanpham" style="margin-top:2vh;">
-        <div style="width:40%"></div>
-        <div class="btnaddfile" style="width:20%" onclick="LuuSuaSanPham()">Chỉnh sửa</div>
-        <div style="width:40%"></div>
-    </div>
+        <!--Mota-->
+        <div class="table-themsanpham" style="margin-top:2vh">
+            <div class="add_label" style="width:50%">
+                <label>Mô tả sản phẩm: </label>
+            </div>
+        </div>
+        <div class="table-themsanpham" style="margin-top:0vh">
+            <textarea class="form-control" id="add_mota">@Model.sp.motasp</textarea>
+        </div>
+        <!--Nut-->
+        <div class="table-themsanpham" style="margin-top:2vh;">
+            <div style="width:40%"></div>
+            <div class="btnaddfile" style="width:20%" onclick="LuuSuaSanPham()">Chỉnh sửa</div>
+            <div style="width:40%"></div>
+        </div>
 
-</div>
+    </div>
 
 <script>
     function commaSeparateNumber(val) {
@@ -206,9 +201,7 @@
         else if (gia == null || gia == 0 || gia == 0) {
             alert("Vui lòng nhập giá cho sản phẩm")
         }
-        else if (tg == null) {
-            alert("Vui lòng chọn thời gian đã sử dụng")
-        }
+
         else if (sl == 0 || sl == '0' || sl == null) {
             alert("Vui lòng nhâp số lượng sản phẩm")
         }

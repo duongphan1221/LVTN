@@ -6,10 +6,10 @@
 <div class="container-fluid pt-5" style=" margin-top: -40px; margin-left: 0px">
     <!--Ten-->
     <div class="text-left mb-4" style="margin-left:-33px">
-        <h4 class=" px-5 " style="font-weight:bold; text-decoration:underline"><span class="px-2"><b>Danh mục/ </b> Nội thất, gia dụng - Bàn, ghế</span></h4>
+        <h4 class=" px-5 " style="font-weight:bold; text-decoration:underline"><span class="px-2"><b>Danh mục/ </b> Đồ điện tử - Khác</span></h4>
     </div>
-    <br>
-    <div class="table-themsanpham">
+    
+    <div class="table-themsanpham2">
         <div class="add_label">
             <label>Tiêu đề </label>
         </div>
@@ -51,14 +51,15 @@
         <div class="add_input_number">
             <input type="number" id="add_sl" min="0" class="form-control" placeholder="Đơn vị" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
         </div>
+    </div>
+    <div class="table-themsanpham2">
+        <div class="add_label">
+            <label>Hãng </label>
 
-        @*<div class="add_label">
-                <label>Nhà sản xuất: </label>
-
-            </div>
-            <div class="add_input_number">
-                <input type="text" id="add_nsx" class="form-control" placeholder="Tên NSX" />
-            </div>*@
+        </div>
+        <div class="add_input_number">
+            <input type="text" id="add_nsx" class="form-control" placeholder="" />
+        </div>
     </div>
 
     <!--Hinh anh-->
@@ -82,7 +83,7 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota" placeholder="Tên, loại , kích thước (Dài x Rộng), chất liệu, màu sắc,..."></textarea>
+        <textarea class="form-control" id="add_mota" placeholder="Tình trạng, thời gian sử dụng, sửa chữa, nâng cấp, thiết kế, màu sắc, ,..."></textarea>
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -97,14 +98,16 @@
 <script>// Dang san pham
     function DangSanPham() {
         var tensp = document.getElementById('add_ten').value;
-        var mahang = 3;
-        var maloai = 14;
+        var mahang = 2;
+        var maloai = 10;
         var gia = $('#add_gia').val();
         var tg = $('#add_thoigian').val();
         var sl = $('#add_sl').val();
         var nsx = $('#add_nsx').val();
         var img = document.getElementById('add_file').files;
-        var mota = $('#add_mota').val();
+        var loai = $('#add_loai').val();
+        var m = $('#add_mota').val();
+        var mota = loai + " - " + m;
 
         if (KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img.length, mota)) {
             var formData = new FormData();

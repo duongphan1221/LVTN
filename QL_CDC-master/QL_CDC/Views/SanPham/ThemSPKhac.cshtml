@@ -6,7 +6,7 @@
 <div class="container-fluid pt-5" style=" margin-top: -40px; margin-left: 0px">
     <!--Ten-->
     <div class="text-left mb-4" style="margin-left:-33px">
-        <h4 class=" px-5 " style="font-weight:bold; text-decoration:underline"><span class="px-2"><b>Danh mục/ </b> Nội thất, gia dụng - Bàn, ghế</span></h4>
+        <h4 class=" px-5 " style="font-weight:bold; text-decoration:underline"><span class="px-2"><b>Danh mục/ </b>Khác</span></h4>
     </div>
     <br>
     <div class="table-themsanpham">
@@ -82,7 +82,7 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota" placeholder="Tên, loại , kích thước (Dài x Rộng), chất liệu, màu sắc,..."></textarea>
+        <textarea class="form-control" id="add_mota" placeholder="Tên, loại , kích cỡ, nhãn hiệu, chất liệu, màu sắc,..."></textarea>
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -97,8 +97,8 @@
 <script>// Dang san pham
     function DangSanPham() {
         var tensp = document.getElementById('add_ten').value;
-        var mahang = 3;
-        var maloai = 14;
+        var mahang = 5;
+        /*var maloai = 6;*/
         var gia = $('#add_gia').val();
         var tg = $('#add_thoigian').val();
         var sl = $('#add_sl').val();
@@ -106,14 +106,14 @@
         var img = document.getElementById('add_file').files;
         var mota = $('#add_mota').val();
 
-        if (KiemTraDuLieu(tensp, mahang, maloai, gia, tg, sl, nsx, img.length, mota)) {
+        if (KiemTraDuLieu(tensp, mahang, gia, tg, sl, nsx, img.length, mota)) {
             var formData = new FormData();
             formData.append("tensp", tensp);
             for (var i = 0; i < img.length; i++) {
                 formData.append("img", img[i]);
             }
             formData.append("mahang", mahang);
-            formData.append("maloai", maloai);
+            /*formData.append("maloai", maloai);*/
             formData.append("gia", gia);
             /*formData.append("tg", tg);*/
             formData.append("sl", sl);

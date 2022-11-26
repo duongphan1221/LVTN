@@ -19,19 +19,15 @@
         </div>
         <div class="add_input_2" style="width:20%">
             <select class="form-control" id="add_hang" style="font-weight:bold" onchange="Hang()">
-                <option value="0" style="text-align:left; " selected disabled>Chọn hãng điện thoại</option>
+                <option value="0" style="text-align:left; " selected disabled>Chọn hãng laptop</option>
                 <option value="Apple" style="text-align:left; font-weight:bold ">Apple</option>
-                <option value="Samsung" style="text-align:left; font-weight:bold ">Samsung</option>
-                <option value="Sony" style="text-align:left; font-weight:bold ">Sony</option>
-                <option value="Google" style="text-align:left; font-weight:bold ">Google</option>
-                <option value="Xiaomi" style="text-align:left; font-weight:bold ">Xiaomi</option>
-                <option value="LG" style="text-align:left; font-weight:bold ">LG</option>
-                <option value="Huawei" style="text-align:left; font-weight:bold ">Huawei</option>
-                <option value="Vivo" style="text-align:left; font-weight:bold ">Vivo</option>
-                <option value="Oppo" style="text-align:left; font-weight:bold ">Oppo</option>
                 <option value="Asus" style="text-align:left; font-weight:bold ">Asus</option>
-                <option value="Realmi" style="text-align:left; font-weight:bold ">Realmi</option>
-                <option value="Nokia" style="text-align:left; font-weight:bold ">Nokia</option>
+                <option value="HP" style="text-align:left; font-weight:bold ">HP</option>
+                <option value="Dell" style="text-align:left; font-weight:bold ">Dell</option>
+                <option value="Lenovo" style="text-align:left; font-weight:bold ">Lenovo</option>
+                <option value="Acer" style="text-align:left; font-weight:bold ">Acer</option>
+                <option value="MSI" style="text-align:left; font-weight:bold ">MSI</option>
+                <option value="Sony" style="text-align:left; font-weight:bold ">Sony</option>                
                 <option value="Hãng khác" style="text-align:left; font-weight:bold ">Hãng khác</option>
             </select>
         </div>
@@ -135,7 +131,7 @@
         </div>
     </div>
     <div class="table-themsanpham" style="margin-top:0vh">
-        <textarea class="form-control" id="add_mota" placeholder="Chi tiết dòng máy, Tình trạng/ độ mới sản phẩm, Màu sắc, Dung lượng lưu trữ, thời gian sử dụng, bảo hành/ sửa chữa/ phụ kiện đi kèm nếu có, ,..."></textarea>
+        <textarea class="form-control" id="add_mota" placeholder="Chi tiết dòng máy, Tình trạng/ độ mới sản phẩm, Màu sắc, RAM, Ổ cứng, Dung lượng lưu trữ, thời gian sử dụng, bảo hành/ sửa chữa/ phụ kiện đi kèm nếu có, ,..."></textarea>
     </div>
     <!--Nut-->
     <div class="table-themsanpham" style="margin-top:2vh;">
@@ -148,12 +144,11 @@
 
 
 
-<script>
-    // Dang san pham
+<script>// Dang san pham
     function DangSanPham() {
         var tensp = document.getElementById('add_ten').value;
         var mahang = 2;
-        var maloai = 21;
+        var maloai = 12;
         var gia = $('#add_gia').val();
         var tg = $('#add_thoigian').val();
         var sl = $('#add_sl').val();
@@ -292,160 +287,102 @@
     function CapNhatDongMay(hang) {
         if (hang == "Apple") {
             var str = "";
-            str += '<option value="iPhone 3G" style="text-align:left" >iPhone 3G</option>';
-            str += '<option value="iPhone 4" style="text-align:left" >iPhone 4</option>';
-            str += '<option value="iPhone 4S" style="text-align:left" >iPhone 4S</option>';
-            str += '<option value="iPhone 5" style="text-align:left" >iPhone 5</option>';
-            str += '<option value="iPhone 5S" style="text-align:left" >iPhone 5S</option>';
-            str += '<option value="iPhone 6/6 Plus" style="text-align:left" >iPhone 6/6 Plus</option>';
-            str += '<option value="iPhone 6S/6S Plus" style="text-align:left" >iPhone 6S/6S Plus</option>';
-            str += '<option value="iPhone SE" style="text-align:left" >iPhone SE</option>';
-            str += '<option value="iPhone 7/7 Plus" style="text-align:left" >iPhone 7/7 Plus</option>';
-            str += '<option value="iPhone 8/8 Plus" style="text-align:left" >iPhone 8/8 Plus</option>';
-            str += '<option value="iPhone X" style="text-align:left" >iPhone X</option>';
-            str += '<option value="iPhone Xs/ Xs Max/ Xr" style="text-align:left" >iPhone Xs/ Xs Max/ Xr</option>';
-            str += '<option value="iPhone 11 Series" style="text-align:left" >iPhone 11 Series</option>';
-            str += '<option value="iPhone 12 Series" style="text-align:left" >iPhone 12 Series</option>';
-            str += '<option value="iPhone 13 Series" style="text-align:left" >iPhone 13 Series</option>';
-            str += '<option value="iPhone 14 Series" style="text-align:left" >iPhone 14 Series</option>';
-
-            document.getElementById('add_dongmay').innerHTML = str;
-        }
-
-        else if (hang == "Samsung") {
-            var str = "";
-            str += '<option value="Galaxy Note" style="text-align:left" >Galaxy Note</option>';
-            str += '<option value="Galaxy S" style="text-align:left" >Galaxy S</option>';
-            str += '<option value="Galaxy A" style="text-align:left" >Galaxy A</option>';
-            str += '<option value="Galaxy M" style="text-align:left" >Galaxy M</option>';
-            str += '<option value="Galaxy Z" style="text-align:left" >Galaxy Z</option>';
-            str += '<option value="" style="text-align:left" >Dòng khác</option>';
-            document.getElementById('add_dongmay').innerHTML = str;
-        }
-
-        else if (hang == "Sony") {
-            var str = "";
-            str += '<option value="Sony Xperia 1" style="text-align:left" >Sony Xperia 1</option>';
-            str += '<option value="Sony Xperia 3" style="text-align:left" >Sony Xperia 3</option>';
-            str += '<option value="Sony Xperia 5" style="text-align:left" >Sony Xperia 5</option>';
-            str += '<option value="Sony Xperia 10" style="text-align:left" >Sony Xperia 10</option>';
-            str += '<option value="Sony Xperia Z" style="text-align:left" >Sony Xperia Z</option>';
-            str += '<option value="Sony Xperia X" style="text-align:left" >Sony Xperia X</option>';
+            str += '<option value="Macbook" style="text-align:left" >Macbook</option>';
+            str += '<option value="Macbook Air" style="text-align:left" >Macbook Air</option>';
+            str += '<option value="Macbook Pro" style="text-align:left" >Macbook Pro</option>';
+            str += '<option value="Macbook Pro Touch Bar" style="text-align:left" >Macbook Pro Touch Bar</option>';
+            
             str += '<option value="" style="text-align:left" >Dòng khác</option>';
 
             document.getElementById('add_dongmay').innerHTML = str;
         }
 
-        else if (hang == "Google") {
+        else if (hang == "HP") {
             var str = "";
-            str += '<option value="Google Pixel/ Pixel XL" style="text-align:left" >Pixel/ Pixel XL</option>';
-            str += '<option value="Pixel 2/ Pixel 2 XL" style="text-align:left" >Pixel 2/ Pixel 2 XL</option>';
-            str += '<option value="Pixel 3/ Pixel 3 XL" style="text-align:left" >Pixel 3/ Pixel 3 XL</option>';
-            str += '<option value="Pixel 3a/ Pixel 3a XL" style="text-align:left" >Pixel 3a/ Pixel 3a XL</option>';
-            str += '<option value="Pixel 4/ Pixel 4 XL" style="text-align:left" >Pixel 4/ Pixel 4 XL</option>';
-            str += '<option value="Pixel 4a" style="text-align:left" >Pixel 4a</option>';
-            str += '<option value="Pixel 5" style="text-align:left" >Pixel 5</option>';
-
+            str += '<option value="Chromebook" style="text-align:left" >Chromebook</option>';
+            str += '<option value="ZBook" style="text-align:left" >ZBook</option>';
+            str += '<option value="ProBook" style="text-align:left" >ProBook</option>';
+            str += '<option value="Spectre" style="text-align:left" >Spectre</option>';
+            str += '<option value="" style="text-align:left" >Dòng khác</option>';
             document.getElementById('add_dongmay').innerHTML = str;
         }
 
-        else if (hang == "Xiaomi") {
+        else if (hang == "Asus") {
             var str = "";
-            str += '<option value="Xiaomi 11 Series" style="text-align:left" >Xiaomi 11 Series</option>';
-            str += '<option value="Xiaomi 12 Series" style="text-align:left" >Xiaomi 12 Series</option>';
-            str += '<option value="Black Shark Series" style="text-align:left" >Black Shark Series</option>';
-            str += '<option value="Mi/ Mi Plus/ Mi Pro" style="text-align:left" >Mi/ Mi Plus/ Mi Pro/ Mi Lite</option>';
-            str += '<option value="Mi Max Series" style="text-align:left" >Mi Max Series</option>';
-            str += '<option value="Mi Note Series" style="text-align:left" >Mi Note Series</option>';
-            str += '<option value="POCO Series" style="text-align:left" >POCO Series</option>';
-            str += '<option value="Redmi" style="text-align:left" >Redmi Series</option>';
+            str += '<option value="A Series" style="text-align:left" >A Series</option>';
+            str += '<option value="B Series" style="text-align:left" >B Series</option>';
+            str += '<option value="G Series" style="text-align:left" >G Series</option>';
+            str += '<option value="K Series" style="text-align:left" >K Series</option>';
+            str += '<option value="Zenbook" style="text-align:left" >Zenbook</option>';
+            str += '<option value="ASUSPRO" style="text-align:left" >ASUSPRO</option>';
             str += '<option value="" style="text-align:left" >Dòng khác</option>';
 
             document.getElementById('add_dongmay').innerHTML = str;
         }
 
-        else if (hang == "LG") {
+        else if (hang == "Dell") {
             var str = "";
-            str += '<option value="LG G Series" style="text-align:left" >LG G Series</option>';
-            str += '<option value="LG K Series" style="text-align:left" >LG K Series</option>';
-            str += '<option value="LG L Series" style="text-align:left" >LG L Series</option>';
-            str += '<option value="LG Optimus Series" style="text-align:left" >LG Optimus Series</option>';
-            str += '<option value="LG Q Series" style="text-align:left" >LG Q Series</option>';
-            str += '<option value="LG V Series" style="text-align:left" >LG V Series</option>';
-            str += '<option value="LG X Series" style="text-align:left" >LG X Series</option>';
+            str += '<option value="Inspiron" style="text-align:left" >Inspiron</option>';
+            str += '<option value="Latitude" style="text-align:left" >Latitude</option>';
+            str += '<option value="Precision" style="text-align:left" >Precision</option>';
+            str += '<option value="Vostro" style="text-align:left" >Vostro</option>';
+            str += '<option value="XPS" style="text-align:left" >XPS</option>';
             str += '<option value="" style="text-align:left" >Dòng khác</option>';
 
             document.getElementById('add_dongmay').innerHTML = str;
         }
-        else if (hang == "Huawei") {
+
+        else if (hang == "Lenovo") {
             var str = "";
-            str += '<option value="Huawei Enjoy Series" style="text-align:left" >Huawei Enjoy Series</option>';
-            str += '<option value="Huawei Honor Series" style="text-align:left" >Huawei Honor Series</option>';
-            str += '<option value="Huawei Mate Series" style="text-align:left" >Huawei Mate Series</option>';
-            str += '<option value="Huawei Nova Series" style="text-align:left" >Huawei Nova Series</option>';
-            str += '<option value="Huawei P Series" style="text-align:left" >Huawei P Series</option>';
-            str += '<option value="Huawei Y Series" style="text-align:left" >Huawei Y Series</option>';
+            str += '<option value="Essential" style="text-align:left" >Essential</option>';
+            str += '<option value="IdeaPad" style="text-align:left" >IdeaPad</option>';
+            str += '<option value="Legion Y Series" style="text-align:left" >Legion Series</option>';
+            str += '<option value="ThinkPad" style="text-align:left" >ThinkPad</option>';
+            str += '<option value="Yoga" style="text-align:left" >Yoga</option>';
+            str += '<option value="ThinkBook" style="text-align:left" >ThinkBook</option>';
+            str += '<option value="" style="text-align:left" >Dòng khác</option>';
+
+            document.getElementById('add_dongmay').innerHTML = str;
+        }
+
+        else if (hang == "Acer") {
+            var str = "";
+            str += '<option value="Aspire" style="text-align:left" >Aspire</option>';
+            str += '<option value="Helios" style="text-align:left" >Helios</option>';
+            str += '<option value="Nitro" style="text-align:left" >Nitro 5</option>';
+            str += '<option value="One" style="text-align:left" >One</option>';
+            str += '<option value="Predator" style="text-align:left" >Predator</option>';
+            str += '<option value="Swift" style="text-align:left" >Swift</option>';
             str += '<option value="Dòng khác" style="text-align:left" >Dòng khác</option>';
 
             document.getElementById('add_dongmay').innerHTML = str;
         }
-        else if (hang == "Vivo") {
+        else if (hang == "MSI") {
             var str = "";
-            str += '<option value="Vivo Nex Series" style="text-align:left" >Vivo Nex Series</option>';
-            str += '<option value="Vivo V Series" style="text-align:left" >Vivo V Series</option>';
-            str += '<option value="Vivo X Series" style="text-align:left" >Vivo X Series</option>';
-            str += '<option value="Vivo Y Series" style="text-align:left" >Vivo Y Series</option>';
-            str += '<option value="Vivo Z Series" style="text-align:left" >Vivo Z Series</option>';
+            str += '<option value="CR Series" style="text-align:left" >CR Series</option>';
+            str += '<option value="CX Series" style="text-align:left" >CX Series</option>';
+            str += '<option value="GE Series" style="text-align:left" >GE Series</option>';
+            str += '<option value="GF Series" style="text-align:left" >GF Series</option>';
+            str += '<option value="GX Series" style="text-align:left" >GX Series</option>';
+            str += '<option value="PL Series" style="text-align:left" >PL Series</option>';
+            str += '<option value="W Series" style="text-align:left" >W Series</option>';
             str += '<option value="" style="text-align:left" >Dòng khác</option>';
 
             document.getElementById('add_dongmay').innerHTML = str;
         }
-        else if (hang == "Oppo") {
+        else if (hang == "Sony") {
             var str = "";
-            str += '<option value="Oppo A Series" style="text-align:left" >Oppo A Series</option>';
-            str += '<option value="Oppo F Series" style="text-align:left" >Oppo F Series</option>';
-            str += '<option value="Oppo Find Series" style="text-align:left" >Oppo Find Series</option>';
-            str += '<option value="Oppo R Series" style="text-align:left" >Oppo R Series</option>';
-            str += '<option value="Oppo Neo Series" style="text-align:left" >Oppo Neo Series</option>';
-            str += '<option value="Oppo Reno Series" style="text-align:left" >Oppo Reno Series</option>';
+           
+            str += '<option value="C Series" style="text-align:left" >C Series</option>';
+            str += '<option value="E Series" style="text-align:left" >E Series</option>';
+            str += '<option value="F Series" style="text-align:left" >F Series</option>';
+            str += '<option value="S Series" style="text-align:left" >S Series</option>';
+            str += '<option value="Y Series" style="text-align:left" >Y Series</option>';
+            str += '<option value="Z Series" style="text-align:left" >Z Series</option>';
             str += '<option value="" style="text-align:left" >Dòng khác</option>';
 
             document.getElementById('add_dongmay').innerHTML = str;
-        }
-        else if (hang == "Asus") {
-            var str = "";
-            str += '<option value="Asus ROG Series" style="text-align:left" >Asus ROG Series</option>';
-            str += '<option value="Asus Zenfone Series" style="text-align:left" >Asus Zenfone Series</option>';
-            str += '<option value="" style="text-align:left" >Dòng khác</option>';
-
-            document.getElementById('add_dongmay').innerHTML = str;
-        }
-        else if (hang == "Realmi") {
-            var str = "";
-            str += '<option value="Realmi 1" style="text-align:left" >Realmi 1 </option>';
-            str += '<option value="Realmi 2" style="text-align:left" >Realmi 2/ 2 Pro</option>';
-            str += '<option value="Realmi 3" style="text-align:left" >Realmi 3</option>';
-            str += '<option value="Realmi 4" style="text-align:left" >Realmi 4</option>';
-            str += '<option value="Realmi 5" style="text-align:left" >Realmi 5/ 5 Pro</option>';
-            str += '<option value="Realmi 6" style="text-align:left" >Realmi 6</option>';
-            str += '<option value="Realmi 7" style="text-align:left" >Realmi 7</option>';
-            str += '<option value="Realmi 8" style="text-align:left" >Realmi 8/ 8 Pro</option>';
-            str += '<option value="Realmi C" style="text-align:left" >Realmi C Series</option>';
-            str += '<option value="Realmi GT Series" style="text-align:left" >Realmi GT Series</option>';
-            str += '<option value="" style="text-align:left" >Dòng khác</option>';
-
-            document.getElementById('add_dongmay').innerHTML = str;
-        }
-        else if (hang == "Nokia") {
-            var str = "";
-            str += '<option value="Nokia Series" style="text-align:left" >Nokia Series</option>';
-            str += '<option value="Nokia phổ thông" style="text-align:left" >Nokia phổ thông</option>';
-            str += '<option value="Nokia Lumia Series" style="text-align:left" >Nokia Lumia Series</option>';
-            str += '<option value="Nokia X Series" style="text-align:left" >Nokia X Series</option>';
-            str += '<option value="" style="text-align:left" >Dòng khác</option>';
-
-            document.getElementById('add_dongmay').innerHTML = str;
-        }
+        }       
     }
 
     //// Doi select
@@ -468,6 +405,4 @@
     //            }
     //        }
     //    })
-    //}
-
-</script>
+    //}</script>

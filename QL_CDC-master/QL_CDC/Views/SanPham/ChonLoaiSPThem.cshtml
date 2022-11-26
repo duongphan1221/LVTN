@@ -28,10 +28,9 @@
             </div>
             <ul class="submenuItems">
                 <li onclick="ThemDienThoai()"><a href="#">Điện thoại</a></li>
-                <li onclick="DoCaNhan()"><a href="#">Laptop</a></li>
-                <li onclick="DoCaNhan()"><a href="#">Chuột máy tính</a></li>
-                <li onclick="DoCaNhan()"><a href="#">Bàn phím máy tính</a></li>
-                <li onclick="DoDienTu()"><a href="#">Đồ điện tử khác</a></li>
+                <li onclick="ThemLaptop()"><a href="#">Laptop</a></li>
+                <li onclick="ThemPhuKienDT()"><a href="#">Phụ kiện điện tử</a></li>
+                <li onclick="ThemDoDienTuKhac()"><a href="#">Đồ điện tử khác</a></li>
             </ul>
         </li>
         <li>
@@ -50,19 +49,16 @@
             </ul>
         </li>
         <li>
-            <div class="dropdownlink">
+            <div class="dropdownlink" onclick="ThemSPXe()">
                 <h5>
                     Xe cộ
                 </h5>
 
             </div>
-            <ul class="submenuItems">
-                <li onclick="PhuongTien()"><a href="#">Xe máy</a></li>
-                <li onclick="PhuongTien()"><a href="#">Xe đạp</a></li>
-            </ul>
+            
         </li>
         <li>
-            <div class="dropdownlink">
+            <div class="dropdownlink" onclick="ThemSPKhac()">
                 <h5>
                     Khác
                 </h5>
@@ -154,8 +150,24 @@
         window.location.href = '/SanPham/ThemDienThoai';
     }
 
-    function DoKhac() {
-        window.location.href = '/SanPham/ThemSanPham';
+    function ThemLaptop() {
+        window.location.href = '/SanPham/ThemLaptop';
+    }
+
+    function ThemPhuKienDT() {
+        window.location.href = '/SanPham/ThemPhuKienDT';
+    }
+
+    function ThemDoDienTuKhac() {
+        window.location.href = '/SanPham/ThemDoDienTuKhac';
+    }
+
+    function ThemSPXe() {
+        window.location.href = '/SanPham/ThemSPXe';
+    }
+
+    function ThemSPKhac() {
+        window.location.href = '/SanPham/ThemSPKhac';
     }
 </script>
 
