@@ -48,5 +48,7 @@ namespace QL_CDC.Models
         public int mh3 { get; set; }
         public int mh4 { get; set; }
         public int mh5 { get; set; }
+
+        public string sdt { get; set; }
     }
 }

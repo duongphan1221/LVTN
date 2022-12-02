@@ -7,7 +7,7 @@
 <div class="container-fluid pt-5" style=" margin-top: -50px; margin-left: 0px">
     <!--Ten-->
     <div class="text-center mb-4">
-        <h2 class="section-title px-5 "><span class="px-2">Chỉnh sửa sản phẩm</span></h2>
+        <h2 class="section-title px-5 "><span class="px-2">Chỉnh sửa bài đăng</span></h2>
     </div>
     <div class="table-themsanpham">
         <div class="add_label">
@@ -24,7 +24,7 @@
 
         </div>
         <div class="add_input_2">
-            <select class="form-control" id="add_mh">
+            <select class="form-control" id="add_mh" disabled>
                 <option value="0" style="text-align:center" disabled>--- Loại mặt hàng ---</option>
                 @foreach (var item in Model.mh)
                 {
@@ -43,7 +43,7 @@
 
         </div>
         <div class="add_input_2">
-            <select class="form-control" id="add_l">
+            <select class="form-control" id="add_l" disabled>
                 <option value="0" style="text-align:center" disabled>--- Loại sản phẩm ---</option>
                 @foreach (var item in Model.ml)
                 {

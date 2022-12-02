@@ -8,7 +8,7 @@ namespace QL_CDC.Models
 {
     public class SinhVienModel
     {
-        [Required(ErrorMessage = "*Chưa nhập mã số sinh viên")]
+        [Required(ErrorMessage = "*Chưa nhập tài khoản")]
         [Display(Name = "MSSV: ")]
         [MaxLength(8)]
         public string MSSV { get; set; }

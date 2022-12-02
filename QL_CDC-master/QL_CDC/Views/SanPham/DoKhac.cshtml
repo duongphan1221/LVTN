@@ -35,8 +35,18 @@
     </div>
     <div class="card-body">
         <h4><label>Khám phá danh mục</label></h4>
-        <table style="width:90%">
+        <table style="width:100%">
             <tr>
+                <th style="width:15%">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img src="~/template/img/khac.webp" style="border-radius:30%"
+                             height="80"
+                             width="80"
+                             id="uploadedAvatar"
+                             onclick="Tatca()" />
+                    </div>
+                    <label>Tất cả danh mục</label>
+                </th>
                 <th style="width:15%">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="~/template/img/binh nuoc.jpg" style="border-radius:30%"
@@ -44,7 +54,7 @@
                              width="80"
                              onclick="DoCaNhan()" />
                     </div>
-                    <label>Đồ dùng cá nhân</label>
+                    <label>Thời trang</label>
                 </th>
                 <th style="width:15%">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -64,7 +74,7 @@
                              id="uploadedAvatar"
                              onclick="DoNoiThat()" />
                     </div>
-                    <label>Đồ nội thất</label>
+                    <label>Gia dụng, nội thất</label>
                 </th>
                 <th style="width:15%">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -74,18 +84,9 @@
                              id="uploadedAvatar"
                              onclick="PhuongTien()" />
                     </div>
-                    <label style="margin-left:31px">Xe</label>
+                    <label style="margin-left:31px">Xe cộ</label>
                 </th>
-                <th style="width:15%">
-                    <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img src="~/template/img/den-ban-dq-dkl14-b-1.jpg" style="border-radius:30%"
-                             height="80"
-                             width="80"
-                             id="uploadedAvatar"
-                             onclick="DoHocTap()" />
-                    </div>
-                    <label>Đồ dùng học tập</label>
-                </th>
+
                 <th style="width:15%">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="~/template/img/khac.webp" style="border-radius:30%"
@@ -94,7 +95,7 @@
                              id="uploadedAvatar"
                              onclick="DoKhac()" />
                     </div>
-                    <label>Nổi bật khác</label>
+                    <label>Khác</label>
                 </th>
             </tr>
         </table>
@@ -197,6 +198,10 @@ else
         }, duration);
         document.body.appendChild(el);
     }
+    function Tatca() {
+        window.location.href = '/SanPham/Index';
+    }
+
     function DoCaNhan() {
         window.location.href = '/SanPham/DoCaNhan';
     }

@@ -3,7 +3,6 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quản lý danh mục sản phẩm</h4>
     <div class="card">
-        <h5 class="card-header">Danh sách người dùng</h5>
         <div class="table-responsive text-nowrap">
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover">
@@ -25,10 +24,10 @@
                                 @Html.DisplayFor(modelItem => item.LOAI_TENLOAI)
                             </td>
 
-                            @if (item.LOAI_MALOAI >= 1 && item.LOAI_MALOAI <= 7)
+                            @if (item.LOAI_MALOAI >= 2 && item.LOAI_MALOAI <= 7)
                             {
                                 <td>
-                                    Đồ dùng cá nhân
+                                    Thời trang, đồ dùng cá nhân
                                 </td>
                             }
                             @if (item.LOAI_MALOAI >= 8 && item.LOAI_MALOAI <= 12 || item.LOAI_MALOAI == 21)
@@ -37,16 +36,16 @@
                                     Đồ điện tử
                                 </td>
                             }
-                            @if (item.LOAI_MALOAI >= 13 && item.LOAI_MALOAI <= 17)
+                            @if (item.LOAI_MALOAI >= 13 && item.LOAI_MALOAI <= 17 || item.LOAI_MALOAI == 1)
                             {
                                 <td>
-                                    Đồ nội thất
+                                    Gia dụng, nội thất
                                 </td>   
                             }
                             @if (item.LOAI_MALOAI >= 18 && item.LOAI_MALOAI <= 19)
                             {
                                 <td>
-                                    Xe
+                                    Xe cộ
                                 </td>
                             }
                             @if (item.LOAI_MALOAI == 20)

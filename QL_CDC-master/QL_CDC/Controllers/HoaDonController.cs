@@ -324,5 +324,19 @@ namespace QL_CDC.Controllers
             db.SaveChanges();
             return Json("Huy");
         }
+
+        // Da nhan hang
+        [HttpPost]
+        public IActionResult DaNhanHang(string mshd)
+        {
+            HOADONMUA H = db.HOADONMUAs.Where(a => a.HD_MSHD == mshd).FirstOrDefault();
+            db.Entry(H).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            H.TT_MSTT = 5;
+            db.Entry(H).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return Json("DaNhan");
+        }
+
+
     }
 }

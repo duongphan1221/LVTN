@@ -43,27 +43,13 @@ namespace QL_CDC.Controllers
             return View(SP);
         }
 
-        // DS SP mới nhất
-        //public IActionResult SPMoiNhat()
-        //{
-        //    List<SanPhamModel> SP = new List<SanPhamModel>();
-        //    var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
-        //        DateTime d1 = Convert.ToDateTime(x.SP_NGAYDANG);
-        //        DateTime d2 = Convert.ToDateTime(DateTime.Today);
-        //        TimeSpan Time = d2 - d1;
-        //        int d = Time.Days;
-                
-        //    return Json(d);
-        //}
-
         public IActionResult DoCaNhan()
         {
             List<SanPhamModel> SP = new List<SanPhamModel>();
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 2 && x.LOAI_MALOAI <= 7)
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 2 && x.LOAI_MALOAI <= 6)
                 {
                     SanPhamModel s = new SanPhamModel();
                     s.masp = x.SP_MSSP;
@@ -109,7 +95,7 @@ namespace QL_CDC.Controllers
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 13 && x.LOAI_MALOAI <= 17)
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 13 && x.LOAI_MALOAI <= 17 || x.LOAI_MALOAI == 1)
                 {
                     SanPhamModel s = new SanPhamModel();
                     s.masp = x.SP_MSSP;
@@ -132,7 +118,7 @@ namespace QL_CDC.Controllers
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 18 && x.LOAI_MALOAI <= 19)
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI >= 18 && x.LOAI_MALOAI <= 19 || x.LOAI_MALOAI == 7)
                 {
                     SanPhamModel s = new SanPhamModel();
                     s.masp = x.SP_MSSP;
@@ -579,6 +565,7 @@ namespace QL_CDC.Controllers
                     motasp = s.SP_MOTA,
                     nsx = s.SP_HANGSX,
                     loai = db.LOAISANPHAMs.Where(a => a.LOAI_MALOAI == s.LOAI_MALOAI).Select(a => a.LOAI_TENLOAI).First(),
+                    sdt = db.SINHVIENs.Where(a => a.SV_MSSV == s.SV_MSSV).Select(a => a.SV_SDT).First()
                 };
 
                 List<string> tempstrlist = new List<string>();

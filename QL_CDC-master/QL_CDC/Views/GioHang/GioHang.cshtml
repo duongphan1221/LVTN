@@ -33,7 +33,7 @@
                             id++;
                             string inputid = "soluongsp" + id.ToString();
                             string tonggiaid = "tonggia" + id.ToString();
-                            <tr>
+                            <tr >
                                 <td class=""><img src="@i.img" alt="" style="width: 50px;height: 50px;"> </td>
                                 <td><b>@i.tensp<b></td>
                                 <td class="align-middle">@dongia</td>
@@ -63,6 +63,7 @@
                 <form class="mb-5" action="">
                     <div class="input-group" style="z-index: 0">
                         <input type="text" class="form-control p-4" placeholder="Mã khuyến mãi">
+                        <br />
                         <div class="input-group-append">
                             <button class="btn btn-primary">Áp dụng</button>
                         </div>
@@ -82,7 +83,7 @@
                     <div class="card-footer border-secondary bg-transparent">
                         @if (Model.TongGia > 0)
                         {
-                            <button class="btn btn-block btn-primary my-3 py-3" onclick="window.location.href= '/HoaDon/HoaDon'">Đi đến trang thanh toán</button>
+                            <button class="btn btn-block btn-primary my-3 py-3" onclick="window.location.href= '/HoaDon/HoaDon'"><h5>Mua hàng</h5></button>
                         }
                     </div>
                 </div>

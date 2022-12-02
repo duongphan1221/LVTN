@@ -223,10 +223,10 @@ namespace QL_CDC.Controllers
             int loai_20 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 21).Count();
             int loai_21 = db.SANPHAMs.Where(s => s.LOAI_MALOAI == 20).Count();
 
-            int mh1 = loai_1 + loai_2 + loai_3 + loai_4 + loai_5 + loai_6 + loai_7 + loai_21;
-            int mh2 = loai_8 + loai_9 + loai_10 + loai_11 + loai_12;
-            int mh3 = loai_13 + loai_14 + loai_15 + loai_16 + loai_17;
-            int mh4 = loai_18 + loai_19;
+            int mh1 = loai_2 + loai_3 + loai_4 + loai_5 + loai_6;
+            int mh2 = loai_8 + loai_9 + loai_10 + loai_11 + loai_12 + loai_21;
+            int mh3 = loai_13 + loai_14 + loai_15 + loai_16 + loai_17 + loai_1;
+            int mh4 = loai_18 + loai_19 + loai_7;
             int mh5 = loai_20;
             SanPhamModel objSP = new SanPhamModel();
             objSP.mh1 = mh1;
@@ -262,7 +262,6 @@ namespace QL_CDC.Controllers
                     s.LOAI_MALOAI = x.LOAI_MALOAI;
                     s.LOAI_TENLOAI = x.LOAI_TENLOAI;                   
                     SP.Add(s);
-                
             }
             return View(SP);
         }

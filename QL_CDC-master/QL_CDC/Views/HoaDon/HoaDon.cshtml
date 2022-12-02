@@ -5,14 +5,14 @@
 }
 
 <div class="text-center mb-4">
-    <h2 class="section-title px-5"><span class="px-2">Thanh toán</span></h2>
+    <h2 class="section-title px-5"><span class="px-2" style="background-color:gainsboro">Đặt hàng</span></h2>
 </div>
 <!-- Checkout Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <div class="col-lg-6">
                 <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Hóa đơn thanh toán</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Thông tin người đặt hàng</h4>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Tên người nhận</label>
@@ -38,7 +38,7 @@
             <div class="col-lg-6">
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Hóa đơn</h4>
+                        <h4 class="font-weight-semi-bold m-0">Hóa đơn đặt hàng</h4>
                     </div>
 
                     @foreach (var HD in Model.HD)
@@ -114,7 +114,7 @@
                         <label>Thanh toán khi nhận hàng</label>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
-                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" onclick="location.href='/HoaDon/XacNhanHoaDon'">Xác nhận</button>
+                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" onclick="location.href='/HoaDon/XacNhanHoaDon'">Đặt hàng</button>
                     </div>
                 </div>
             </div>

@@ -27,9 +27,9 @@
 </head>
 
 <body>
-    @if (User.Identity.IsAuthenticated)
+    @*@if (User.Identity.IsAuthenticated)
     {
-@await Html.PartialAsync("../SanPham/_ChatPartial.cshtml")}
+@await Html.PartialAsync("../SanPham/_ChatPartial.cshtml")}*@
 
     <!-- Topbar Start -->
     <div class="container-fluid">
@@ -107,13 +107,13 @@
                             <li onclick="DoNoiThat()"><a href="#">Giường, chăn ga gối nệm</a></li>
                             <li onclick="DoNoiThat()"><a href="#">Dụng cụ nhà bếp</a></li>
                             <li onclick="DoNoiThat()"><a href="#">Quạt, điều hòa</a></li>
-                            <li onclick="DoNoiThat()"><a href="#">Đèn</a></li>
+                            <li onclick="DoNoiThat()"><a href="#">Thiết bị vệ sinh</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="dropdownlink">
-                            <h5>
-                                <i class="fa fa-motorcycle" aria-hidden="true"></i> Xe cộ
+                            <h5 onclick="PhuongTien()">
+                                <i class="fa fa-motorcycle" aria-hidden="true" ></i> Xe cộ
                                 @*<i class="fa fa-chevron-down" aria-hidden="true"></i>*@
                             </h5>
 
@@ -216,31 +216,31 @@
                     <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 my-auto ">
                         <div class="row justify-content-around">
                             <div class="col-md-3 col-6 mt-md-0 mt-3">
-                                <ul>
-                                    <li><b>Hỗ trợ khách hàng</b></li>
-                                    <li>Trung tâm trợ giúp</li>
-                                    <li>An toàn mua bán</li>
-                                    <li>Quy định cần biết</li>
-                                    <li>Quy chế quyền riêng tư</li>
-                                    <li>Liên hệ hỗ trợ</li>
-                                </ul>
+                                <i class="fa fa-map-marker fa-3x" style="margin-left:90px"></i>
+                                <a href="https://goo.gl/maps/4HgpCQ3Z2idSXDaZ9">
+                                    <p>Đường 3/2 - Xuân Khánh - Ninh Kiều - TP. Cần Thơ</p>
+                                </a>
                             </div>
-                            <div class="col-md-3 col-12 mt-md-0 mt-3">
-                                <ul >
-                                    <li><b>Về Website rao vặt</b></li>
-                                    <li>Giới thiệu</li>
-                                    <li>Tuyển dụng</li>
-                                    <li>Truyền thông</li>
-                                    <li>Blog</li>
-                                </ul>
+                            <div class="col-md-3 col-6 mt-md-0 mt-3">
+                                <i class="fa fa-facebook-official fa-3x" style="margin-left:50px"></i>
+                                <a href="fa fa-facebook-official">
+                                    <p>Chợ rao vặt sinh viên</p>
+                                </a>
                             </div>
-                            
+                            <div class="col-md-3 col-6 mt-md-0 mt-3">
+                                <i class="fa fa-phone-square fa-3x" style="margin-left:30px"></i>
+                                <a href="fa fa-facebook-official">
+                                    <p>0949 617 013</p>
+                                </a>
+                            </div>
+                           
+
                             <div class="col-md-auto col-12">
                                 <ul class="list-unstyled text-muted">
                                     <li>
-                                    <li>Donwload App</li>
-                                    <li><img src="https://i.imgur.com/iU0M5wp.png" class="img-fluid app-img" width="100"></li>
-                                    <li><img src="https://i.imgur.com/M6ccl7k.png" class="img-fluid app-img" width="100"></li>                                                                     
+                                    <li><b>Donwload App</b></li>
+                                    <li><img src="https://i.imgur.com/iU0M5wp.png" class="img-fluid app-img" width="100" style="cursor:pointer"></li>
+                                    <li><img src="https://i.imgur.com/M6ccl7k.png" class="img-fluid app-img" width="100" style="cursor:pointer"> </li>
                                 </ul>
                             </div>
                         </div>
