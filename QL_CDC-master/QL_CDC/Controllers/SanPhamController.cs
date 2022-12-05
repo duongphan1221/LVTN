@@ -713,13 +713,12 @@ namespace QL_CDC.Controllers
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
-                if (x.SV_MSSV != mssv)
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0)
                 {
                     var loai = db.LOAISANPHAMs.Where(a => a.LOAI_MALOAI == x.LOAI_MALOAI).Select(a => a.LOAI_TENLOAI).FirstOrDefault();
                     var mamh = db.LOAISANPHAMs.Where(a => a.LOAI_MALOAI == x.LOAI_MALOAI).Select(a => a.MH_MAMH).FirstOrDefault();
                     var mh = db.LOAIMATHANGs.Where(a => a.MH_MAMH == mamh).Select(a => a.MH_TENMH).FirstOrDefault();
-                    if(x.SP_TENSP.ToLower().Contains(str) ||  
-                        x.SP_MOTA.ToLower().Contains(str) ||
+                    if(x.SP_TENSP.ToLower().Contains(str) ||                          
                         loai.ToLower().Contains(str) ||
                         mh.ToLower().Contains(str)
                         )

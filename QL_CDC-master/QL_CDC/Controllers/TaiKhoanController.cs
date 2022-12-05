@@ -43,7 +43,7 @@ namespace QL_CDC.Controllers
                 SINHVIEN sv = db.SINHVIENs.Where(x => x.SV_MSSV == model.MSSV).FirstOrDefault();
                 if (sv == null)
                 {
-                    ModelState.AddModelError(nameof(DangNhapModel.MSSV), "Chưa nhập tài khoản!");
+                    //ModelState.AddModelError(nameof(DangNhapModel.MSSV), "Chưa nhập tài khoản!");
                     return View(model);
                 }
                 else if (sv.SV_TINHTRANG == false)
@@ -165,7 +165,7 @@ namespace QL_CDC.Controllers
             SINHVIEN sv = db.SINHVIENs.Where(a => a.SV_MSSV == model.MSSV).FirstOrDefault();
             if (sv != null)
             {
-                ModelState.AddModelError(nameof(SinhVienModel.MSSV), "*MSSV này đã được đăng ký");
+                ModelState.AddModelError(nameof(SinhVienModel.MSSV), "*Tài khoản này đã được đăng ký");
                 return View(model);
             }
             else

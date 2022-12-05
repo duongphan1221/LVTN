@@ -9,7 +9,7 @@ namespace QL_CDC.Models
     public class SinhVienModel
     {
         [Required(ErrorMessage = "*Chưa nhập tài khoản")]
-        [Display(Name = "MSSV: ")]
+        [Display(Name = "Tài khoản: ")]
         [MaxLength(8)]
         public string MSSV { get; set; }
 

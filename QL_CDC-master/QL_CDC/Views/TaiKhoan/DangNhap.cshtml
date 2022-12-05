@@ -145,7 +145,7 @@
                                        id="tk"
                                        asp-for="MSSV"
                                        autofocus />
-                                <span asp-validation-for="MSSV" class="text-danger" ></span>
+                                <span  class="text-danger" id="taikhoan"></span>
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-left: 8.5vw;margin-top: 20px">Đăng nhập</button>
+                                <button type="submit" class="btn btn-primary" style="margin-left: 8.5vw;margin-top: 20px" onclick="TK()">Đăng nhập</button>
                             </div>
                         </form>
 
@@ -203,3 +203,26 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
+<script>
+    //$(document).ready(function () {
+    //    var x = $("#taikhoan").text("");
+    //    if (x != "Bạn chưa nhập MSSV") {
+    //        x = $("#taikhoan").text("Bạn chưa nhập tài khoản");
+    //        console.log("aa");
+    //    }
+    //})
+
+    function TK() {
+        var a = $("#tk").val();
+        var x = $("#taikhoan").text("");
+
+        
+        if (a == "") {
+            x = $("#taikhoan").text("Bạn chưa nhập tài khoản");
+        }
+        else if (a != "") {
+            x = $("#taikhoan").text("");
+        }
+        
+    }
+</script>
