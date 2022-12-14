@@ -69,14 +69,14 @@
                     </a>
                     <li>
                         <div class="dropdownlink">
-                            <h5><i class="fa fa-male" aria-hidden="true"></i> Đồ cá nhân, Thời trang <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
+                            <h5><i class="fa fa-male" aria-hidden="true"></i>Thời trang, đồ cá nhân <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
                         </div>
                         <ul class="submenuItems">
-                            <li onclick="DoCaNhan()"><a href="#">Quần áo</a></li>
-                            <li onclick="DoCaNhan()"><a href="#">Giày dép</a></li>
-                            <li onclick="DoCaNhan()"><a href="#">Phụ kiện thời trang</a></li>
-                            <li onclick="DoCaNhan()"><a href="#">Túi, balo</a></li>
-                            <li onclick="DoCaNhan()"><a href="#">Đồ dùng cá nhân khác</a></li>
+                            <li onclick="DMQuanAo()"><a href="#">Quần áo</a></li>
+                            <li onclick="DMGiayDep()"><a href="#">Giày dép</a></li>
+                            <li onclick="DMPhuKienTT()"><a href="#">Phụ kiện thời trang</a></li>
+                            <li onclick="DMTuiBalo()"><a href="#">Túi, balo</a></li>
+                            <li onclick="DMCaNhanKhac()"><a href="#">Đồ dùng cá nhân khác</a></li>
                         </ul>
                     </li>
                     <li>
@@ -88,10 +88,10 @@
 
                         </div>
                         <ul class="submenuItems">
-                            <li onclick="DoDienTu()"><a href="#">Điện thoại</a></li>
-                            <li onclick="DoDienTu()"><a href="#">Laptop</a></li>
-                            <li onclick="DoDienTu()"><a href="#">Phụ kiện điện tử</a></li>
-                            <li onclick="DoDienTu()"><a href="#">Đồ điện tử khác</a></li>
+                            <li onclick="DMDienThoai()"><a href="#">Điện thoại</a></li>
+                            <li onclick="DMLaptop()"><a href="#">Laptop</a></li>
+                            <li onclick="DMPhuKienDT()"><a href="#">Phụ kiện điện tử</a></li>
+                            <li onclick="DMDienTuKhac()"><a href="#">Đồ điện tử khác</a></li>
                         </ul>
                     </li>
                     <li>
@@ -102,12 +102,12 @@
                             </h5>
                         </div>
                         <ul class="submenuItems">
-                            <li onclick="DoNoiThat()"><a href="#">Tủ, kệ</a></li>
-                            <li onclick="DoNoiThat()"><a href="#">Bàn ghế</a></li>
-                            <li onclick="DoNoiThat()"><a href="#">Giường, chăn ga gối nệm</a></li>
-                            <li onclick="DoNoiThat()"><a href="#">Dụng cụ nhà bếp</a></li>
-                            <li onclick="DoNoiThat()"><a href="#">Quạt, điều hòa</a></li>
-                            <li onclick="DoNoiThat()"><a href="#">Thiết bị vệ sinh</a></li>
+                            <li onclick="DMTuKe()"><a href="#">Tủ, kệ</a></li>
+                            <li onclick="DMBanGhe()"><a href="#">Bàn ghế</a></li>
+                            <li onclick="DMGiuong()"><a href="#">Giường, chăn ga gối nệm</a></li>
+                            <li onclick="DMNhaBep()"><a href="#">Dụng cụ nhà bếp</a></li>
+                            <li onclick="DMQuat()"><a href="#">Quạt, điều hòa</a></li>
+                            <li onclick="DMVeSinh()"><a href="#">Thiết bị vệ sinh</a></li>
                         </ul>
                     </li>
                     <li>
@@ -196,10 +196,12 @@
 <div class="container-fluid">
     <div class="row justify-content-center row-1" style="margin-left:80px">
         <div style="width:900px; margin-left:155px">
-            <h4><b>WEBSITE RAO VẶT TRỰC TUYẾN DÀNH CHO SINH VIÊN</b></h4>
+            <h4><b>WEBSITE MUA BÁN CHIA SẺ TRỰC TUYẾN DÀNH CHO SINH VIÊN</b></h4>
             <h5>
-                Trong việc mua bán, đối với người kinh doanh có nguồn vốn ban đầu thấp, làm thế nào để vừa có được không gian bán hàng tốt vừa tiếp cận khách hàng dễ dàng mà không tốn quá nhiều chi phí cho việc chạy quảng cáo, thuê nhân viên, mặt bằng, trang trí cửa hàng, … còn đối với người tiêu dùng thì làm thế nào để dễ dàng tìm ra được một cửa hàng bán sản phẩm chất lượng, uy tín, tham khảo sản phẩm vào những thời gian rảnh rỗi mà không cần tốn quá nhiều công sức và thời gian di chuyển, chủ động trong việc thanh toán và vận chuyển.
-                Với tốc độ phát triển mạnh mẽ của công nghệ như hiện nay đã làm nâng cao chất lượng cuộc sống của con người, nhu cầu sử dụng các dịch vụ tiện ích ngày càng tăng cao. Việc mua bán truyền thống dần có những bất cập nhất định như tốn khá nhiều thời gian trong việc tìm kiếm và mua sản phẩm, giá của sản phẩm khá đắt do một số cửa hàng không sử dụng mã giảm giá, … trong khi đó mua bán online ngày càng thể hiện được những ưu điểm nổi bật như tìm kiếm thông tin sản phẩm dễ dàng, không tốn quá nhiều thời gian cho việc mua sản phẩm, có thể đặt mua sản phẩm vào bất kỳ thời gian nào và một ưu điểm nổi bật là giao hàng tận nơi, ...
+                Website với mục tiêu tạo ra một không để các học sinh, sinh viên có thể mua bán, chia sẻ đồ dùng. Mang theo nhiệm vụ phục vụ các nhu cầu cuộc sống dành cho nhóm người dùng sinh viên, website sẽ đã và đang mang lại những giá trị cho cộng đồng sinh viên Việt Nam.
+            </h5>
+            <h5>
+                Khách hàng khi đến với Chợ rao vặt sinh viên dễ dàng xem danh sách sản phẩm theo danh mục, xem thông tin chi tiết các sản phẩm, tìm kiếm sản phẩm theo từ khóa, đối với khách hàng có đăng ký tài khoản có thế thể thêm các sản phẩm vào giỏ hàng, đặt mua sản phẩm, theo dõi đơn hàng, đánh giá sản phẩm, quản lý gian hàng, thêm bài đăng bán sản phẩm, quản lý đơn hàng bán và quản lý tài khoản cá nhân.
             </h5>
         </div>
     </div>
@@ -304,12 +306,65 @@
         window.location.href = '/SanPham/DoCaNhan';
     }
 
+    //
+    function DMQuanAo() {
+        window.location.href = '/SanPham/DMQuanAo';
+    }
+    //
+    function DMGiayDep() {
+        window.location.href = '/SanPham/DMGiayDep';
+    }
+
+    function DMPhuKienTT() {
+        window.location.href = '/SanPham/DMPhuKienTT';
+    }
+
+    function DMTuiBalo() {
+        window.location.href = '/SanPham/DMTuiBalo';
+    }
+
+    function DMCaNhanKhac() {
+        window.location.href = '/SanPham/DMCaNhanKhac';
+    }
+
     function DoDienTu() {
         window.location.href = '/SanPham/DoDienTu';
+    }
+    //
+    function DMDienThoai() {
+        window.location.href = '/SanPham/DMDienThoai';
+    }
+    function DMLaptop() {
+        window.location.href = '/SanPham/DMLaptop';
+    }
+    function DMPhuKienDT() {
+        window.location.href = '/SanPham/DMPhuKienDT';
+    }
+    function DMDienTuKhac() {
+        window.location.href = '/SanPham/DMDienTuKhac';
     }
 
     function DoNoiThat() {
         window.location.href = '/SanPham/DoNoiThat';
+    }
+    //////
+    function DMTuKe() {
+        window.location.href = '/SanPham/DMTuKe';
+    }
+    function DMBanGhe() {
+        window.location.href = '/SanPham/DMBanGhe';
+    }
+    function DMGiuong() {
+        window.location.href = '/SanPham/DMGiuong';
+    }
+    function DMNhaBep() {
+        window.location.href = '/SanPham/DMNhaBep';
+    }
+    function DMQuat() {
+        window.location.href = '/SanPham/DMQuat';
+    }
+    function DMVeSinh() {
+        window.location.href = '/SanPham/DMVeSinh';
     }
 
     function DoHocTap() {

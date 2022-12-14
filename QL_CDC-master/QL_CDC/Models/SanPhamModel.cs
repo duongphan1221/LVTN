@@ -42,6 +42,7 @@ namespace QL_CDC.Models
         public bool tinhtrang { get; set; }
 
         public string tt { get; set; }
+        public int dadang { get; set; }
 
         public int mh1 { get; set; }
         public int mh2 { get; set; }
@@ -50,5 +51,7 @@ namespace QL_CDC.Models
         public int mh5 { get; set; }
 
         public string sdt { get; set; }
+
+        public string diachi { get; set; }
     }
 }

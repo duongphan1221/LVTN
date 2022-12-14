@@ -189,6 +189,7 @@ namespace QL_CDC.Controllers
             model.NgayMua = (DateTime)HDM.HD_NGAYMUA;
             model.TinhTrang = db.TINHTRANGHOADONs.Where(a => a.TT_MSTT == HDM.TT_MSTT).Select(a => a.TT_TRANGTHAI).First();
             model.TongGia = (double)HDM.HD_TONGGIA;
+            
 
             model.SanPham = new List<SanPhamModel>();
             foreach(var item in db.CHITIETHOADONs.Where(a => a.HD_MSHD == HDM.HD_MSHD))
@@ -209,9 +210,10 @@ namespace QL_CDC.Controllers
             TongThanhToan T = new TongThanhToan();
             T.HD = new List<HoaDonModel>();
             T.HD.Add(model);
+            var ten = db.SINHVIENs.Where(s => s.SV_MSSV == HDM.HD_NGUOINHAN).Select(s => s.SV_HOTEN); 
             T.NguoiMua = new SinhVienModel()
-            {
-                HoTen = HDM.HD_NGUOINHAN,
+               {
+                HoTen = ten,
                 DiaChi = HDM.HD_DIACHI,
                 SDT = HDM.HD_SDT,
             };

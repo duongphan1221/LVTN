@@ -46,5 +46,12 @@ namespace QL_CDC.Models
         public string Khoa { get; set; }
 
         public string ttsv { get; set; }
+
+        public int sosv { get; set; }
+
+        public static implicit operator SinhVienModel(SinhVienModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

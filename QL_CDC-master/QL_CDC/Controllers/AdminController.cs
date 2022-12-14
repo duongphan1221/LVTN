@@ -298,6 +298,28 @@ namespace QL_CDC.Controllers
             return Json(data);
         }
 
+        public IActionResult TongQuan()
+        {           
+            return View();
+        }
+        public IActionResult DemSV()
+        {
+            int x = db.SINHVIENs.Where(a => a.SV_ADMIN == false).Count();
+            return Json(x);
+        }
+
+        public IActionResult DemSP()
+        {
+            int x = db.SANPHAMs.Where(a => a.SP_TINHTRANG == true && a.SP_CONLAI > 0).Count();
+            return Json(x);
+        }
+
+        public IActionResult DemBai1()
+        {
+            int x = db.SANPHAMs.Where(a => a.SP_TINHTRANG == false).Count();
+            return Json(x);
+        }
+
         //public IActionResult QLDanhMuc()
         //{
         //    List<LOAISANPHAM> SP = new List<LOAISANPHAM>();

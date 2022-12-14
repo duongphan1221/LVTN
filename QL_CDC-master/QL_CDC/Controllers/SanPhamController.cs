@@ -23,6 +23,7 @@ namespace QL_CDC.Controllers
         public IActionResult Index()
         {
             List<SanPhamModel> SP = new List<SanPhamModel>();
+            
             var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
             foreach (var x in db.SANPHAMs)
             {
@@ -34,6 +35,8 @@ namespace QL_CDC.Controllers
                     s.giagocsp = (double)x.SP_GIA;
                     s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
                     s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
                     s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
                     s.soluongsp = (int)x.SP_CONLAI;
                     s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
@@ -56,6 +59,140 @@ namespace QL_CDC.Controllers
                     s.tensp = x.SP_TENSP;
                     s.giagocsp = (double)x.SP_GIA;
                     s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+
+        //  Quan Ao
+        public IActionResult DMQuanAo()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 5)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+
+        // Giay Dep
+        public IActionResult DMGiayDep()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 2)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        // Giay Dep
+        public IActionResult DMPhuKienTT()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 3)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        // TUi Balo
+        public IActionResult DMTuiBalo()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 4)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        // TUi Balo
+        public IActionResult DMCaNhanKhac()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 6)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
                     s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
                     s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
                     s.soluongsp = (int)x.SP_CONLAI;
@@ -79,6 +216,113 @@ namespace QL_CDC.Controllers
                     s.tensp = x.SP_TENSP;
                     s.giagocsp = (double)x.SP_GIA;
                     s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        // TUi Balo
+        public IActionResult DMDienThoai()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 21)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+
+        // TUi Balo
+        public IActionResult DMLaptop()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 12)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        // TUi Balo
+        public IActionResult DMPhuKienDT()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 11)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        // TUi Balo
+        public IActionResult DMDienTuKhac()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 10)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
                     s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
                     s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
                     s.soluongsp = (int)x.SP_CONLAI;
@@ -102,6 +346,163 @@ namespace QL_CDC.Controllers
                     s.tensp = x.SP_TENSP;
                     s.giagocsp = (double)x.SP_GIA;
                     s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        //
+        public IActionResult DMTuKe()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 13 )
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        //
+        public IActionResult DMBanGhe()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 14)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        //
+        public IActionResult DMGiuong()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 1)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+        //
+        public IActionResult DMNhaBep()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 16)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        //
+        public IActionResult DMQuat()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 15)
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
+                    s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
+                    s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
+                    s.soluongsp = (int)x.SP_CONLAI;
+                    s.anhsp = db.HINHANHs.Where(a => a.SP_MSSP == x.SP_MSSP).Select(a => a.HA_LINK).ToList();
+                    SP.Add(s);
+                }
+            }
+            return View(SP);
+        }
+
+        //
+        public IActionResult DMVeSinh()
+        {
+            List<SanPhamModel> SP = new List<SanPhamModel>();
+            var mssv = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var x in db.SANPHAMs)
+            {
+                if (x.SV_MSSV != mssv && x.SP_TINHTRANG == true && x.SP_CONLAI > 0 && x.LOAI_MALOAI == 17 )
+                {
+                    SanPhamModel s = new SanPhamModel();
+                    s.masp = x.SP_MSSP;
+                    s.tensp = x.SP_TENSP;
+                    s.giagocsp = (double)x.SP_GIA;
+                    s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
                     s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
                     s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
                     s.soluongsp = (int)x.SP_CONLAI;
@@ -125,6 +526,8 @@ namespace QL_CDC.Controllers
                     s.tensp = x.SP_TENSP;
                     s.giagocsp = (double)x.SP_GIA;
                     s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
                     s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
                     s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
                     s.soluongsp = (int)x.SP_CONLAI;
@@ -172,6 +575,8 @@ namespace QL_CDC.Controllers
                     s.tensp = x.SP_TENSP;
                     s.giagocsp = (double)x.SP_GIA;
                     s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
+                    DateTime d = (DateTime)x.SP_NGAYDANG;
+                    s.ngaydangsp = d.ToString("dd/MM/yyyy");
                     s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;
                     s.danhgiasp = LayDanhGiaSanPham(x.SV_MSSV);
                     s.soluongsp = (int)x.SP_CONLAI;
@@ -549,6 +954,7 @@ namespace QL_CDC.Controllers
             else
             {
                 string nguoidang = db.SINHVIENs.Where(a => a.SV_MSSV == s.SV_MSSV).Select(a => a.SV_TENHIENTHI).FirstOrDefault();
+                string diachi = db.SINHVIENs.Where(a => a.SV_MSSV == s.SV_MSSV).Select(a => a.SV_DIACHIGIAOHANG).FirstOrDefault();
                 DateTime d = (DateTime)s.SP_NGAYDANG;
                 SanPhamModel SP = new SanPhamModel()
                 {
@@ -565,7 +971,8 @@ namespace QL_CDC.Controllers
                     motasp = s.SP_MOTA,
                     nsx = s.SP_HANGSX,
                     loai = db.LOAISANPHAMs.Where(a => a.LOAI_MALOAI == s.LOAI_MALOAI).Select(a => a.LOAI_TENLOAI).First(),
-                    sdt = db.SINHVIENs.Where(a => a.SV_MSSV == s.SV_MSSV).Select(a => a.SV_SDT).First()
+                    sdt = db.SINHVIENs.Where(a => a.SV_MSSV == s.SV_MSSV).Select(a => a.SV_SDT).First(),
+                    diachi = diachi
                 };
 
                 List<string> tempstrlist = new List<string>();
@@ -726,6 +1133,8 @@ namespace QL_CDC.Controllers
                         SanPhamModel s = new SanPhamModel();
                         s.masp = x.SP_MSSP;
                         s.tensp = x.SP_TENSP;
+                        DateTime d = (DateTime)x.SP_NGAYDANG;
+                        s.ngaydangsp = d.ToString("dd/MM/yyyy");
                         s.giagocsp = (double)x.SP_GIA;
                         s.dongiasp = TinhDonGiaSanPham(x.SP_MSSP);
                         s.thoigiansp = (int)x.SP_THOIGIANSUDUNG;

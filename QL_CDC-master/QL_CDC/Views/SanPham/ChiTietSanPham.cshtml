@@ -61,49 +61,55 @@
                 <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Số điện thoại:</strong></p>
 
 
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.sdt <img src="~/template/img/zalo.png" style="border-radius:30%"
-     height="35"
-     width="35"
-     id=""
-     onclick="location.href='https://id.zalo.me/account?continue=https%3A%2F%2Fchat.zalo.me%2F%3Fnull'" /></p>
-                
-            </div>
-            <div class="d-flex mb-3" style="width: 100%;display: flex;">
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Ngày đăng:</strong></p>
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.ngaydangsp</p>
-            </div>
-            <div class="d-flex mb-3" style="width: 100%;display: flex;">
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Loại sản phẩm:</strong></p>
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.loai</p>
-            </div>
-            @*<div class="d-flex mb-3" style="width: 100%;display: flex;">
-            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Hãng sản xuất:</strong></p>
-            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.nsx</p>
+                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">
+                    @Model.sdt <img src="~/template/img/zalo.png" style="border-radius:30%"
+                                    height="35"
+                                    width="35"
+                                    id=""
+                                    onclick="location.href='https://id.zalo.me/account?continue=https%3A%2F%2Fchat.zalo.me%2F%3Fnull'" />
+            </p>
+
+        </div>
+        <div class="d-flex mb-3" style="width: 100%;display: flex;">
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Địa chỉ người bán:</strong></p>
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.diachi</p>
+        </div>
+        <div class="d-flex mb-3" style="width: 100%;display: flex;">
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Ngày đăng:</strong></p>
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.ngaydangsp</p>
+        </div>
+        @*<div class="d-flex mb-3" style="width: 100%;display: flex;">
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Loại sản phẩm:</strong></p>
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.loai</p>
         </div>*@
-            @*<div class="d-flex mb-3" style="width: 100%;display: flex;">
-            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Thời gian sử dụng:</strong></p>
-            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.thoigiansp tháng</p>
-        </div>*@
-            <div class="d-flex mb-3" style="width: 100%;display: flex;">
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Số lượng:</strong></p>
-                <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.soluongsp sản phẩm</p>
-            </div>
-            <div class="d-flex align-items-center mb-4 pt-2 dieukhiendathang">
-                <div class="input-group quantity mr-3" style="width: 120px;">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-minus" onclick="Giam1()">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <input type="text" id="soluongsp" style="height: 35px;" class="form-control bg-secondary text-center" value="1" oninput="ChiNhapSo(this); KiemTraSoLuongSanPham(@Model.soluongsp);">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-plus" onclick="Tang1(@Model.soluongsp)">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
+        @*<div class="d-flex mb-3" style="width: 100%;display: flex;">
+        <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Hãng sản xuất:</strong></p>
+        <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.nsx</p>
+    </div>*@
+        @*<div class="d-flex mb-3" style="width: 100%;display: flex;">
+        <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Thời gian sử dụng:</strong></p>
+        <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.thoigiansp tháng</p>
+    </div>*@
+        <div class="d-flex mb-3" style="width: 100%;display: flex;">
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 40%;"><strong>Số lượng:</strong></p>
+            <p class="text-dark font-weight-medium mb-0 mr-3" style="width: 60%;">@Model.soluongsp sản phẩm</p>
+        </div>
+        <div class="d-flex align-items-center mb-4 pt-2 dieukhiendathang">
+            <div class="input-group quantity mr-3" style="width: 120px;">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary btn-minus" onclick="Giam1()">
+                        <i class="fa fa-minus"></i>
+                    </button>
                 </div>
-                <button class="btn btn-primary px-3" onclick="ThemNhieuVaoGio('@Model.masp');"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ </button>
+                <input type="text" id="soluongsp" style="height: 35px;" class="form-control bg-secondary text-center" value="1" oninput="ChiNhapSo(this); KiemTraSoLuongSanPham(@Model.soluongsp);">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary btn-plus" onclick="Tang1(@Model.soluongsp)">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
             </div>
+            <button class="btn btn-primary px-3" onclick="ThemNhieuVaoGio('@Model.masp');"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ </button>
+        </div>
         </div>
     </div>
     <div class="row px-xl-5">

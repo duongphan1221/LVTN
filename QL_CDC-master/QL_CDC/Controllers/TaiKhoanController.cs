@@ -79,7 +79,7 @@ namespace QL_CDC.Controllers
                             db.Entry(sv).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                             db.SaveChanges();
 
-                            return RedirectToAction("Index", "Admin");
+                            return RedirectToAction("TongQuan", "Admin");
                         }
                         else
                         {
